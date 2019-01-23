@@ -91,13 +91,13 @@
 - name: Copying SSLCertificate file
   template:
     src: "nextcloud.crt"
-    dest: "/etc/nginx/ssl/nextcloud.crt"
+    dest: "/etc/nginx/nextcloud.crt"
   become: yes
 
 - name: Copying SSLCertificateKey file
   template:
     src: "nextcloud.key"
-    dest: "/etc/nginx/ssl/nextcloud.key"
+    dest: "/etc/nginx/nextcloud.key"
   become: yes
 
 - name: Activate the nextcloud site

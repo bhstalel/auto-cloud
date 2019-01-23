@@ -19,8 +19,8 @@ server {
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     # NOTE: some settings below might be redundant
-    ssl_certificate /etc/nginx/ssl/nextcloud.crt;
-    ssl_certificate_key /etc/nginx/ssl/nextcloud.key;
+    ssl_certificate /etc/nginx/nextcloud.crt;
+    ssl_certificate_key /etc/nginx/nextcloud.key;
 
     # Add headers to serve security related headers
     # Before enabling Strict-Transport-Security headers please read into this
