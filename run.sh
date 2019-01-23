@@ -24,7 +24,6 @@ echo "php_version: "$php_version"" >> group_vars/all.yaml
 echo "[+] Done."
 echo "[+] Generating auto-signed SSL certificate .."
 sleep 2
-mkdir /etc/nginx/ssl
 openssl genrsa -out nextcloud.key
 openssl req -new -key nextcloud.key -out d.req -subj "/C=TN/ST=Sousse/L=Sousse/O=Global Security/OU=IT Department/CN=chifco.com"
 openssl x509 -req -days 365 -in d.req -signkey nextcloud.key -out nextcloud.crt
