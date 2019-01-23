@@ -10,6 +10,24 @@ echo "|      bhstalel@gmail.com       |"
 echo "|                               |"
 echo "+-------------------------------+"
 echo
+
+# Checking for ansible
+if hash ansible 2>/dev/null; then
+	echo
+else
+	echo "[-] We need to install ansible !"
+	echo "[+] Installing ... "
+	sleep 1
+	sudo apt install software-properties-common
+	sudo apt-add-repository ppa:ansible/ansible
+	sudo apt-get update
+	sudo apt install ansible
+	clear
+	sleep 1
+	echo "[+] ansible is installed."
+	echo
+fi
+
 read -p "[+] Nginx(1), Apache2(2): " choice
 read -p "[+] Nextcloud username: " username
 read -p "[+] Username password: " userpass
