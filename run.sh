@@ -57,8 +57,31 @@ openssl req -new -key nextcloud.key -out d.req -subj "/C=TN/ST=Sousse/L=Sousse/O
 openssl x509 -req -days 365 -in d.req -signkey nextcloud.key -out nextcloud.crt
 
 else
-echo "[-] Coming Soon "
-echo
+	if hash letsencrpt 2>/dev/null; then
+		echo
+	else
+		echo "[!] Need to install letsencrypt !"
+		echo "[+] Installing ..."
+		sudo apt install letsencrypt -y
+		clear
+		sleep 1
+		echo "[+] letsencrypt is installed."
+	fi
+	if hash python-certbot-nginx 2>/dev/null; then
+                echo
+	else
+		echo "[!] Need to install python-certbot-nginx !"
+		echo "[+] Installing ..."
+		sudo add-apt-repository ppa:certbot/certbot
+		sudo apt-get update
+		sudo apt-get install python-certbot-nginx
+		clear
+		sleep 1
+		echo "[+] python-certbot-nginx is installed."
+	fi
+	read -p "[+] Email address: " email
+	echo "[+] Generating SSLCertificate for your domain [$ncdomain] .."
+	sudo certbot --nginx -m $email -d $ncdomain
 fi
 
 if [ $choice -eq 1 ]; then
