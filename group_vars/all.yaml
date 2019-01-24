@@ -1,5 +1,1 @@
-nextcloud_username: nextcloud
-nextcloud_userpass: nextcloud
-nextcloud_domain: cloud.chifco.com
-letsencrypt_email: contact@chifco.com
-php_version: 7.2
+
