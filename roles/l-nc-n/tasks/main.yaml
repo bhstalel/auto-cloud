@@ -1,0 +1,123 @@
+- name: Installing Nginx
+  apt:
+    name: "nginx"
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Install php dependencies
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  loop:
+    - "php{{php_version}}-fpm"
+    - "php{{php_version}}-gd"
+    - "php{{php_version}}-json"
+    - "php{{php_version}}-pgsql"
+    - "php{{php_version}}-curl"
+    - "php{{php_version}}-mbstring"
+    - "php{{php_version}}-intl"
+    - "php-imagick"
+    - "php{{php_version}}-xml"
+    - "php{{php_version}}-zip"
+    - unzip
+  become: yes
+
+- name: Start php-fpm
+  systemd:
+    name: "php{{php_version}}-fpm"
+    daemon_reload: yes
+    state: restarted
+    enabled: True
+  become: yes
+
+- name: Install postgresql
+  apt:
+    name: "postgresql"
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Create nextcloud user in postgresql
+  shell: sudo -u postgres psql -c "CREATE USER {{nextcloud_username}} WITH password '{{nextcloud_userpass}}'";
+  become: yes
+  register: out
+  failed_when: out.rc != 0 and 'already exists' not in out.stderr
+
+- name: Create database for nextcloud
+  shell: sudo -u postgres psql -c "CREATE DATABASE nextcloud WITH owner '{{nextcloud_username}}';";
+  become: yes
+  register: out
+  failed_when: out.rc != 0 and 'already exists' not in out.stderr
+
+- name: Download nextcloud
+  get_url:
+    url: https://download.nextcloud.com/server/releases/nextcloud-15.0.2.zip
+    dest: /tmp/nextcloud-15.0.2.zip
+
+- name: Ensure main dir exists
+  file:
+    path: /var/www
+    state: directory
+    owner: www-data
+    group: www-data
+  become: yes
+
+- name: Check if nextcloud dir exists
+  stat:
+      path: /var/www/nextcloud
+  register: stat_result
+  become: yes
+
+- name: Extract binary
+  unarchive:
+    src: /tmp/nextcloud-15.0.2.zip
+    dest: /var/www
+    copy: no
+    owner: www-data
+    group: www-data
+  become: yes
+  when: stat_result.stat.exists == False
+
+- name: Generate nextcloud configuration for nginx
+  template:
+    src: "roles/nextcloud/templates/nginx.conf.tpl"
+    dest: "/etc/nginx/sites-available/nextcloud.conf"
+    owner: www-data
+    group: www-data
+  become: yes
+
+- name: Copying SSLCertificate file
+  template:
+    src: "nextcloud.crt"
+    dest: "/etc/nginx/ssl/nextcloud.crt"
+  become: yes
+
+- name: Copying SSLCertificateKey file
+  template:
+    src: "nextcloud.key"
+    dest: "/etc/nginx/ssl/nextcloud.key"
+  become: yes
+
+- name: Activate the nextcloud site
+  file: src=/etc/nginx/sites-available/nextcloud.conf
+        dest=/etc/nginx/sites-enabled/nextcloud.conf
+        state=link
+
+- name: Restarting Nginx
+  shell: systemctl restart nginx
+
+- name: Installing ufw
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Enabling ufw
+  shell: ufw enable
+
+- name: Add ufw rule
+  sudo: yes
+  command: ufw allow 80,443/tcp
