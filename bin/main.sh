@@ -39,6 +39,21 @@ echo " +=================+ "
 echo
 }
 
+
+generatessl(){
+echo
+echo " [NOTE]: You'r installing nextcloud locally, "
+echo "         so we need to generate a self-signed certificate."
+echo
+read -p " + HIT ENTER TO GENERATE + " n
+openssl genrsa -out ../ssl/nextcloud.key
+openssl req -new -key ../ssl/nextcloud.key -out ../ssl/d.req -subj "/C=TN/ST=Sousse/L=Sousse/O=Global Security/OU=IT Department/CN=chifco.com"
+openssl x509 -req -days 365 -in ../ssl/d.req -signkey ../ssl/nextcloud.key -out ../ssl/nextcloud.crt
+echo
+echo " [SSLCertificate] Generated in auto-cloud/ssl/ "
+echo
+}
+
 add(){
 showoptions
 read -p " [plugin]: " plugin
@@ -57,6 +72,7 @@ read -p " [plugin]: " plugin
 				echo "    - o-nc-n" >> ../playbook.yaml
 			else
 				echo "    - l-nc-n" >> ../playbook.yaml
+				generatessl
 			fi
 		fi
 		echo
@@ -98,28 +114,30 @@ echo "  roles:" >> ../playbook.yaml
 read -p " [auto-cloud]: " input
 while [ -z $input ] || [ $input != "exit" ];
 do
-
-	if [ $input = "show" ]; then
-		showoptions
-		read -p " [auto-cloud]: " input
-	elif [ $input = "add" ]; then
-		add
-		read -p " [auto-cloud]: " input
-	elif [ $input = "reset" ]; then
-		reset
-		read -p " [auto-cloud]: " input
-	elif [ $input = "run" ]; then
-		ansible-playbook ../playbook.yaml
-		read -p " [auto-cloud]: " input
-	elif [ $input = "help" ]; then
-		help
-		read -p " [auto-cloud]: " input
-	elif [ $input = "exit" ]; then
-		exit
-	else
-		echo " [!] See 'help' "
-		read -p " [auto-cloud]: " input
-	fi
+	case $input in
+		"show")
+			showoptions
+			read -p " [auto-cloud]: " input;;
+		"add")
+			add
+			read -p " [auto-cloud]: " input;;
+		"reset")
+			reset
+			read -p " [auto-cloud]: " input;;
+		"run")
+			ansible-playbook ../playbook.yaml
+			read -p " [auto-cloud]: " input;;
+		"help")
+			help
+			read -p " [auto-cloud]: " input;;
+		"clear")
+			clear
+			read -p " [auto-cloud]: " input;;
+		"exit")
+			exit;;
+		*)
+			read -p " [auto-cloud]: " input;;
+	esac
 
 done
 
