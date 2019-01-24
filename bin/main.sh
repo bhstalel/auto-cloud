@@ -54,11 +54,11 @@ echo
 generatessl(){
 echo
 echo -e "$yellow$bold [NOTE]: You'r installing nextcloud locally, "
-echo "         so we need to generate a self-signed certificate.$reset"
+echo "         so we need to generate a self-signed certificate. $reset"
 echo
 read -p " + HIT ENTER TO GENERATE + " n
 openssl genrsa -out ../ssl/nextcloud.key
-openssl req -new -key ../ssl/nextcloud.key -out ../ssl/d.req -subj "/C=TN/ST=Sousse/L=Sousse/O=Global Security/OU=IT Department/CN=chifco.com"
+openssl req -new -key ../ssl/nextcloud.key -out ../ssl/d.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
 openssl x509 -req -days 365 -in ../ssl/d.req -signkey ../ssl/nextcloud.key -out ../ssl/nextcloud.crt
 echo
 echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/ $reset"
