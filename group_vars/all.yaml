@@ -1,1 +1,7 @@
-
+nextcloud_domain: 
+nextcloud_username:
+nextcloud_userpass:
+php_version:
+email:
+onlyoffice_domain:
+collabora_domain:
