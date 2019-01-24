@@ -87,9 +87,11 @@ read -p "$ch" plugin
 	if [ $plugin = "nextcloud" ]; then
 		if checknc; then
 			echo
-			echo -e "$green$bold [NEXTCLOUD] chosen.$reset"
+			echo -e "$bold [NEXTCLOUD] chosen.$reset"
+			echo
 			echo -e "$bold 1: Apache "
 			echo -e " 2: Nginx $reset"
+			echo
 			read -p "$ch" web
 			if [ $web -eq 1 ]; then
 				if [ $prog = "o" ]; then
@@ -144,8 +146,12 @@ if [ ${#PLUGINS[@]} -eq 0 ]; then
 	echo
 else
 	echo
-	echo -e "$yellow$bold [+] Chosen plugins: $reset"
-	printf '%s\n' "  => ${PLUGINS[@]}"
+	echo -e "$bold [+] Chosen plugins: $reset"
+	for i in "${PLUGINS[@]}"
+	do
+		echo -e "$bold  - $i $reset"
+	done
+	#printf '%s\n' "  => ${PLUGINS[@]}"
 	echo
 fi
 
@@ -236,6 +242,15 @@ main(){
 
 if [ $# -eq 0 ]; then
 	prog="o"
+	echo -e "$yellow$bold +-------------------------------------------------+"
+	echo -e " |                                                 |"
+	echo -e " |                     NOTE                        |"
+	echo -e " | You did not specify arguments that means every  |"
+	echo -e " | installation will be official for a registered  |"
+	echo -e " | DNS domain, if you want a local installation    |"
+	echo -e " | or other options see : --help arguemnt.         |"
+	echo -e " |                                                 |"
+	echo -e " +-------------------------------------------------+ $reset"
 else
 	if [ $# -gt 1 ]; then
 		echo -e "$red$bold [-] Invalid number of arguments $reset"
