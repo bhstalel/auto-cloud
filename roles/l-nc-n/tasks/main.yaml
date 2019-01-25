@@ -90,13 +90,13 @@
 
 - name: Copying SSLCertificate file
   template:
-    src: "nextcloud.crt"
+    src: "ssl/nextcloud.crt"
     dest: "/etc/nginx/ssl/nextcloud.crt"
   become: yes
 
 - name: Copying SSLCertificateKey file
   template:
-    src: "nextcloud.key"
+    src: "ssl/nextcloud.key"
     dest: "/etc/nginx/ssl/nextcloud.key"
   become: yes
 
@@ -121,3 +121,7 @@
 - name: Add ufw rule
   sudo: yes
   command: ufw allow 80,443/tcp
+
+- name: Creating local DNS lookup
+  sudo: yes
+  command: echo "127.0.0.1	{{nextcloud_domain}}" >> /etc/hosts
