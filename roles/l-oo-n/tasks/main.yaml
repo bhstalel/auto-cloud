@@ -88,10 +88,10 @@
   when: rabbitmq_server_url != ""
 
 - name: Setting up Nginx Configuration
-  template:
-    src: "roles/l-oo-n/templates/onlyoffice-documentserver.conf"
-    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
-  become: yes
+  command: cp {{autocloud_dir}}/roles/l-oo-n/templates/onlyoffice-documentserver.conf /etc/nginx/conf.d/
+#    src: "{{autocloud_dir}}/roles/l-oo-n/templates/onlyoffice-documentserver.conf"
+#    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+#  become: yes
 
 - name: Restarting Nginx
   shell: systemctl restart nginx
