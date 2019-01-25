@@ -54,7 +54,7 @@ echo
 generatessl(){
 echo
 echo -e "$yellow$bold [NOTE]: You'r installing nextcloud locally, "
-echo "         so we need to generate a self-signed certificate. $reset"
+echo -e "         so we need to generate a self-signed certificate. $reset"
 echo
 read -p " + HIT ENTER TO GENERATE + " n
 openssl genrsa -out ../ssl/nextcloud.key
@@ -65,6 +65,19 @@ echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/ $reset"
 echo
 }
 
+generateonlyofficessl(){
+echo
+echo -e "$yellow$bold [NOTE]: You'r installing ONLYOFFICE locally, "
+echo -e "         so we need to generate a self-signed certificate. $reset"
+echo
+read -p " + HIT ENTER TO GENERATE + " n
+openssl genrsa -out ../ssl/onlyoffice.key
+openssl req -new -key ../ssl/onlyoffice.key -out ../ssl/o.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
+openssl x509 -req -days 365 -in ../ssl/o.req -signkey ../ssl/onlyoffice.key -out ../ssl/onlyoffice.crt
+echo
+echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/onlyoffice.{key&&crt} $reset"
+echo
+}
 
 # Check for existing NEXTCLOUD plugin
 checknc(){
@@ -126,6 +139,13 @@ read -p "$ch" plugin
 		echo -e "$green$bold contact: bhstalel@gmail.com $reset"
 		exit
 	fi
+	if [ $plugin = "onlyoffice" ]; then
+		if [ $prog = "l" ]; then
+			echo "    - l-oo-n" >> ../playbook.yaml
+			PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
+			generateonlyofficessl
+		fi
+	fi
 }
 
 reset(){
@@ -165,7 +185,7 @@ if [ ${#PLUGINS[@]} -eq 0 ]; then
         echo
 else
         echo
-        echo " [+] Available plugins: "
+        echo -e "$bold [+] Available plugins: $reset"
         printf '%s\n' "  => ${PLUGINS[@]}"
         echo
 	read -p "$ch" pl

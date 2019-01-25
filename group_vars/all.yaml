@@ -2,6 +2,36 @@ nextcloud_domain:
 nextcloud_username:
 nextcloud_userpass:
 php_version:
-email:
+
+####################
+## DO NOT EDIT THESE
+debian_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib"
+package_repo: "deb http://download.onlyoffice.com/repo/debian squeeze main"
+
+onlyoffice_default_config: /etc/onlyoffice/documentserver/local.json
+json: json -q -f {{ onlyoffice_default_config }}
+
+filestorage_mount_path: /var/lib/onlyoffice/documentserver/App_Data/cache/files
+fonts_mount_path: /usr/share/fonts
+
+psql: "PGPASSWORD={{ db_server_pass }} psql -q -h{{ db_server_host }} -U{{ db_server_user }} -w -d{{ db_server_name }}"
+createdb_sql: /var/www/onlyoffice/documentserver/server/schema/postgresql/createdb.sql
+
+package_name: onlyoffice-documentserver
+##################
+
+db_server_host: localhost
+db_server_name: onlyoffice
+db_server_user: onlyoffice
+db_server_pass: onlyoffice
+##REDIS-SERVER
+redis_server_host: localhost
+redis_server_port: 6379
+##RABBIT-MQ
+rabbitmq_server_host: localhost
+rabbitmq_server_user: guest
+rabbitmq_server_pass: guest
+rabbitmq_server_vpath: /
+
 onlyoffice_domain:
-collabora_domain:
+email:
