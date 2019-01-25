@@ -118,6 +118,17 @@ done
 return 0
 }
 
+# Check for existing ONLYOFFICE plugin
+checkoo(){
+for each in "${PLUGINS[@]}"
+do
+	if [ $each = "OFFICIAL-ONLYOFFICE-NGINX" ] || [ $each = "OFFICIAL-ONLYOFFICE-APACHE" ] || [ $each = "LOCAL-ONLYOFFICE-NGINX" ] || [ $each = "LOCAL-ONLYOFFICE-APACHE" ]; then
+		return 1
+	fi
+return 0
+done
+}
+
 add(){
 showoptions
 echo -e "$bold  ---- $reset"
@@ -129,10 +140,35 @@ read -p "$ch" plugin
 		if checknc; then
 			echo
 			echo -e "$bold [NEXTCLOUD] chosen.$reset"
-			echo -e -n "$bold - nextcloud domain: $reset"
-			read ncdomain
-			newline="nextcloud_domain: $ncdomain"
-                        sed -i '/nextcloud_domain.*/c\'"$newline" ../group_vars/all.yaml
+			echo
+			echo -e "$yellow$bold              NOTE   "
+			echo -e " You need to input some informations: "
+			echo -e " - nextcloud domain "
+			echo -e " - db username "
+			echo -e " - db password "
+			echo -e " ------ $reset"
+			echo -e "$bold 1: continue "
+			echo -e " 2: back "
+			echo
+			read -p "$ch" info
+			if [ $info -eq 1 ]; then
+				echo -e -n "$bold - nextcloud domain: $reset"
+				read ncdomain
+				newline="nextcloud_domain: $ncdomain"
+                        	sed -i '/nextcloud_domain.*/c\'"$newline" ../group_vars/all.yaml
+				echo -e -n "$bold - db username: $reset"
+                                read dbusername
+                                newline="nextcloud_username: $dbusername"
+                                sed -i '/nextcloud_username.*/c\'"$newline" ../group_vars/all.yaml
+				echo -e -n "$bold - db password: $reset"
+                                read dbpassword
+                                newline="nextcloud_userpass: $dbpassword"
+                                sed -i '/nextcloud_userpass.*/c\'"$newline" ../group_vars/all.yaml
+			else
+				add
+			fi
+			echo
+			echo -e "$bold [!] Setting up the webserver $reset"
 			echo
 			echo -e "$bold 1: Apache "
 			echo -e " 2: Nginx $reset"
@@ -182,21 +218,28 @@ read -p "$ch" plugin
 		exit
 	fi
 	if [ $plugin = "onlyoffice" ]; then
-		echo -e -n "$bold - onlyoffice domain: $reset"
-		read oodomain
-		newline="onlyoffice_domain: $oodomain"
-                sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
-		if [ $prog = "l" ]; then
-			echo "    - l-oo-n" >> ../playbook.yaml
-			PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
-			generateonlyofficessl
+		if checkoo; then
+			echo -e -n "$bold - onlyoffice domain: $reset"
+			read oodomain
+			newline="onlyoffice_domain: $oodomain"
+                	sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
+			if [ $prog = "l" ]; then
+				echo "    - l-oo-n" >> ../playbook.yaml
+				PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
+				generateonlyofficessl
+			else
+				echo -e -n "$bold - email address: $reset"
+				read ooemail
+				newline="email: $ooemail"
+				sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
+				echo "    - o-oo-n" >> ../playbook.yaml
+				PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
+			fi
 		else
-			echo -e -n "$bold - email address: $reset"
-			read ooemail
-			newline="email: $ooemail"
-			sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
-			echo "    - o-oo-n" >> ../playbook.yaml
-			PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
+			echo
+                        echo -e "$red$bold [!] There is ONLYOFFICE plugin exists "
+                        echo -e "     Remove it or continue; $reset"
+                        echo
 		fi
 	fi
 }
