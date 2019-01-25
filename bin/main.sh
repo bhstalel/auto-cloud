@@ -56,13 +56,27 @@ echo
 echo -e "$yellow$bold [NOTE]: You'r installing nextcloud locally, "
 echo -e "         so we need to generate a self-signed certificate. $reset"
 echo
-read -p " + HIT ENTER TO GENERATE + " n
-openssl genrsa -out ../ssl/nextcloud.key
-openssl req -new -key ../ssl/nextcloud.key -out ../ssl/d.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
-openssl x509 -req -days 365 -in ../ssl/d.req -signkey ../ssl/nextcloud.key -out ../ssl/nextcloud.crt
+echo -e "$bold ----- $reset"
+echo -e "$bold 1: continue "
+echo -e " 2: back "
+echo -e " 3: exit "
 echo
-echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/ $reset"
-echo
+read -p "$ch" n
+if [ $n -eq 1 ]; then
+	openssl genrsa -out ../ssl/nextcloud.key
+	openssl req -new -key ../ssl/nextcloud.key -out ../ssl/d.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
+	openssl x509 -req -days 365 -in ../ssl/d.req -signkey ../ssl/nextcloud.key -out ../ssl/nextcloud.crt
+	echo
+	echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/ $reset"
+	echo
+elif [ $n -eq 2 ]; then
+	add
+elif [ $n -eq 3 ]; then
+	exit
+else
+	echo -e "$red$bold Wrong choice, back $reset"
+	add
+fi
 }
 
 generateonlyofficessl(){
@@ -70,13 +84,27 @@ echo
 echo -e "$yellow$bold [NOTE]: You'r installing ONLYOFFICE locally, "
 echo -e "         so we need to generate a self-signed certificate. $reset"
 echo
-read -p " + HIT ENTER TO GENERATE + " n
-openssl genrsa -out ../ssl/onlyoffice.key
-openssl req -new -key ../ssl/onlyoffice.key -out ../ssl/o.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
-openssl x509 -req -days 365 -in ../ssl/o.req -signkey ../ssl/onlyoffice.key -out ../ssl/onlyoffice.crt
+echo -e "$bold ----- $reset"
+echo -e "$bold 1: continue "
+echo -e " 2: back "
+echo -e " 3: exit "
 echo
-echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/onlyoffice.{key&&crt} $reset"
-echo
+read -p "$ch" n
+if [ $n -eq 1 ]; then
+	openssl genrsa -out ../ssl/onlyoffice.key
+	openssl req -new -key ../ssl/onlyoffice.key -out ../ssl/o.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
+	openssl x509 -req -days 365 -in ../ssl/o.req -signkey ../ssl/onlyoffice.key -out ../ssl/onlyoffice.crt
+	echo
+	echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/onlyoffice.{key&&crt} $reset"
+	echo
+elif [ $n -eq 2 ]; then
+        add
+elif [ $n -eq 3 ]; then
+        exit
+else
+        echo -e "$red$bold Wrong choice, back $reset"
+        add
+fi
 }
 
 # Check for existing NEXTCLOUD plugin
@@ -101,10 +129,17 @@ read -p "$ch" plugin
 		if checknc; then
 			echo
 			echo -e "$bold [NEXTCLOUD] chosen.$reset"
+			echo -e -n "$bold - nextcloud domain: $reset"
+			read ncdomain
+			newline="nextcloud_domain: $ncdomain"
+                        sed -i '/nextcloud_domain.*/c\'"$newline" ../group_vars/all.yaml
 			echo
 			echo -e "$bold 1: Apache "
 			echo -e " 2: Nginx $reset"
 			echo
+			echo -e "$bold ---- $reset"
+			echo -e "$red$bold 3: back "
+			echo -e " 4: exit $reset"
 			read -p "$ch" web
 			if [ $web -eq 1 ]; then
 				if [ $prog = "o" ]; then
@@ -114,7 +149,7 @@ read -p "$ch" plugin
 						echo "    - l-nc-a" >> ../playbook.yaml
 						PLUGINS+=('LOCAL-NEXTCLOUD-APACHE')
 				fi
-			else
+			elif [ $web -eq 2 ]; then
 				if [ $prog = "o" ]; then
 						echo "    - o-nc-n" >> ../playbook.yaml
 						PLUGINS+=('OFFICIAL-NEXTCLOUD-NGINX')
@@ -123,6 +158,13 @@ read -p "$ch" plugin
 						PLUGINS+=('LOCAL-NEXTCLOUD-NGINX')
 						generatessl
 				fi
+			elif [ $web -eq 3 ]; then
+				showinput
+			elif [ $web -eq 4 ]; then
+				exit
+			else
+				echo -e "$red$bold Wrong choice, back $reset"
+				showinput
 			fi
 			echo
 		else
@@ -140,10 +182,21 @@ read -p "$ch" plugin
 		exit
 	fi
 	if [ $plugin = "onlyoffice" ]; then
+		echo -e -n "$bold - onlyoffice domain: $reset"
+		read oodomain
+		newline="onlyoffice_domain: $oodomain"
+                sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
 		if [ $prog = "l" ]; then
 			echo "    - l-oo-n" >> ../playbook.yaml
 			PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
 			generateonlyofficessl
+		else
+			echo -e -n "$bold - email address: $reset"
+			read ooemail
+			newline="email: $ooemail"
+			sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
+			echo "    - o-oo-n" >> ../playbook.yaml
+			PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
 		fi
 	fi
 }
