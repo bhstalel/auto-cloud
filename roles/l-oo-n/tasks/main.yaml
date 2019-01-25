@@ -87,9 +87,6 @@
   shell: "{{ json }} -I -e 'this.rabbitmq.url = \"{{ rabbitmq_server_url }}\"'"
   when: rabbitmq_server_url != ""
 
-- name: Create db if it not exist
-  shell: "{{ psql }} -f {{ createdb_sql }}"
-
 - name: Setting up Nginx Configuration
   template:
     src: "roles/l-oo-n/templates/onlyoffice-documentserver.conf"
