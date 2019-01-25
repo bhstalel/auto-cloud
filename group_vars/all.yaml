@@ -31,6 +31,7 @@ rabbitmq_server_host: localhost
 rabbitmq_server_user: guest
 rabbitmq_server_pass: guest
 rabbitmq_server_vpath: /
+rabbitmq_server_url: "amqp://{{ rabbitmq_server_user }}:{{ rabbitmq_server_pass }}@{{ rabbitmq_server_host }}{{ rabbitmq_server_vpath }}"
 
 onlyoffice_domain: aaaaaaaaaaa
 email: taleeeeeeeeeeel@@
