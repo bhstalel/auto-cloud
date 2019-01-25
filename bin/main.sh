@@ -356,6 +356,11 @@ done
 
 main(){
 
+dir=`pwd`
+acdir="$(dirname "$dir")"
+newline="autocloud_dir: $acdir"
+sed -i '/autocloud_dir:.*/c\'"$newline" ../group_vars/all.yaml
+
 if [ $# -eq 0 ]; then
 	prog="o"
 	echo -e "$yellow$bold +-------------------------------------------------+"

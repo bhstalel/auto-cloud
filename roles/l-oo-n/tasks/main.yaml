@@ -65,13 +65,13 @@
 
 - name: Copying SSLCertificate file
   template:
-    src: "../ssl/onlyoffice.crt"
+    src: "{{autocloud_dir}}/ssl/onlyoffice.crt"
     dest: "/var/www/onlyoffice/ssl/onlyoffice.crt"
   become: yes
 
 - name: Copying SSLCertificateKey file
   template:
-    src: "../ssl/onlyoffice.key"
+    src: "{{autocloud_dir}}/ssl/onlyoffice.key"
     dest: "/var/www/onlyoffice/ssl/onlyoffice.key"
   become: yes
 
