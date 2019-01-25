@@ -1,6 +1,6 @@
-nextcloud_domain: 
-nextcloud_username:
-nextcloud_userpass:
+nextcloud_domain: 1
+nextcloud_username: 2
+nextcloud_userpass: 3
 php_version:
 
 ####################
@@ -19,11 +19,8 @@ createdb_sql: /var/www/onlyoffice/documentserver/server/schema/postgresql/create
 
 package_name: onlyoffice-documentserver
 ##################
-
-db_server_host: localhost
-db_server_name: onlyoffice
-db_server_user: onlyoffice
-db_server_pass: onlyoffice
+onlyoffice_username: onlyoffice
+onlyoffice_userpass: onlyoffice
 ##REDIS-SERVER
 redis_server_host: localhost
 redis_server_port: 6379
@@ -33,5 +30,5 @@ rabbitmq_server_user: guest
 rabbitmq_server_pass: guest
 rabbitmq_server_vpath: /
 
-onlyoffice_domain:
-email:
+onlyoffice_domain: aaaaaaaaaaa
+email: taleeeeeeeeeeel@@
