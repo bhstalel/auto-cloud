@@ -78,21 +78,17 @@
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"
   when: redis_server_host != ""
-  notify: restart-ds
 
 - name: Set up redis port number
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.port  = \"{{ redis_server_port }}\"'"
   when: redis_server_port != ""
-  notify: restart-ds
 
 - name: Set up rabbitmq url
   shell: "{{ json }} -I -e 'this.rabbitmq.url = \"{{ rabbitmq_server_url }}\"'"
   when: rabbitmq_server_url != ""
-  notify: restart-ds
 
 - name: Create db if it not exist
   shell: "{{ psql }} -f {{ createdb_sql }}"
-  notify: restart-ds
 
 - name: Setting up Nginx Configuration
   template:
