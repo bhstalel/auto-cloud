@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+   - name: Install letsencrypt
+     apt: name=letsencrypt state=latest    
+
+   - name: Install python-certbot-nginx
+     apt: name=python-certbot-nginx state=latest
+
+   - name: Install python-certbot-apache
+     apt: name=python-certbot-apache state=latest
