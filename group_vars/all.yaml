@@ -3,6 +3,8 @@ nextcloud_username: 2
 nextcloud_userpass: 3
 php_version:
 
+
+autocloud_dir: /root/auto-cloud
 ####################
 ## DO NOT EDIT THESE
 debian_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib"
