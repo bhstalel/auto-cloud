@@ -53,36 +53,36 @@
   failed_when: out.rc != 0 and 'already exists' not in out.stderr    
 
 - name: Set up db host name
-    debconf:
-      name: "{{ package_name }}"
-      question: onlyoffice/db-host
-      value: "localhost"
-      vtype: string
-    when: db_server_host != ""
+  debconf:
+    name: "{{ package_name }}"
+    question: onlyoffice/db-host
+     value: "localhost"
+     vtype: string
+  when: db_server_host != ""
 
 - name: Set up db name
-    debconf:
-      name: "{{ package_name }}"
-      question: onlyoffice/db-name
-      value: "onlyoffice"
-      vtype: string
-    when: db_server_name != ""
+  debconf:
+    name: "{{ package_name }}"
+    question: onlyoffice/db-name
+    value: "onlyoffice"
+    vtype: string
+  when: db_server_name != ""
 
 - name: Set up db user
-    debconf:
-      name: "{{ package_name }}"
-      question: onlyoffice/db-user
-      value: "{{ onlyoffice_username }}"
-      vtype: string
-    when: db_server_user != ""
+  debconf:
+    name: "{{ package_name }}"
+    question: onlyoffice/db-user
+    value: "{{ onlyoffice_username }}"
+    vtype: string
+  when: db_server_user != ""
 
 - name: Set up db user password
-    debconf:
-      name: "{{ package_name }}"
-      question: onlyoffice/db-pwd
-      value: "{{ onlyoffic_userpass }}"
-      vtype: password
-    when: db_server_pass != ""
+  debconf:
+    name: "{{ package_name }}"
+    question: onlyoffice/db-pwd
+    value: "{{ onlyoffic_userpass }}"
+    vtype: password
+  when: db_server_pass != ""
 
 - name: Install documentserver
   apt: 
