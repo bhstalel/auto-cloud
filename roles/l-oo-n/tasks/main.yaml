@@ -78,7 +78,7 @@
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-pwd
-    value: "{{ onlyoffic_userpass }}"
+    value: "{{ onlyoffice_userpass }}"
     vtype: password
   when: onlyoffice_userpass != ""
 
