@@ -56,8 +56,8 @@
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-host
-     value: "localhost"
-     vtype: string
+    value: "localhost"
+    vtype: string
   when: db_server_host != ""
 
 - name: Set up db name
