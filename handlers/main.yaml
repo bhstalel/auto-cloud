@@ -1,0 +1,5 @@
+- name: restart-ds
+    supervisorctl:
+      name: ['onlyoffice-documentserver:converter','onlyoffice-documentserver:docservice']
+      state: restarted
+  become: yes
