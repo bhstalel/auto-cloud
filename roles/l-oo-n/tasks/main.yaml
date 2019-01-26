@@ -52,6 +52,38 @@
   register: out
   failed_when: out.rc != 0 and 'already exists' not in out.stderr    
 
+- name: Set up db host name
+    debconf:
+      name: "{{ package_name }}"
+      question: onlyoffice/db-host
+      value: "localhost"
+      vtype: string
+    when: db_server_host != ""
+
+- name: Set up db name
+    debconf:
+      name: "{{ package_name }}"
+      question: onlyoffice/db-name
+      value: "onlyoffice"
+      vtype: string
+    when: db_server_name != ""
+
+- name: Set up db user
+    debconf:
+      name: "{{ package_name }}"
+      question: onlyoffice/db-user
+      value: "{{ onlyoffice_username }}"
+      vtype: string
+    when: db_server_user != ""
+
+- name: Set up db user password
+    debconf:
+      name: "{{ package_name }}"
+      question: onlyoffice/db-pwd
+      value: "{{ onlyoffic_userpass }}"
+      vtype: password
+    when: db_server_pass != ""
+
 - name: Install documentserver
   apt: 
     name: "{{ package_name }}"
@@ -78,14 +110,17 @@
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"
   when: redis_server_host != ""
+  notify: restart-ds
 
 - name: Set up redis port number
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.port  = \"{{ redis_server_port }}\"'"
   when: redis_server_port != ""
+  notify: restart-ds
 
 - name: Set up rabbitmq url
   shell: "{{ json }} -I -e 'this.rabbitmq.url = \"{{ rabbitmq_server_url }}\"'"
   when: rabbitmq_server_url != ""
+  notify: restart-ds
 
 - name: Setting up Nginx Configuration
   template:
