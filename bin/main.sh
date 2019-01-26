@@ -98,12 +98,12 @@ if [ $n -eq 1 ]; then
 	echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/onlyoffice.{key&&crt} $reset"
 	echo
 elif [ $n -eq 2 ]; then
-        add
+        showinput
 elif [ $n -eq 3 ]; then
         exit
 else
         echo -e "$red$bold Wrong choice, back $reset"
-        add
+        showinput
 fi
 }
 
@@ -165,7 +165,7 @@ read -p "$ch" plugin
                                 newline="nextcloud_userpass: $dbpassword"
                                 sed -i '/nextcloud_userpass.*/c\'"$newline" ../group_vars/all.yaml
 			else
-				add
+				showinput
 			fi
 			echo
 			echo -e "$bold [!] Setting up the webserver $reset"
@@ -354,6 +354,44 @@ done
 }
 
 
+testplugins(){
+
+echo "testing plugins"
+echo
+echo -e "$bold Passed plugins: $1 $reset"
+echo
+return 0
+}
+
+startwithplugins(){
+echo
+echo -e "$bold Starting with plugins: $1 $reset"
+echo
+exit
+}
+
+helpmenu(){
+echo
+echo -e "$blue$bold +"
+echo -e " | [ARGUMENTS]:  "
+echo -e " | "
+echo -e " | # --local : for local installation "
+echo -e " | # --plugin : "
+echo -e " | 	> to specify plugins from arguments like: "
+echo -e " | 	# --plugin nextcloud,onlyoffice  "
+echo -e " | 	# --plugin nextcloud,collabora "
+echo -e " | "
+echo -e " | [NOTE]:"
+echo -e " | "
+echo -e " | 	You can specify: "
+echo -e " | 	# --local --plugin together "
+echo -e " |	# --plugin lonely for official domain "
+echo -e " |	# --local lonely and specify with menu "
+echo -e " |	# no arguments: choose with menu to official domain"
+echo -e " + $reset"
+exit
+}
+
 main(){
 
 dir=`pwd`
@@ -374,14 +412,43 @@ if [ $# -eq 0 ]; then
 	echo -e " +-------------------------------------------------+ $reset"
 else
 	if [ $# -gt 1 ]; then
-		echo -e "$red$bold [-] Invalid number of arguments $reset"
-		exit
+		if [ $# -eq 2 ]; then
+			if [ $1 = "--plugin" ]; then
+				if testplugins $2; then
+					startwithplugins $2
+				else
+					echo -e "$red$bold [!] Wrong plugins : see --help $reset"
+					exit
+				fi
+			fi #End of if plugin
+			if [ $1 = "--local" ]; then
+				echo -e "$red$bold [!] Wrong arguments : see --help $reset"
+				exit
+			fi
+		elif [ $# -eq 3 ]; then
+			if [ $1 = "--local" ] && [ $2 = "--plugin" ]; then
+				if testplugins $3; then
+					startwithplugins $3
+				else
+					echo -e "$red$bold [!] Wrong plugins : see --help $reset"
+					exit
+				fi
+			else
+				echo -e "$red$bold [!] Wrong arguments : see --help $reset"
+				exit
+			fi
+		else
+			echo -e "$red$bold [-] Invalid number of arguments : see --help $reset"
+			exit
+		fi
 	fi
 	if [ $# -eq 1 ]; then
-		if [ $1 = "-l" ]; then
+		if [ $1 = "--local" ]; then
 			prog="l"
+		elif [ $1 = "--help" ]; then
+			helpmenu
 		else
-			echo -e "$red$bold [-] Invalid argument $reset"
+			echo -e "$red$bold [-] Invalid argument : see --help $reset"
 			exit
 		fi
 	fi
