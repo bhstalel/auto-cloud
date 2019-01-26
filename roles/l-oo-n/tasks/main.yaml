@@ -58,7 +58,6 @@
     question: onlyoffice/db-host
     value: "localhost"
     vtype: string
-  when: db_server_host != ""
 
 - name: Set up db name
   debconf:
@@ -66,7 +65,6 @@
     question: onlyoffice/db-name
     value: "onlyoffice"
     vtype: string
-  when: db_server_name != ""
 
 - name: Set up db user
   debconf:
@@ -74,7 +72,7 @@
     question: onlyoffice/db-user
     value: "{{ onlyoffice_username }}"
     vtype: string
-  when: db_server_user != ""
+  when: onlyoffice_username != ""
 
 - name: Set up db user password
   debconf:
@@ -82,7 +80,7 @@
     question: onlyoffice/db-pwd
     value: "{{ onlyoffic_userpass }}"
     vtype: password
-  when: db_server_pass != ""
+  when: onlyoffice_userpass != ""
 
 - name: Install documentserver
   apt: 
