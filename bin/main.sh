@@ -109,6 +109,10 @@ fi
 
 # Check for existing NEXTCLOUD plugin
 checknc(){
+if [ -d "/var/www/nextcloud" ]; then
+	#echo -e "$red$bold [!] Nexcloud is already exist in: /var/www/nextcloud , remove it first $reset"
+	return 1
+fi
 for each in "${PLUGINS[@]}"
 do
 	if [ $each = "OFFICIAL-NEXTCLOUD-APACHE" ] || [ $each = "OFFICIAL-NEXTCLOUD-NGINX" ] || [ $each = "LOCAL-NEXTCLOUD-APACHE" ] || [ $each = "LOCAL-NEXTCLOUD-NGINX" ]; then
@@ -125,6 +129,17 @@ do
 	if [ $each = "OFFICIAL-ONLYOFFICE-NGINX" ] || [ $each = "OFFICIAL-ONLYOFFICE-APACHE" ] || [ $each = "LOCAL-ONLYOFFICE-NGINX" ] || [ $each = "LOCAL-ONLYOFFICE-APACHE" ]; then
 		return 1
 	fi
+return 0
+done
+}
+
+# Check for collabora
+collabora(){
+for each in "${PLUGINS[@]}"
+do
+        if [ $each = "OFFICIAL-COLLABORA" ] || [ $each = "LOCAL-COLLABORA" ]; then
+                return 1
+        fi
 return 0
 done
 }
@@ -219,21 +234,27 @@ read -p "$ch" plugin
 	fi
 	if [ $plugin = "onlyoffice" ]; then
 		if checkoo; then
-			echo -e -n "$bold - onlyoffice domain: $reset"
-			read oodomain
-			newline="onlyoffice_domain: $oodomain"
-                	sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
-			if [ $prog = "l" ]; then
-				echo "    - l-oo-n" >> ../playbook.yaml
-				PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
-				generateonlyofficessl
+			if collabora; then
+				echo -e -n "$bold - onlyoffice domain: $reset"
+				read oodomain
+				newline="onlyoffice_domain: $oodomain"
+       		         	sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
+				if [ $prog = "l" ]; then
+					echo "    - l-oo-n" >> ../playbook.yaml
+					PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
+					generateonlyofficessl
+				else
+					echo -e -n "$bold - email address: $reset"
+					read ooemail
+					newline="email: $ooemail"
+					sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
+					echo "    - o-oo-n" >> ../playbook.yaml
+					PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
+				fi
 			else
-				echo -e -n "$bold - email address: $reset"
-				read ooemail
-				newline="email: $ooemail"
-				sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
-				echo "    - o-oo-n" >> ../playbook.yaml
-				PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
+				echo
+                                echo -e "$red$bold [-] Cannot install onlyoffice with collabora. $reset"
+                                echo
 			fi
 		else
 			echo
@@ -299,10 +320,21 @@ else
 				if [ $pl = "LOCAL-NEXTCLOUD-NGINX" ]; then
                                         sed -i '/l-nc-n/d' ./../playbook.yaml
                                 fi
-
 				if [ $pl = "LOCAL-NEXTCLOUD-APACHE" ]; then
                                         sed -i '/l-nc-a/d' ./../playbook.yaml
                                 fi
+				if [ $pl = "LOCAL-ONLYOFFICE-NGINX" ]; then
+					sed -i '/l-oo-n/d' ./../playbook.yaml
+				fi
+				if [ $pl = "OFFICIAL-ONLYOFFICE-NGINX" ]; then
+					sed -i '/o-oo-n/d' ./../playbook.yaml
+				fi
+				if [ $pl = "OFFICIAL-COLLABORA" ]; then
+					sed -i '/o-c/d' ./../playbook.yaml
+				fi
+				if [ $pl = "LOCAL-COLLABORA" ]; then
+					sed -i '/l-c/d' ./../playbook.yaml
+				fi
 				unset 'PLUGINS[i]'
 				echo
 				echo -e "$bold [+] $pl removed $reset"
@@ -313,6 +345,33 @@ else
 fi
 }
 
+run(){
+if [ ${#PLUGINS[@]} -eq 0 ]; then
+	echo
+	echo -e "$red$bold [!] No plugin specified. $reset"
+	echo
+	showinput
+elif [ ${#PLUGINS[@]} -eq 1 ]; then
+	#Checking for only ONLYOFFICE;
+	if checkoo; then
+		echo
+		echo -e "$yellow$bold [NOTE] : You'r about to install just ONLYOFFICE ; "
+		echo -e " If you want to integrated with NEXTCLOUD, please enter the nextcloud folder ;"
+		echo -e " And you will be asked to choose a 2 port numbers for HTTP & HTTPS access, "
+		echo -e " because they can't work with same 80 & 443 ports in same machine ; "
+		echo -e " If you don't have NEXTCLOUD installed, please let it empty ; "
+		echo -e " If empty we will just install ONLYOFFICE-DOCUMENTSERVER for you ; "
+		echo -e " If you want to install NEXTCLOUD with it, input: yes ;"
+		echo -e " If 'yes' it will install: [LOCAL/OFFICIAL]-NEXTCLOUD-NGINX for you; "
+		echo -e " ----- $reset";
+		echo
+		read -p " [HIT ENTER TO CONTINUE] " e
+		echo -e "$bold Coming soon: Inputting, infos about Just ONLYOFFICE; $reset"
+		echo
+		showinput
+	fi
+fi
+}
 
 showinput(){
 read -p "$cmd" input
@@ -335,7 +394,8 @@ do
 			reset
 			read -p "$cmd" input;;
 		"run")
-			ansible-playbook ../playbook.yaml
+			run
+			#ansible-playbook ../playbook.yaml
 			read -p "$cmd" input;;
 		"help")
 			help
