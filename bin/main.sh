@@ -73,7 +73,7 @@ if [ $n -eq 1 ]; then
 elif [ $n -eq 2 ]; then
 	add
 elif [ $n -eq 3 ]; then
-	exit
+	exit 1
 else
 	echo -e "$red$bold Wrong choice, back $reset"
 	add
@@ -159,9 +159,9 @@ read -p "$ch" plugin
 			echo
 			echo -e "$yellow$bold              NOTE   "
 			echo -e " You need to input some informations: "
-			echo -e " - nextcloud domain "
-			echo -e " - db username "
-			echo -e " - db password "
+			echo -e " # nextcloud domain "
+			echo -e " # db username "
+			echo -e " # db password "
 			echo -e " ------ $reset"
 			echo -e "$bold 1: continue "
 			echo -e " 2: back "
@@ -213,7 +213,7 @@ read -p "$ch" plugin
 			elif [ $web -eq 3 ]; then
 				showinput
 			elif [ $web -eq 4 ]; then
-				exit
+				exit 1
 			else
 				echo -e "$red$bold Wrong choice, back $reset"
 				showinput
@@ -231,7 +231,7 @@ read -p "$ch" plugin
 	fi
 	if [ $plugin = "exit" ]; then
 		echo -e "$green$bold contact: bhstalel@gmail.com $reset"
-		exit
+		exit 1
 	fi
 	if [ $plugin = "onlyoffice" ]; then
 		if checkoo; then
@@ -410,7 +410,7 @@ elif [ ${#PLUGINS[@]} -eq 1 ]; then
 		elif [ $choice -eq 3 ]; then
 			showinput
 		else
-			exit
+			exit 1
 		fi
 		echo
 		ansible-playbook ../playbook.yaml
@@ -419,6 +419,8 @@ fi
 }
 
 showinput(){
+echo
+echo -e "$bold [*] Type help for available commands $reset"
 read -p "$cmd" input
 while [ -z $input ] || [ $input != "exit" ];
 do
@@ -449,7 +451,7 @@ do
 			clear
 			read -p "$cmd" input;;
 		"exit")
-			exit;;
+			exit 1;;
 		*)
 			read -p "$cmd" input;;
 	esac
@@ -497,6 +499,19 @@ echo -e " + $reset"
 exit
 }
 
+
+listplugins(){
+file="../group_vars/plugins"
+echo
+echo -e "$green$bold [ Available plugins ] $reset"
+while IFS= read line
+do
+	echo -e "$bold # $line $reset"
+done <"$file"
+echo
+}
+
+
 main(){
 
 dir=`pwd`
@@ -525,12 +540,12 @@ else
 					startwithplugins $2
 				else
 					echo -e "$red$bold [!] Wrong plugins : see --help $reset"
-					exit
+					exit 1
 				fi
 			fi #End of if plugin
 			if [ $1 = "--local" ]; then
 				echo -e "$red$bold [!] Wrong arguments : see --help $reset"
-				exit
+				exit 1
 			fi
 		elif [ $# -eq 3 ]; then
 			if [ $1 = "--local" ] && [ $2 = "--plugin" ]; then
@@ -538,15 +553,15 @@ else
 					startwithplugins $3
 				else
 					echo -e "$red$bold [!] Wrong plugins : see --help $reset"
-					exit
+					exit 1
 				fi
 			else
 				echo -e "$red$bold [!] Wrong arguments : see --help $reset"
-				exit
+				exit 1
 			fi
 		else
 			echo -e "$red$bold [-] Invalid number of arguments : see --help $reset"
-			exit
+			exit 1
 		fi
 	fi
 	if [ $# -eq 1 ]; then
@@ -555,14 +570,17 @@ else
 			clear
 			echo
 			echo -e "$yellow$bold [ # local option specified;  "
-			echo -e " [ # every installation will be locally; "
+			echo -e " [ # all installation will be local; "
 			echo -e " [ # restart with --help for more details ; $reset"
 			echo
 		elif [ $1 = "--help" ]; then
 			helpmenu
+		elif [ $1 = "--list" ]; then
+			listplugins
+			exit 1
 		else
 			echo -e "$red$bold [-] Invalid argument : see --help $reset"
-			exit
+			exit 1
 		fi
 	fi
 fi

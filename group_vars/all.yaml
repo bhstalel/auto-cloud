@@ -1,10 +1,11 @@
-nextcloud_domain: 1
-nextcloud_username: 2
-nextcloud_userpass: 3
+nextcloud_domain: zad
+nextcloud_username: azd
+nextcloud_userpass: za
 php_version:
+port_http: 81
+port_ssl: 443
 
-
-autocloud_dir: /root/auto-cloud
+autocloud_dir: /opt/auto-cloud
 ####################
 ## DO NOT EDIT THESE
 debian_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib"
@@ -33,5 +34,5 @@ rabbitmq_server_pass: guest
 rabbitmq_server_vpath: /
 rabbitmq_server_url: "amqp://{{ rabbitmq_server_user }}:{{ rabbitmq_server_pass }}@{{ rabbitmq_server_host }}{{ rabbitmq_server_vpath }}"
 
-onlyoffice_domain: aaaaaaaaaaa
+onlyoffice_domain: office.domain
 email: taleeeeeeeeeeel@@
