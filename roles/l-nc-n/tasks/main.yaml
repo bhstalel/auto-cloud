@@ -88,6 +88,17 @@
     group: www-data
   become: yes
 
+- name: Checking /etc/nginx/ssl
+  stat:
+   path: /etc/nginx/ssl
+  register: folder_stat
+
+- name: Creating /etc/nginx/ssl
+  file:
+   path: /etc/nginx/ssl
+   state: directory
+  when: folder_stat.results.stat.exists == false
+
 - name: Copying SSLCertificate file
   template:
     src: "ssl/nextcloud.crt"
@@ -121,7 +132,3 @@
 - name: Add ufw rule
   sudo: yes
   command: ufw allow 80,443/tcp
-
-- name: Creating local DNS lookup
-  sudo: yes
-  command: echo "127.0.0.1	{{nextcloud_domain}}" >> /etc/hosts
