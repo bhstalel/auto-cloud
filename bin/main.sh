@@ -110,10 +110,10 @@ fi
 
 # Check for existing NEXTCLOUD plugin
 checknc(){
-if [ -d "/var/www/nextcloud" ]; then
+#if [ -d "/var/www/nextcloud" ]; then
 	#echo -e "$red$bold [!] Nexcloud is already exist in: /var/www/nextcloud , remove it first $reset"
-	return 1
-fi
+#	return 1
+#fi
 for each in "${PLUGINS[@]}"
 do
 	if [ $each = "OFFICIAL-NEXTCLOUD-APACHE" ] || [ $each = "OFFICIAL-NEXTCLOUD-NGINX" ] || [ $each = "LOCAL-NEXTCLOUD-APACHE" ] || [ $each = "LOCAL-NEXTCLOUD-NGINX" ]; then
@@ -128,9 +128,9 @@ checkoo(){
 for each in "${PLUGINS[@]}"
 do
 	if [ $each = "OFFICIAL-ONLYOFFICE-NGINX" ] || [ $each = "OFFICIAL-ONLYOFFICE-APACHE" ] || [ $each = "LOCAL-ONLYOFFICE-NGINX" ] || [ $each = "LOCAL-ONLYOFFICE-APACHE" ]; then
-		return 1
+		return 0
 	fi
-return 0
+return 1
 done
 }
 
@@ -258,7 +258,7 @@ read -p "$ch" plugin
                                 echo
 			fi
 		else
-			echo
+						echo
                         echo -e "$red$bold [!] There is ONLYOFFICE plugin exists "
                         echo -e "     Remove it or continue; $reset"
                         echo
@@ -315,15 +315,15 @@ else
 				fi
 
 				if [ $pl = "OFFICIAL-NEXTCLOUD-APACHE" ]; then
-                                        sed -i '/o-nc-a/d' ./../playbook.yaml
-                                fi
+                    sed -i '/o-nc-a/d' ./../playbook.yaml
+                fi
 
 				if [ $pl = "LOCAL-NEXTCLOUD-NGINX" ]; then
-                                        sed -i '/l-nc-n/d' ./../playbook.yaml
-                                fi
+                    sed -i '/l-nc-n/d' ./../playbook.yaml
+                fi
 				if [ $pl = "LOCAL-NEXTCLOUD-APACHE" ]; then
-                                        sed -i '/l-nc-a/d' ./../playbook.yaml
-                                fi
+                    sed -i '/l-nc-a/d' ./../playbook.yaml
+                fi
 				if [ $pl = "LOCAL-ONLYOFFICE-NGINX" ]; then
 					sed -i '/l-oo-n/d' ./../playbook.yaml
 				fi
@@ -346,6 +346,29 @@ else
 fi
 }
 
+# Installing Onlyoffice with Nextcloud on same host
+nco_together(){
+	clear
+	echo 
+	echo -e "$bold # You have to specify other ports "
+	echo -e -n " # HTTP port: "
+	read httpport
+	echo -e -n " # HTTPS port: "
+	read httpsport
+	newline="port_http: $httpport"
+	sed -i '/port_http:.*/c\'"$newline" ../group_vars/all.yaml
+	newline="port_https: $httpsport"
+	sed -i '/port_https:.*/c\'"$newline" ../group_vars/all.yaml
+	echo 
+	ansible-playbook ../playbook.yaml
+}
+
+
+nco_not_together(){
+	echo
+	echo -e "$bold [coming] ONLYOFFICE on # host $reset"
+}
+
 run(){
 if [ ${#PLUGINS[@]} -eq 0 ]; then
 	echo
@@ -356,6 +379,7 @@ elif [ ${#PLUGINS[@]} -eq 1 ]; then
 	#Checking for only ONLYOFFICE;
 	if checkoo; then
 		if checknc; then
+			echo -e "$bold Installing other then Nextcloud or ONLYOFFICE $reset"
 			echo
 		else
 			echo -e "$bold [Only nextcloud selected] $reset"
@@ -363,19 +387,31 @@ elif [ ${#PLUGINS[@]} -eq 1 ]; then
 			ansible-playbook ../playbook.yaml
 		fi
 	else
+		clear
 		echo
-		echo -e "$yellow$bold [NOTE] : You'r about to install just ONLYOFFICE ; "
-		echo -e " If you want to integrated with NEXTCLOUD, please enter the nextcloud folder ;"
-		echo -e " And you will be asked to choose a 2 port numbers for HTTP & HTTPS access, "
-		echo -e " because they can't work with same 80 & 443 ports in same machine ; "
-		echo -e " If you don't have NEXTCLOUD installed, please let it empty ; "
-		echo -e " If empty we will just install ONLYOFFICE-DOCUMENTSERVER for you ; "
-		echo -e " If you want to install NEXTCLOUD with it, input: yes ;"
-		echo -e " If 'yes' it will install: [LOCAL/OFFICIAL]-NEXTCLOUD-NGINX for you; "
+		echo -e "$bold # You'r about to install just ONLYOFFICE ; "
+		echo -e " # If you want to integrate it with NEXTCLOUD, please specify "
+		echo -e " # and you will be asked to choose a 2 port numbers for HTTP & HTTPS access, "
+		echo -e " # because they can't work with same 80 & 443 ports in same machine ; "
 		echo -e " ----- $reset";
 		echo
 		read -p " [HIT ENTER TO CONTINUE] " e
-		echo -e "$bold Coming soon: Inputting, infos about Just ONLYOFFICE; $reset"
+		echo -e "$bold 1: Nextcloud and onlyoffice on same host  $reset"
+		echo -e "$bold 2: Onlyoffice in a different host "
+		echo -e "$bold ------ $reset"
+		echo -e "$red$bold 3: back "
+		echo -e " 4: exit $reset"
+		echo
+		read -p "$ch" choice
+		if [ $choice -eq 1 ]; then
+			nco_together
+		elif [ $choice -eq 2 ]; then
+			nco_not_together
+		elif [ $choice -eq 3 ]; then
+			showinput
+		else
+			exit
+		fi
 		echo
 		ansible-playbook ../playbook.yaml
 	fi
@@ -469,7 +505,9 @@ newline="autocloud_dir: $acdir"
 sed -i '/autocloud_dir:.*/c\'"$newline" ../group_vars/all.yaml
 
 if [ $# -eq 0 ]; then
+	clear
 	prog="o"
+	echo 
 	echo -e "$yellow$bold +-------------------------------------------------+"
 	echo -e " |                                                 |"
 	echo -e " |                     NOTE                        |"
@@ -514,6 +552,12 @@ else
 	if [ $# -eq 1 ]; then
 		if [ $1 = "--local" ]; then
 			prog="l"
+			clear
+			echo
+			echo -e "$yellow$bold [ # local option specified;  "
+			echo -e " [ # every installation will be locally; "
+			echo -e " [ # restart with --help for more details ; $reset"
+			echo
 		elif [ $1 = "--help" ]; then
 			helpmenu
 		else
