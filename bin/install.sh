@@ -8,6 +8,7 @@ green="\e[32m"
 blue="\e[34m"
 yellow="\e[33m"
 ##########
+ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
 ## Instaling needs
 
 # Checking ansible
@@ -24,6 +25,22 @@ else
         echo -e "$green$bold [+] ansible is installed. $reset"
         echo
 fi
-ansible-playbook install.yaml
-clear
-echo -e "$green$bold [+] Installation complete , you can run : bash main.sh --help $reset"
+
+echo -e "$blue$bold [ Installation continue with: "
+echo -e "       # letsencrypt "
+echo -e "       # python-certbot-nginx "
+echo -e "       # python-certbot-apache "
+echo -e "                                ] $reset"
+echo -e "$bold 1: continue "
+echo -e " 2: exit $reset"
+echo
+read -p "$ch" choice
+
+if [ $choice -eq 1 ]; then
+        ansible-playbook install.yaml
+        clear
+        echo -e "$green$bold [+] Installation complete , you can run : bash main.sh --help $reset"
+else
+        clear
+        echo -e "$green$bold [+] Installation complete , you can run : bash main.sh --help $reset"
+fi

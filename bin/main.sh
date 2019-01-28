@@ -11,6 +11,7 @@ yellow="\e[33m"
 ##########
 cmd=`echo -e "$bold [$green auto-cloud$reset $bold]$ $reset "`
 ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
+pressenter=`echo -e "$bold [PRESS ENTER TO CONTINUE] $reset"`
 
 menu(){
 
@@ -354,6 +355,14 @@ if [ ${#PLUGINS[@]} -eq 0 ]; then
 elif [ ${#PLUGINS[@]} -eq 1 ]; then
 	#Checking for only ONLYOFFICE;
 	if checkoo; then
+		if checknc; then
+			echo
+		else
+			echo -e "$bold [Only nextcloud selected] $reset"
+			read -p "$pressenter" enter
+			ansible-playbook ../playbook.yaml
+		fi
+	else
 		echo
 		echo -e "$yellow$bold [NOTE] : You'r about to install just ONLYOFFICE ; "
 		echo -e " If you want to integrated with NEXTCLOUD, please enter the nextcloud folder ;"
@@ -368,7 +377,7 @@ elif [ ${#PLUGINS[@]} -eq 1 ]; then
 		read -p " [HIT ENTER TO CONTINUE] " e
 		echo -e "$bold Coming soon: Inputting, infos about Just ONLYOFFICE; $reset"
 		echo
-		showinput
+		ansible-playbook ../playbook.yaml
 	fi
 fi
 }
