@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain: nctest.dotfoss.com
-nextcloud_username: talel
-nextcloud_userpass: talelpass
+nextcloud_domain: azd
+nextcloud_username: zaf
+nextcloud_userpass: azf
 
 # +============================+
 
@@ -50,7 +50,7 @@ rabbitmq_server_url: "amqp://{{ rabbitmq_server_user }}:{{ rabbitmq_server_pass 
 package_name: onlyoffice-documentserver
 onlyoffice_username: onlyoffice
 onlyoffice_userpass: onlyoffice
-onlyoffice_domain: ootest.dotfoss.com
+onlyoffice_domain: azf
 
 # +============================+
 

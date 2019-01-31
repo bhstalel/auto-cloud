@@ -84,43 +84,6 @@ END_COMMENT
 
 
 
-# Check for existing NEXTCLOUD plugin
-checknc(){
-#if [ -d "/var/www/nextcloud" ]; then
-	#echo -e "$red$bold [!] Nexcloud is already exist in: /var/www/nextcloud , remove it first $reset"
-#	return 1
-#fi
-for each in "${PLUGINS[@]}"
-do
-	if [ $each = "OFFICIAL-NEXTCLOUD-APACHE" ] || [ $each = "OFFICIAL-NEXTCLOUD-NGINX" ] || [ $each = "LOCAL-NEXTCLOUD-APACHE" ] || [ $each = "LOCAL-NEXTCLOUD-NGINX" ]; then
-		return 1
-	fi
-done
-return 0
-}
-
-# Check for existing ONLYOFFICE plugin
-checkoo(){
-for each in "${PLUGINS[@]}"
-do
-	if [ $each = "OFFICIAL-ONLYOFFICE-NGINX" ] || [ $each = "OFFICIAL-ONLYOFFICE-APACHE" ] || [ $each = "LOCAL-ONLYOFFICE-NGINX" ] || [ $each = "LOCAL-ONLYOFFICE-APACHE" ]; then
-		return 0
-	fi
-return 1
-done
-}
-
-# Check for collabora
-collabora(){
-for each in "${PLUGINS[@]}"
-do
-        if [ $each = "OFFICIAL-COLLABORA" ] || [ $each = "LOCAL-COLLABORA" ]; then
-                return 1
-        fi
-return 0
-done
-}
-
 add(){
 showoptions
 echo -e "$bold  ---- $reset"
@@ -128,8 +91,11 @@ echo -e " $red$bold back"
 echo -e "  exit $reset"
 echo
 read -p "$ch" plugin
+
+
+	# NEXTCLOUD ADD
 	if [ $plugin = "nextcloud" ]; then
-		if checknc; then
+			clear
 			echo
 			echo -e "$bold [NEXTCLOUD] chosen.$reset"
 			echo
@@ -143,6 +109,7 @@ read -p "$ch" plugin
 			echo -e " 2: back "
 			echo
 			read -p "$ch" info
+
 			if [ $info -eq 1 ]; then
 				echo -e -n "$bold - nextcloud domain: $reset"
 				read ncdomain
@@ -159,48 +126,19 @@ read -p "$ch" plugin
 			else
 				showinput
 			fi
-			echo
-			echo -e "$bold [!] Setting up the webserver $reset"
-			echo
-			echo -e "$bold 1: Apache "
-			echo -e " 2: Nginx $reset"
-			echo
-			echo -e "$bold ---- $reset"
-			echo -e "$red$bold 3: back "
-			echo -e " 4: exit $reset"
-			read -p "$ch" web
-			if [ $web -eq 1 ]; then
-				if [ $prog = "o" ]; then
-						echo "    - o-nc-a" >> ../playbook.yaml
-						PLUGINS+=('OFFICIAL-NEXTCLOUD-APACHE')
-				else
-						echo "    - l-nc-a" >> ../playbook.yaml
-						PLUGINS+=('LOCAL-NEXTCLOUD-APACHE')
-				fi
-			elif [ $web -eq 2 ]; then
-				if [ $prog = "o" ]; then
-						echo "    - o-nc-n" >> ../playbook.yaml
-						PLUGINS+=('OFFICIAL-NEXTCLOUD-NGINX')
-				else
-						echo "    - l-nc-n" >> ../playbook.yaml
-						PLUGINS+=('LOCAL-NEXTCLOUD-NGINX')
-				fi
-			elif [ $web -eq 3 ]; then
-				showinput
-			elif [ $web -eq 4 ]; then
-				exit 1
+
+			if [ $prog = "o" ]; then
+				echo "    - o-nc-n" >> ../playbook.yaml
+				PLUGINS+=('OFFICIALNEXTCLOUDNGINX')
 			else
-				echo -e "$red$bold Wrong choice, back $reset"
-				showinput
+				echo "    - l-nc-n" >> ../playbook.yaml
+				PLUGINS+=('LOCALNEXTCLOUDNGINX')
 			fi
+
 			echo
-		else
-			echo
-                        echo -e "$red$bold [!] There is NEXTCLOUD plugin exists "
-                        echo -e "     Remove it or continue; $reset"
-                        echo
-		fi
-	fi
+
+	fi # END NEXTCLOUD ADD
+
 	if [ $plugin = "back" ]; then
 		showinput
 	fi
@@ -208,36 +146,27 @@ read -p "$ch" plugin
 		echo -e "$green$bold contact: bhstalel@gmail.com $reset"
 		exit 1
 	fi
+
+	# ADD ONLYOFFICE
 	if [ $plugin = "onlyoffice" ]; then
-		if checkoo; then
-			if collabora; then
-				echo -e -n "$bold - onlyoffice domain: $reset"
-				read oodomain
-				newline="onlyoffice_domain: $oodomain"
-       		         	sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
-				if [ $prog = "l" ]; then
-					echo "    - l-oo-n" >> ../playbook.yaml
-					PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
-				else
-					echo -e -n "$bold - email address: $reset"
-					read ooemail
-					newline="email: $ooemail"
-					sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
-					echo "    - o-oo-n" >> ../playbook.yaml
-					PLUGINS+=('OFFICIAL-ONLYOFFICE-NGINX')
-				fi
-			else
-				echo
-                                echo -e "$red$bold [-] Cannot install onlyoffice with collabora. $reset"
-                                echo
-			fi
+
+		echo
+		echo -e -n "$bold - onlyoffice domain: $reset"
+		read oodomain
+		newline="onlyoffice_domain: $oodomain"
+       	sed -i '/onlyoffice_domain:.*/c\'"$newline" ../group_vars/all.yaml
+		if [ $prog = "l" ]; then
+			echo "    - l-oo-n" >> ../playbook.yaml
+			PLUGINS+=('LOCALONLYFOFFICENGINX')
 		else
-						echo
-                        echo -e "$red$bold [!] There is ONLYOFFICE plugin exists "
-                        echo -e "     Remove it or continue; $reset"
-                        echo
+			echo -e -n "$bold - email address: $reset"
+			read ooemail
+			newline="email: $ooemail"
+			sed -i '/email:.*/c\'"$newline" ../group_vars/all.yaml
+			echo "    - o-oo-n" >> ../playbook.yaml
+			PLUGINS+=('OFFICIALONLYOFFICENGINX')
 		fi
-	fi
+	fi # END ADD ONLYOFFICE
 }
 
 reset(){
@@ -284,30 +213,22 @@ else
 	for target in "${pl[@]}"; do
 		for i in "${!PLUGINS[@]}"; do
 			if [[ ${PLUGINS[i]} = $pl ]]; then
-				if [ $pl = "OFFICIAL-NEXTCLOUD-NGINX" ]; then
+				if [ $pl = "OFFICIALNEXTCLOUDNGINX" ]; then
 					sed -i '/o-nc-n/d' ./../playbook.yaml
 				fi
-
-				if [ $pl = "OFFICIAL-NEXTCLOUD-APACHE" ]; then
-                    sed -i '/o-nc-a/d' ./../playbook.yaml
-                fi
-
-				if [ $pl = "LOCAL-NEXTCLOUD-NGINX" ]; then
+				if [ $pl = "LOCALNEXTCLOUDNGINX" ]; then
                     sed -i '/l-nc-n/d' ./../playbook.yaml
                 fi
-				if [ $pl = "LOCAL-NEXTCLOUD-APACHE" ]; then
-                    sed -i '/l-nc-a/d' ./../playbook.yaml
-                fi
-				if [ $pl = "LOCAL-ONLYOFFICE-NGINX" ]; then
+				if [ $pl = "LOCALONLYOFFICENGINX" ]; then
 					sed -i '/l-oo-n/d' ./../playbook.yaml
 				fi
-				if [ $pl = "OFFICIAL-ONLYOFFICE-NGINX" ]; then
+				if [ $pl = "OFFICIALONLYOFFICENGINX" ]; then
 					sed -i '/o-oo-n/d' ./../playbook.yaml
 				fi
-				if [ $pl = "OFFICIAL-COLLABORA" ]; then
+				if [ $pl = "OFFICIALCOLLABORA" ]; then
 					sed -i '/o-c/d' ./../playbook.yaml
 				fi
-				if [ $pl = "LOCAL-COLLABORA" ]; then
+				if [ $pl = "LOCALCOLLABORA" ]; then
 					sed -i '/l-c/d' ./../playbook.yaml
 				fi
 				unset 'PLUGINS[i]'
@@ -359,45 +280,53 @@ if [ ${#PLUGINS[@]} -eq 0 ]; then
 	echo
 	showinput
 elif [ ${#PLUGINS[@]} -eq 1 ]; then
+
 	#Checking for only ONLYOFFICE;
-	if checkoo; then
-		if checknc; then
-			echo -e "$bold Installing other then Nextcloud or ONLYOFFICE $reset"
+	if [[  " ${PLUGINS[1]} " = " ${LOCALONLYFOFFICENGINX} " ]]; then
+		if [[ ! " ${PLUGINS[1]} " = " ${OFFICIALONLYFOFFICENGINX} " ]]; then
+			clear
 			echo
-		else
-			echo -e "$bold [Only nextcloud selected] $reset"
-			read -p "$pressenter" enter
-			ansible-playbook ../playbook.yaml
-		fi
-	else
-		clear
-		echo
-		echo -e "$bold # You'r about to install just ONLYOFFICE ; "
-		echo -e " # If you want to integrate it with NEXTCLOUD, please specify "
-		echo -e " # and you will be asked to choose a 2 port numbers for HTTP & HTTPS access, "
-		echo -e " # because they can't work with same 80 & 443 ports in same machine ; "
-		echo -e " ----- $reset";
-		echo
-		read -p " [HIT ENTER TO CONTINUE] " e
-		echo -e "$bold 1: Nextcloud and onlyoffice on same host  $reset"
-		echo -e "$bold 2: Onlyoffice in a different host "
-		echo -e "$bold ------ $reset"
-		echo -e "$red$bold 3: back "
-		echo -e " 4: exit $reset"
-		echo
-		read -p "$ch" choice
-		if [ $choice -eq 1 ]; then
+			echo -e "$bold # You'r about to install just ONLYOFFICE ; "
+			echo -e " # If you want to integrate it with NEXTCLOUD, please specify "
+			echo -e " # and you will be asked to choose a 2 port numbers for HTTP & HTTPS access, "
+			echo -e " # because they can't work with same 80 & 443 ports in same machine ; "
+			echo -e " ----- $reset";
+			echo
+			read -p " [HIT ENTER TO CONTINUE] " e
+			echo -e "$bold 1: Nextcloud and onlyoffice on same host  $reset"
+			echo -e "$bold 2: Onlyoffice in a different host "
+			echo -e "$bold ------ $reset"
+			echo -e "$red$bold 3: back "
+			echo -e " 4: exit $reset"
+			echo
+			read -p "$ch" choice
+			if [ $choice -eq 1 ]; then
 			nco_together
-		elif [ $choice -eq 2 ]; then
+			elif [ $choice -eq 2 ]; then
 			nco_not_together
-		elif [ $choice -eq 3 ]; then
+			elif [ $choice -eq 3 ]; then
 			showinput
-		else
+			else
 			exit 1
+			fi
+			echo
+			ansible-playbook ../playbook.yaml
+		else
+			if [[ " ${PLUGINS[1]} " =~ " ${LOCALNEXTCLOUDNGINX} " ]]; then
+				if [[ " ${PLUGINS[1]} " =~ " ${OFFICIALNEXTCLOUDNGINX} " ]]; then
+					echo -e "$bold [Only nextcloud selected] $reset"
+					read -p "$pressenter" enter
+					ansible-playbook ../playbook.yaml
+				else
+					echo -e "$bold Installing other then Nextcloud or ONLYOFFICE $reset"
+					echo
+				fi
+			fi
 		fi
-		echo
-		ansible-playbook ../playbook.yaml
 	fi
+
+else
+	echo " MORE THEN 1 plugin "
 fi
 }
 
@@ -517,8 +446,12 @@ if [ $# -eq 0 ]; then
 	echo -e " |                                                 |"
 	echo -e " +-------------------------------------------------+ $reset"
 else
+	# IF MORE THEN ONE ARGUMENT
 	if [ $# -gt 1 ]; then
+
+		# IF 2 ARGUMENTS
 		if [ $# -eq 2 ]; then
+
 			if [ $1 = "--plugin" ]; then
 				if testplugins $2; then
 					startwithplugins $2
@@ -527,10 +460,13 @@ else
 					exit 1
 				fi
 			fi #End of if plugin
+
 			if [ $1 = "--local" ]; then
 				echo -e "$red$bold [!] Wrong arguments : see --help $reset"
 				exit 1
 			fi
+
+		# IF 3 ARGUMENTS
 		elif [ $# -eq 3 ]; then
 			if [ $1 = "--local" ] && [ $2 = "--plugin" ]; then
 				if testplugins $3; then
@@ -548,7 +484,10 @@ else
 			exit 1
 		fi
 	fi
+
+	# 1 ARGUMENT
 	if [ $# -eq 1 ]; then
+
 		if [ $1 = "--local" ]; then
 			prog="l"
 			clear
@@ -557,8 +496,10 @@ else
 			echo -e " [ # all installation will be local; "
 			echo -e " [ # restart with --help for more details ; $reset"
 			echo
+
 		elif [ $1 = "--help" ]; then
 			helpmenu
+			
 		elif [ $1 = "--list" ]; then
 			listplugins
 			exit 1

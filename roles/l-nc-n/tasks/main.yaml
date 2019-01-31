@@ -6,7 +6,7 @@
   become: yes
 
 - name: Including PHP 
-  include_tasks: "{{autocloud_dir}}/rols/php/tasks/main.yml"
+  include_tasks: "{{autocloud_dir}}/roles/php/tasks/main.yml"
 
 - name: Start php-fpm
   systemd:
