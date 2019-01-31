@@ -37,34 +37,29 @@
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-host
-    value: "{{ db_server_host }}"
+    value: "localhost"
     vtype: string
-  when: db_server_host != ""
 
 - name: Set up db name
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-name
-    value: "{{ db_server_name }}"
+    value: "onlyoffice"
     vtype: string
-  when: db_server_name != ""
- 
 
 - name: Set up db user
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-user
-    value: "{{ db_server_user }}"
+    value: "{{onlyoffice_username}}"
     vtype: string
-  when: db_server_user != ""
 
 - name: Set up db user password
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-pwd
-    value: "{{ db_server_pass }}"
+    value: "{{onlyoffice_userpass}}"
     vtype: password
-  when: db_server_pass != ""
 
 - name: Install documentserver
   apt: 
