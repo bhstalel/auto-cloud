@@ -4,12 +4,12 @@ fingerprint
 lt-cred-mech
 use-auth-secret
 static-auth-secret={{ talk_static_auth_secret }}
-realm={{ fqdn }}
+realm={{ nextcloud_domain }}
 total-quota=100
 bps-capacity=0
 stale-nonce
-cert=/etc/letsencrypt/live/{{ fqdn }}/fullchain.pem
-pkey=/etc/letsencrypt/live/{{ fqdn }}/privkey.pem
+cert=/etc/letsencrypt/live/{{ nextcloud_domain }}/fullchain.pem
+pkey=/etc/letsencrypt/live/{{ nextcloud_domain }}/privkey.pem
 cipher-list="ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!AECDH:!MD5"
 no-loopback-peers
 no-multicast-peers
