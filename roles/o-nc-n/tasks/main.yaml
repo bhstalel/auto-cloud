@@ -91,10 +91,10 @@
 - name: Generating SSL Certificate
   shell: sudo certbot --nginx -m {{email}} -d {{nextcloud_domain}}
 
-- name: Activate the nextcloud site
-  file: src=/etc/nginx/sites-available/nextcloud.conf
-        dest=/etc/nginx/sites-enabled/nextcloud.conf
-        state=link
+#- name: Activate the nextcloud site
+#  file: src=/etc/nginx/sites-available/nextcloud.conf
+#        dest=/etc/nginx/sites-enabled/nextcloud.conf
+#        state=link
 
 - name: Restarting Nginx
   shell: systemctl restart nginx

@@ -42,11 +42,12 @@ showoptions(){
 echo
 echo -e " $blue$bold#     Plugins     #   "
 echo " +=================+ "
-echo " | nextcloud       | "
-echo " | onlyoffice      | "
-echo " | collabora       | "
-echo " | draw            | "
-echo " | ownpad          | "
+echo " | nextcloud   [OK]| "
+echo " | onlyoffice  [OK]| "
+echo " | collabora   [OK]| "
+echo " | draw        [OK]| "
+echo " | ownpad      [NO]| "
+echo " | talk        [OK]| "
 echo -e " +=================+ $reset"
 echo
 }

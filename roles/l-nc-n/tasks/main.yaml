@@ -5,24 +5,8 @@
     update_cache: yes
   become: yes
 
-- name: Install php dependencies
-  apt:
-    name: "{{item}}"
-    state: present
-    update_cache: yes
-  loop:
-    - "php{{php_version}}-fpm"
-    - "php{{php_version}}-gd"
-    - "php{{php_version}}-json"
-    - "php{{php_version}}-pgsql"
-    - "php{{php_version}}-curl"
-    - "php{{php_version}}-mbstring"
-    - "php{{php_version}}-intl"
-    - "php-imagick"
-    - "php{{php_version}}-xml"
-    - "php{{php_version}}-zip"
-    - unzip
-  become: yes
+- name: Including PHP 
+  include_tasks: "{{autocloud_dir}}/rols/php/tasks/main.yml"
 
 - name: Start php-fpm
   systemd:

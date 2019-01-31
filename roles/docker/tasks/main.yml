@@ -1,0 +1,63 @@
+---
+
+- name: remove ubuntu repo docker
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-engine
+    - docker.io
+
+- name: install needed packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - python-pip
+    - software-properties-common
+
+- name: add docker key
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  with_items:
+    - https://download.docker.com/linux/ubuntu/gpg
+
+#- name: add additional docker repo
+#  apt_repository:
+#    repo: "{{ item }}"
+#    validate_certs: true
+#    update_cache: true
+#    state: present
+#  with_items:
+#    - deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+
+- name: add additional docker repo
+  command: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  update_cache: yes
+
+- name: install docker
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker-ce
+
+- name: install python docker
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pip
+    - docker
+
+- name: enable docker
+  systemd:
+    name:          docker
+    state:         started
+    enabled:       true
+    daemon_reload: yes
+  

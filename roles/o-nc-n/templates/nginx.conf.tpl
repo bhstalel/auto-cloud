@@ -1,5 +1,5 @@
 upstream php-handler {
-    server 127.0.0.1:9000;
+    #server 127.0.0.1:9000;
     server unix:/var/run/php/php{{php_version}}-fpm.sock;
 }
 
@@ -19,8 +19,8 @@ server {
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     # NOTE: some settings below might be redundant
-    ssl_certificate /etc/nginx/ssl/nextcloud.crt;
-    ssl_certificate_key /etc/nginx/ssl/nextcloud.key;
+    ssl_certificate /etc/letsencrypt/live/{{nextcloud_domain}}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{nextcloud_domain}}//privkey.pem;
 
     # Add headers to serve security related headers
     # Before enabling Strict-Transport-Security headers please read into this
