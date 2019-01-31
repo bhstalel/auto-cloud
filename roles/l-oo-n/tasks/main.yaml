@@ -32,26 +32,7 @@
     question: onlyoffice/accepted-onlyoffice-license
     value: 'true'
     vtype: boolean
-
-- name: Install postgresql
-  apt:
-    name: "postgresql"
-    state: present
-    update_cache: yes
-  become: yes
-
-- name: Create nextcloud user in postgresql
-  shell: sudo -u postgres psql -c "CREATE USER {{onlyoffice_username}} WITH password '{{onlyoffice_userpass}}'";
-  become: yes
-  register: out
-  failed_when: out.rc != 0 and 'already exists' not in out.stderr
-
-- name: Create database for nextcloud
-  shell: sudo -u postgres psql -c "CREATE DATABASE onlyoffice WITH owner '{{onlyoffice_username}}';";
-  become: yes
-  register: out
-  failed_when: out.rc != 0 and 'already exists' not in out.stderr    
-
+    
 - name: Set up db host name
   debconf:
     name: "{{ package_name }}"
@@ -70,17 +51,15 @@
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-user
-    value: "{{ onlyoffice_username }}"
+    value: "{{onlyoffice_username}}"
     vtype: string
-  when: onlyoffice_username != ""
 
 - name: Set up db user password
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-pwd
-    value: "{{ onlyoffice_userpass }}"
+    value: "{{onlyoffice_userpass}}"
     vtype: password
-  when: onlyoffice_userpass != ""
 
 - name: Install documentserver
   apt: 
@@ -89,21 +68,20 @@
     state: latest
   become: yes
 
-- name: Creating SSL folder
-  shell: mkdir /var/www/onlyoffice/ssl
-  become: yes
-
-- name: Copying SSLCertificate file
+- name: Setting up SSLCertficate file
   template:
     src: "{{autocloud_dir}}/ssl/onlyoffice.crt"
     dest: "/var/www/onlyoffice/ssl/onlyoffice.crt"
-  become: yes
 
-- name: Copying SSLCertificateKey file
+- name: Setting up SSLCertificateKey file
   template:
     src: "{{autocloud_dir}}/ssl/onlyoffice.key"
     dest: "/var/www/onlyoffice/ssl/onlyoffice.key"
-  become: yes
+
+- name: Setting up nextcloud Config file
+  template:
+    src: "{{autocloud_dir}}/roles/l-oo-c/templates/config.php"
+    dest: "/var/www/nextcloud/config/config.php"
 
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"
@@ -120,9 +98,17 @@
   when: rabbitmq_server_url != ""
   notify: restart-ds
 
+#- name: Create db if it not exist
+#  shell: "{{ psql }} -f {{ createdb_sql }}"
+#  notify: restart-ds
+
+- name: Creagting dhparam
+  shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
+  become: yes
+
 - name: Setting up Nginx Configuration
   template:
-    src: "{{autocloud_dir}}/roles/l-oo-n/templates/onlyoffice-documentserver.conf"
+    src: "{{autocloud_dir}}/roles/o-oo-n/templates/onlyoffice-documentserver.conf"
     dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
   become: yes
 
@@ -130,12 +116,17 @@
   shell: systemctl restart nginx
   become: yes
 
+- name: Installing onlyoffice app
+  shell: sudo -u www-data php occ app:install onlyoffice
+  args:
+    chdir: /var/wwww/nextcloud/
+
 - name: Enabling onlyoffice app
   shell: sudo -u www-data php occ app:enable onlyoffice
   args:
     chdir: /var/www/nextcloud/
 
 - name: Setting up the domain
-  shell: sudo -u www-data occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
+  shell: sudo -u www-data php occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
   args:
     chdir: /var/www/nextcloud/
