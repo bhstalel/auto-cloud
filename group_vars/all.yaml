@@ -1,13 +1,18 @@
-nextcloud_domain: zad
-nextcloud_username: azd
-nextcloud_userpass: za
+nextcloud_domain: nctest.dotfoss.com
+nextcloud_username: talel
+nextcloud_userpass: talelpass
 php_version:
 port_http: 81
 port_ssl: 443
 
 autocloud_dir: /opt/auto-cloud
+
+# Generate your own hex
+talk_static_auth_secret: 75b56f192cfd8541e084e5957cc8c1478144b38dc25aa34aa91f33c3d8ef4100 
+
 ####################
 ## DO NOT EDIT THESE
+
 debian_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib"
 package_repo: "deb http://download.onlyoffice.com/repo/debian squeeze main"
 
