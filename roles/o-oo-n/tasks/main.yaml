@@ -92,9 +92,13 @@
 #  shell: "{{ psql }} -f {{ createdb_sql }}"
 #  notify: restart-ds
 
+- name: Creagting dhparam
+  shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
+  become: yes
+
 - name: Setting up Nginx Configuration
   template:
-    src: "roles/o-oo-n/templates/onlyoffice-documentserver.conf"
+    src: "{{autocloud_dir}}/roles/o-oo-n/templates/onlyoffice-documentserver.conf"
     dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
   become: yes
 
