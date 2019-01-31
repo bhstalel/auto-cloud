@@ -52,7 +52,7 @@ echo -e " +=================+ $reset"
 echo
 }
 
-
+: <<'END_COMMENT'
 generatessl(){
 echo
 echo -e "$yellow$bold [NOTE]: You'r installing nextcloud locally, "
@@ -80,34 +80,9 @@ else
 	add
 fi
 }
+END_COMMENT
 
-generateonlyofficessl(){
-echo
-echo -e "$yellow$bold [NOTE]: You'r installing ONLYOFFICE locally, "
-echo -e "         so we need to generate a self-signed certificate. $reset"
-echo
-echo -e "$bold ----- $reset"
-echo -e "$bold 1: continue "
-echo -e " 2: back "
-echo -e " 3: exit "
-echo
-read -p "$ch" n
-if [ $n -eq 1 ]; then
-	openssl genrsa -out ../ssl/onlyoffice.key
-	openssl req -new -key ../ssl/onlyoffice.key -out ../ssl/o.req -subj "/C=TN/ST=Example/L=Example/O=Global Security/OU=IT Department/CN=domain.com"
-	openssl x509 -req -days 365 -in ../ssl/o.req -signkey ../ssl/onlyoffice.key -out ../ssl/onlyoffice.crt
-	echo
-	echo -e " $green$bold [SSLCertificate] Generated in auto-cloud/ssl/onlyoffice.{key&&crt} $reset"
-	echo
-elif [ $n -eq 2 ]; then
-        showinput
-elif [ $n -eq 3 ]; then
-        exit
-else
-        echo -e "$red$bold Wrong choice, back $reset"
-        showinput
-fi
-}
+
 
 # Check for existing NEXTCLOUD plugin
 checknc(){
@@ -209,7 +184,6 @@ read -p "$ch" plugin
 				else
 						echo "    - l-nc-n" >> ../playbook.yaml
 						PLUGINS+=('LOCAL-NEXTCLOUD-NGINX')
-						generatessl
 				fi
 			elif [ $web -eq 3 ]; then
 				showinput
@@ -244,7 +218,6 @@ read -p "$ch" plugin
 				if [ $prog = "l" ]; then
 					echo "    - l-oo-n" >> ../playbook.yaml
 					PLUGINS+=('LOCAL-ONLYFOFFICE-NGINX')
-					generateonlyofficessl
 				else
 					echo -e -n "$bold - email address: $reset"
 					read ooemail
@@ -483,7 +456,8 @@ echo
 echo -e "$blue$bold +"
 echo -e " | [ARGUMENTS]:  "
 echo -e " | "
-echo -e " | # --local : for local installation "
+echo -e " | # --list   : to list plugins "
+echo -e " | # --local  : for local installation "
 echo -e " | # --plugin : "
 echo -e " | 	> to specify plugins from arguments like: "
 echo -e " | 	# --plugin nextcloud,onlyoffice  "
