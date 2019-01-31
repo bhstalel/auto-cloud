@@ -88,9 +88,9 @@
   when: rabbitmq_server_url != ""
   notify: restart-ds
 
-- name: Create db if it not exist
-  shell: "{{ psql }} -f {{ createdb_sql }}"
-  notify: restart-ds
+#- name: Create db if it not exist
+#  shell: "{{ psql }} -f {{ createdb_sql }}"
+#  notify: restart-ds
 
 - name: Setting up Nginx Configuration
   template:
