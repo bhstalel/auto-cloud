@@ -1,43 +1,57 @@
+# +============================+
+
 nextcloud_domain: nctest.dotfoss.com
 nextcloud_username: talel
 nextcloud_userpass: talelpass
-php_version:
+
+# +============================+
+
+php_version: 7.2
+
+# +============================+
+
 port_http: 81
 port_ssl: 443
 
+# +============================+
+
 autocloud_dir: /opt/auto-cloud
 
-# Generate your own hex
-talk_static_auth_secret: 75b56f192cfd8541e084e5957cc8c1478144b38dc25aa34aa91f33c3d8ef4100 
+# +============================+
 
-####################
-## DO NOT EDIT THESE
+talk_static_auth_secret: 75b56f192cfd8541e084e5957cc8c1478144b38dc25aa34aa91f33c3d8ef4100
+
+# +============================+
 
 debian_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }} contrib"
 package_repo: "deb http://download.onlyoffice.com/repo/debian squeeze main"
-
 onlyoffice_default_config: /etc/onlyoffice/documentserver/local.json
 json: json -q -f {{ onlyoffice_default_config }}
-
 filestorage_mount_path: /var/lib/onlyoffice/documentserver/App_Data/cache/files
 fonts_mount_path: /usr/share/fonts
-
 psql: "PGPASSWORD={{ onlyoffice_userpass }} psql -q -h localhost -U{{ onlyoffice_username }} -w -d onlyoffice"
 createdb_sql: /var/www/onlyoffice/documentserver/server/schema/postgresql/createdb.sql
 
-package_name: onlyoffice-documentserver
-##################
-onlyoffice_username: onlyoffice
-onlyoffice_userpass: onlyoffice
-##REDIS-SERVER
+# +============================+
+
 redis_server_host: localhost
 redis_server_port: 6379
-##RABBIT-MQ
+
+# +============================+
+
 rabbitmq_server_host: localhost
 rabbitmq_server_user: guest
 rabbitmq_server_pass: guest
 rabbitmq_server_vpath: /
 rabbitmq_server_url: "amqp://{{ rabbitmq_server_user }}:{{ rabbitmq_server_pass }}@{{ rabbitmq_server_host }}{{ rabbitmq_server_vpath }}"
 
-onlyoffice_domain: office.domain
-email: taleeeeeeeeeeel@@
+# +============================+
+
+package_name: onlyoffice-documentserver
+onlyoffice_username: onlyoffice
+onlyoffice_userpass: onlyoffice
+onlyoffice_domain: ootest.dotfoss.com
+
+# +============================+
+
+email: bhstalel@gmail.com
