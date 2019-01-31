@@ -110,13 +110,16 @@
   shell: sudo -u www-data php occ app:install onlyoffice
   args:
     chdir: /var/wwww/nextcloud/
+  when: onlyoffice_with_nextcloud == 1
 
 - name: Enabling onlyoffice app
   shell: sudo -u www-data php occ app:enable onlyoffice
   args:
     chdir: /var/www/nextcloud/
+  when: onlyoffice_with_nextcloud == 1
 
 - name: Setting up the domain
   shell: sudo -u www-data php occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
   args:
     chdir: /var/www/nextcloud/
+  when: onlyoffice_with_nextcloud == 1

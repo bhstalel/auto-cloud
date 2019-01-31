@@ -320,27 +320,36 @@ else
 fi
 }
 
-# Installing Onlyoffice with Nextcloud on same host
+# Installing Onlyoffice with Nextcloud on same host with NGINX
 nco_together(){
+	newline="onlyoffice_with_nextcloud: 1"
+	sed -i '/onlyoffice_with_nextcloud:.*/c\'"$newline" ../group_vars/all.yaml
 	clear
-	echo 
-	echo -e "$bold # You have to specify other ports "
-	echo -e -n " # HTTP port: "
-	read httpport
-	echo -e -n " # HTTPS port: "
-	read httpsport
-	newline="port_http: $httpport"
-	sed -i '/port_http:.*/c\'"$newline" ../group_vars/all.yaml
-	newline="port_https: $httpsport"
-	sed -i '/port_https:.*/c\'"$newline" ../group_vars/all.yaml
-	echo 
+	echo
+	echo -e "$bold # ONLYOFFICE will be installed with NEXTCLOUD $reset"
+	read -p "pressenter" x
 	ansible-playbook ../playbook.yaml
+	echo "$bold$green # ONLYOFFICE installed and integrated perfectly."
+	echo
 }
 
-
 nco_not_together(){
+	newline="onlyoffice_with_nextcloud: 0"
+	sed -i '/onlyoffice_with_nextcloud:.*/c\'"$newline" ../group_vars/all.yaml
 	echo
-	echo -e "$bold [coming] ONLYOFFICE on # host $reset"
+	clear
+	echo
+	echo -e "$bold # ONLYOFFICE will be installed separatly $reset"
+	read -p "pressenter" x
+	ansible-playbook ../playbook.yaml
+	echo
+	clear
+	echo
+	echo "$bold$green # ONLYOFFICE installed perfectly "
+	echo " # If you want to integrate it with nextcloud: "
+	echo " # Make sure to: "
+	echo "   copy auto-cloud/other/config.php to [other-host]/var/www/nextcloud/config/ of you nextcloud installation "
+	echo
 }
 
 run(){
