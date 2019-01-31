@@ -129,3 +129,13 @@
 - name: Restarting Nginx
   shell: systemctl restart nginx
   become: yes
+
+- name: Enabling onlyoffice app
+  shell: sudo -u www-data php occ app:enable onlyoffice
+  args:
+    chdir: /var/www/nextcloud/
+
+- name: Setting up the domain
+  shell: sudo -u www-data occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
+  args:
+    chdir: /var/www/nextcloud/
