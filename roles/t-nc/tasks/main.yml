@@ -31,27 +31,23 @@
   notify:  restart coturn
 
 - name: install talk app
-  become_user: www-data
-  shell: php occ app:install spreed
+  shell: sudo -u www-data php occ app:install spreed
   args:
     chdir: /var/www/nextcloud/
     creates: /var/www/nextcloud/apps/spreed
 
 - name: enable talk app
-  become_user: www-data
-  shell: php occ app:enable spreed
+  shell: sudo -u www-data php occ app:enable spreed
   args:
     chdir: /var/www/nextcloud/
 
 - name: set stun_server
-  become_user: www-data
-  shell: php occ config:app:set spreed stun_servers --value '["{{ nextcloud_domain }}:5349"]'
+  shell: sudo -u www-data php occ config:app:set spreed stun_servers --value '["{{ nextcloud_domain }}:5349"]'
   args:
     chdir: /var/www/nextcloud/
 
 - name: set turn server
-  become_user: www-data
-  shell: php occ config:app:set spreed turn_servers --value '[{"server":"{{ nextcloud_domain }}:5349","secret":"{{ talk_static_auth_secret }}","protocols":"udp,tcp"}]'
+  shell: sudo -u www-data php occ config:app:set spreed turn_servers --value '[{"server":"{{ nextcloud_domain }}:5349","secret":"{{ talk_static_auth_secret }}","protocols":"udp,tcp"}]'
   args:
     chdir: /var/www/nextcloud/
     
