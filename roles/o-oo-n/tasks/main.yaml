@@ -112,6 +112,6 @@
     chdir: /var/www/nextcloud/
 
 - name: Setting up the domain
-  shell: sudo -u www-data occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
+  shell: sudo -u www-data php occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
   args:
     chdir: /var/www/nextcloud/
