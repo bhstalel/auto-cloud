@@ -1,29 +1,117 @@
 #!/bin/bash
 
+# +============================+
+bold="\e[1m"
+underline="\e[4m"
+reset="\e[0m"
+red="\e[31m"
+green="\e[32m"
+blue="\e[34m"
+yellow="\e[33m"
+# +============================+
+ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
+pressenter=`echo -e "$bold [PRESS ENTER TO CONTINUE] $reset"`
+# +============================+
 
 # +============================+
 # [       HELP FONCTION        ]
 HELPMENU(){
-echo "Help menu"
+echo
+echo -e "$green$bold [ Available arguments ] $reset"
+echo -e "$bold # help "
+echo -e "$bold # list "
+echo -e "$bold # init "
+echo -e "$bold # config "
+echo -e "$bold # plugins plug1,plug2,..       [FOR OFFICIAL DOMAIN   ]"
+echo -e "$bold # local plugins plug1,plug2,.. [FOR LOCAL INSTALLATION]"
+echo -e "$bold # set var value "
+echo -e "$bold +===+"
+echo -e "$bold   vars: "
+echo -e "$bold         - ncdbuser "
+echo -e "$bold         - ncdbpass "
+echo -e "$bold         - ncdm "
+echo -e "$bold         - oodm "
+echo -e "$bold         - codm "
+echo -e "$bold         - email "
+echo -e "$bold         - webserver "
+echo -e "$bold         - dbtype"
+echo -e "$bold +===+"
+echo -e "$reset"
 }
 
 # +============================+
 # [ Show available plugins     ]
 SHOWPLUGINS(){
-echo "Available plugins"
+file="../group_vars/plugins"
+echo
+echo -e "$green$bold [ Available plugins ] $reset"
+while IFS= read line
+do
+	echo -e "$bold # $line $reset"
+done <"$file"
+echo
 }
 
 # +============================+
 # [ Initialise all variables   ]
 INITFILE(){
-echo "variables are initialized"
+echo
+echo -e "$bold [#] Done initialising $reset"
+echo
 }
 
 
 # +============================+
 # [       Show variables       ]
 SHOWCONF(){
-echo "Running variables"
+echo
+echo -e "$green$bold [ Variables ] $reset"
+
+ncdbuser=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_username: //p'`
+if [ -z "$ncdbuser" ]; then
+	echo -e "$bold # nextcloud_username: $red[NOT SET]$reset"
+else
+	echo -e "$bold # nextcloud_username: $blue$ncdbuser$reset"
+fi
+
+ncdbpass=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_userpass: //p'`
+if [ -z "$ncdbpass" ]; then
+	echo -e "$bold # nextcloud_userpass: $red[NOT SET]$reset"
+else
+	echo -e "$bold # nextcloud_userpass: $blue$ncdbpass$reset"
+fi
+
+ncdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_domain: //p'`
+if [ -z "$ncdm" ]; then
+	echo -e "$bold # nextcloud_domain: $red[NOT SET]$reset"
+else
+	echo -e "$bold # nextcloud_domain: $blue$ncdm$reset"
+fi
+
+oodm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*onlyoffice_domain: //p'`
+if [ -z "$oodm" ]; then
+	echo -e "$bold # onlyoffice_domain: $red[NOT SET]$reset"
+else
+	echo -e "$bold # onlyoffice_domain: $blue$oodm$reset"
+fi
+
+codm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*collabora_domain: //p'`
+if [ -z "$codm" ]; then
+	echo -e "$bold # collabora_domain: $red[NOT SET]$reset"
+else
+	echo -e "$bold # collabora_domain: $blue$codm$reset"
+fi
+
+email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
+if [ -z "$email" ]; then
+	echo -e "$bold # email: $red[NOT SET]$reset"
+else
+	echo -e "$bold # email: $blue$email$reset"
+fi
+
+echo -e "$bold # webserver:  $red[NOT SET]$reset"
+echo -e "$bold # dbtype:     $red[NOT SET]$reset $reset"
+echo
 }
 
 # +============================+
@@ -36,13 +124,19 @@ echo "Testing this plugin: $1"
 # +============================+
 # [         ARG ERROR          ]
 ARGERROR(){
-echo "Error argument see help"
+echo
+echo -e "$bold [!] Error some where "
+echo -e " [#] See: bash autocloud.sh help $reset"
+echo
 }
 
 # +============================+
 # [       NO ARG ERROR         ]
 NOARGERROR(){
-echo "No argument !!! see help"
+echo
+echo -e "$bold [!] You have to specify arguments "
+echo -e " [#] See: bash autocloud.sh help $reset"
+echo
 }
 
 # +============================+
