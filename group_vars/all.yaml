@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain: azd
-nextcloud_username: zaf
-nextcloud_userpass: azf
+nextcloud_domain:
+nextcloud_username:
+nextcloud_userpass:
 
 # +============================+
 
@@ -48,16 +48,35 @@ rabbitmq_server_url: "amqp://{{ rabbitmq_server_user }}:{{ rabbitmq_server_pass 
 # +============================+
 
 package_name: onlyoffice-documentserver
-onlyoffice_username: onlyoffice
-onlyoffice_userpass: onlyoffice
-onlyoffice_domain: azf
 
 # +============================+
 
-email: bhstalel@gmail.com
+onlyoffice_username: 
+onlyoffice_userpass: 
+onlyoffice_domain:
+
+# +============================+
+
+email:
 
 # +============================+
 
 onlyoffice_with_nextcloud: 
+
+# +============================+
+
+state:
+
+# +============================+
+
+collabora_domain:
+
+# +============================+
+
+webserver:
+
+# +============================+
+
+dbtype:
 
 # +============================+
