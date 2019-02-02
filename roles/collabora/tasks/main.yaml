@@ -1,5 +1,3 @@
----
-
 - name: Including docker
   inlcude_tasks: "{{autocloud_dir}}/roles/docker/tasks/main.yml"
 
@@ -12,7 +10,7 @@
   file:
     path: sudo /usr/share/nginx/office
     state: directory 
-  when: office_check.stat.exists == false
+  when: office_check.stat.exists == false and webserver == "n"
 
 - name: Setting permissions
   file:
@@ -20,22 +18,47 @@
     owner: www-data
     group: www-data
     recurse: yes
+  when: webserver == "n"
+
+- name: COPYING SSLCertificate FILE
+  template:
+    src: "ssl/collabora.crt"
+    dest: "/etc/nginx/ssl/collabora.crt"
+  become: yes
+  when: webserver == "n" and state == "l"
+
+- name: COPYING SSLCertificateKey FILE
+  template:
+    src: "ssl/collabora.key"
+    dest: "/etc/nginx/ssl/collabora.key"
+  become: yes
+  when: webserver == "n" and state == "l"
 
 - name: Setting up nginx conf file
   template:
-    src: "{{autocloud_dir}}/roles/o-c/templates/collabora.conf.tpl"
+    src: "{{autocloud_dir}}/roles/collabora/templates/collabora-local.conf.tpl"
     dest: "/etc/nginx/conf.d/{{collabora_domain}}.conf"
   become: yes
+  when: webserver == "n" and state == "l"
+
+- name: Setting up nginx conf file
+  template:
+    src: "{{autocloud_dir}}/roles/collabora/templates/collabora-official.conf.tpl"
+    dest: "/etc/nginx/conf.d/{{collabora_domain}}.conf"
+  become: yes
+  when: webserver == "n" and state == "o"
 
 - name: Creating SSL
   command: sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email {{email}} -d {{collabora_domain}}
   become: yes
+  when: webserver == "n" and state == "o"
 
 - name: Retarting nginx
   service:
     name: nginx
     state: restarted
   become: yes
+  when: webserver == "n"
 
 - name: install collabora app
   shell: sudo -u www-data php occ app:install richdocuments

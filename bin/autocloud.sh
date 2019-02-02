@@ -211,6 +211,7 @@ RUNNCWITHVARS(){
 	fi
 	echo -e "$bold +================================+ "
 	read -p "$pressenter" en
+	clear
 	ansible-playbook ../playbook.yaml
 }
 
@@ -252,28 +253,18 @@ RUNNEXTCLOUD(){
 							echo -e "$bold [#] Please set [state] for nextcloud $reset"
 							echo
 						else
-							if [ "$state" = "l" ] && [ "$webserv" = "n" ]; then
-								echo "    - l-nc-n" >> ../playbook.yaml
-								RUNNCWITHVARS
-							elif [ "$state" = "l" ] && [ "$webserv" = "a" ]; then
-								echo "    - l-nc-a" >> ../playbook.yaml
-								RUNNCWITHVARS
-							elif [ "$state" = "o" ]; then		
+							if [ "$state" = "o" ]; then		
 								if [ -z "$email" ]; then
 									echo
 									echo -e "$bold [#] Please set [email] for nextcloud $reset"
 									echo
 								else
-									if [ "$webserv" = "n" ]; then
-										echo "    - o-nc-n" >> ../playbook.yaml
+										echo "    - nextcloud" >> ../playbook.yaml
 										RUNNCWITHVARS
-									else
-										echo "    - o-nc-a" >> ../playbook.yaml
-										RUNNCWITHVARS
-									fi
 								fi
 							else
-								ARGERROR
+								echo "    - nextcloud" >> ../playbook.yaml
+								RUNNCWITHVARS
 							fi
 						fi
 					fi

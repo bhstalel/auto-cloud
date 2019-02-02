@@ -68,10 +68,28 @@
     state: latest
   become: yes
 
-# Set up the SSL
+- name: Setting up SSLCertficate file
+  template:
+    src: "{{autocloud_dir}}/ssl/onlyoffice.crt"
+    dest: "/var/www/onlyoffice/ssl/onlyoffice.crt"
+  when: state == "l"
+
+- name: Setting up SSLCertificateKey file
+  template:
+    src: "{{autocloud_dir}}/ssl/onlyoffice.key"
+    dest: "/var/www/onlyoffice/ssl/onlyoffice.key"
+  when: state == "l"
+
 - name: Setting up SSL
   command: letsencrypt certonly --webroot --agree-tos --email {{email}} -d {{onlyoffice_domain}} -w /var/www/onlyoffice/
   become: yes
+  when: state == "o"
+
+- name: Setting up nextcloud Config file
+  template:
+    src: "{{autocloud_dir}}/roles/onlyoffice/templates/nc-config.php"
+    dest: "/var/www/nextcloud/config/config.php"
+  when: onlyoffice_with_nextcloud == 1 and state == "l"
 
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"
@@ -88,23 +106,28 @@
   when: rabbitmq_server_url != ""
   notify: restart-ds
 
-#- name: Create db if it not exist
-#  shell: "{{ psql }} -f {{ createdb_sql }}"
-#  notify: restart-ds
-
 - name: Creagting dhparam
   shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
   become: yes
 
 - name: Setting up Nginx Configuration
   template:
-    src: "{{autocloud_dir}}/roles/o-oo-n/templates/onlyoffice-documentserver.conf"
+    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-local.conf"
     dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
   become: yes
+  when: state == "l" and webserver == "n"
+
+- name: Setting up Nginx Configuration
+  template:
+    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-official.conf"
+    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+  become: yes
+  when: state == "o" and webserver == "n"
 
 - name: Restarting Nginx
   shell: systemctl restart nginx
   become: yes
+  when: webserver == "n"
 
 - name: Installing onlyoffice app
   shell: sudo -u www-data php occ app:install onlyoffice

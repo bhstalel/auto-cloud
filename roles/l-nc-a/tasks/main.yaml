@@ -1,2 +1,0 @@
-- name: Running NEXTCLOUD:LOCAL:APACHE2
-  shell: echo "LOCAL:APACHE:APACHE2"

@@ -1,6 +1,6 @@
 # +============================+
 
-nextcloud_domain: nc.com
+nextcloud_domain: nctest.dotfoss.com
 nextcloud_username: talel
 nextcloud_userpass: talelpass
 
@@ -57,7 +57,7 @@ onlyoffice_domain:
 
 # +============================+
 
-email: talel
+email:
 
 # +============================+
 
@@ -77,6 +77,6 @@ webserver: n
 
 # +============================+
 
-dbtype: mysql
+dbtype: p
 
 # +============================+
