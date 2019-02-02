@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # +============================+
+
 bold="\e[1m"
 underline="\e[4m"
 reset="\e[0m"
@@ -8,9 +9,22 @@ red="\e[31m"
 green="\e[32m"
 blue="\e[34m"
 yellow="\e[33m"
+
 # +============================+
+
 ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
 pressenter=`echo -e "$bold [PRESS ENTER TO CONTINUE] $reset"`
+
+# +============================+
+
+ncdbuser=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_username: //p'`
+ncdbpass=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_userpass: //p'`
+ncdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_domain: //p'`
+webserv=`cat ../group_vars/all.yaml | sed -n -e 's/^.*webserver: //p'`
+dbtype=`cat ../group_vars/all.yaml | sed -n -e 's/^.*dbtype: //p'`
+state=`cat ../group_vars/all.yaml | sed -n -e 's/^.*state: //p'`
+email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
+
 # +============================+
 
 # +============================+
@@ -27,7 +41,7 @@ echo -e "$bold |  + init                    |  $blue[reset variables]$reset"
 echo -e "$bold |                            |"
 echo -e "$bold |  + config                  |  $blue[show variables]$reset"
 echo -e "$bold |                            |"
-echo -e "$bold |  + plugins plug1,plug2,..  |  $blue[run plug1,plug2,..]$reset"
+echo -e "$bold |  + run plug1,plug2,..      |  $blue[run plug1,plug2,..]$reset"
 echo -e "$bold |                            |"
 echo -e "$bold |  + set var value           |  $blue[edit var's value]$reset"
 echo -e "$bold |                            |"
@@ -182,10 +196,113 @@ echo
 
 }
 
+
+RUNNCWITHVARS(){
+	echo
+	echo -e "$bold +================================+ "
+	echo -e "$bold | nextcloud_username: $ncdbuser "
+	echo -e "$bold | nextcloud_userpass: $ncdbpass "
+	echo -e "$bold | nextcloud_domain  : $ncdm "
+	echo -e "$bold | state             : $state "
+	echo -e "$bold | webserver         : $webserv "
+	echo -e "$bold | dbtype            : $dbtype "
+	if [ "$state" = "o" ]; then
+	echo -e "$bold | email             : $email "
+	fi
+	echo -e "$bold +================================+ "
+	read -p "$pressenter" en
+	ansible-playbook ../playbook.yaml
+}
+
+
+
+# +============================+
+# [       RUN NEXTCLOUD        ]
+RUNNEXTCLOUD(){
+	# +================================================================+
+	# | Testing: ncdbuser , ncdbpass , ncdm , webserv , state , dhtype |
+	# +================================================================+
+	if [ -z "$ncdbuser" ]; then
+		echo
+		echo -e "$bold [#] Please set [ncdbuser] for nextcloud $reset"
+		echo
+	else
+		if [ -z "$ncdbpass" ]; then
+			echo
+			echo -e "$bold [#] Please set [ncdbpass] for nextcloud $reset"
+			echo
+		else
+			if [ -z "$ncdm" ]; then
+				echo
+				echo -e "$bold [#] Please set [ncdm] for nextcloud $reset"
+				echo
+			else
+				if [ -z "$webserv" ]; then
+					echo
+					echo -e "$bold [#] Please set [webserv] for nextcloud $reset"
+					echo
+				else
+					if [ -z "$dbtype" ]; then
+						echo
+						echo -e "$bold [#] Please set [dhtype] for nextcloud $reset"
+						echo
+					else
+						if [ -z "$state" ]; then
+							echo
+							echo -e "$bold [#] Please set [state] for nextcloud $reset"
+							echo
+						else
+							if [ "$state" = "l" ] && [ "$webserv" = "n" ]; then
+								echo "    - l-nc-n" >> ../playbook.yaml
+								RUNNCWITHVARS
+							elif [ "$state" = "l" ] && [ "$webserv" = "a" ]; then
+								echo "    - l-nc-a" >> ../playbook.yaml
+								RUNNCWITHVARS
+							elif [ "$state" = "o" ]; then		
+								if [ -z "$email" ]; then
+									echo
+									echo -e "$bold [#] Please set [email] for nextcloud $reset"
+									echo
+								else
+									if [ "$webserv" = "n" ]; then
+										echo "    - o-nc-n" >> ../playbook.yaml
+										RUNNCWITHVARS
+									else
+										echo "    - o-nc-a" >> ../playbook.yaml
+										RUNNCWITHVARS
+									fi
+								fi
+							else
+								ARGERROR
+							fi
+						fi
+					fi
+				fi
+			fi
+		fi
+	fi
+}
+
+
 # +============================+
 # [       TEST PLUGINS         ]
 TESTPLUGINS(){
-echo "Testing this plugin: $1"
+char=","
+if [[ "$1" == *","* ]]; then
+	echo "There is ,"
+	echo "$1" | awk -F"${char}" '{print NF}'
+else
+	case "$1" in
+		"nc"|"nextcloud") RUNNEXTCLOUD ;;
+		"oo"|"onlyoffice") echo "Testing and running onlyoffice" ;;
+		"co"|"collabora") echo "Testing and running collabora" ;;
+		"t"|"talk") echo "Testing and running talk" ;;
+		"dr"|"draw") echo "Testing and running draw" ;;
+		"ow"|"ownpad") echo "Testing and running ownpad" ;;
+		*) PLUGERR ;;
+	esac
+fi
+
 }
 
 
@@ -195,6 +312,15 @@ ARGERROR(){
 echo
 echo -e "$bold [!] Error some where "
 echo -e " [#] See: bash autocloud.sh help $reset"
+echo
+}
+
+
+# +============================+
+# [         ARG ERROR          ]
+PLUGERR(){
+echo
+echo -e "$bold [#] Plugin not found $reset"
 echo
 }
 
@@ -314,7 +440,7 @@ elif [ $# -eq 1 ]; then
 		*) ARGERROR;;
 	esac
 elif [ $# -eq 2 ]; then
-	if [ "$1" != "plugins" ]; then
+	if [ "$1" != "run" ]; then
 		ARGERROR
 	else
 		TESTPLUGINS "$2"
