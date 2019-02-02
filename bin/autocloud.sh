@@ -14,6 +14,7 @@ yellow="\e[33m"
 
 ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
 pressenter=`echo -e "$bold [PRESS ENTER TO CONTINUE] $reset"`
+regex="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
 
 # +============================+
 
@@ -24,6 +25,7 @@ webserv=`cat ../group_vars/all.yaml | sed -n -e 's/^.*webserver: //p'`
 dbtype=`cat ../group_vars/all.yaml | sed -n -e 's/^.*dbtype: //p'`
 state=`cat ../group_vars/all.yaml | sed -n -e 's/^.*state: //p'`
 email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
+oodm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*onlyoffice_domain: //p'`
 
 # +============================+
 
@@ -197,24 +199,117 @@ echo
 }
 
 
-RUNNCWITHVARS(){
-	echo
-	echo -e "$bold +================================+ "
-	echo -e "$bold | nextcloud_username: $ncdbuser "
-	echo -e "$bold | nextcloud_userpass: $ncdbpass "
-	echo -e "$bold | nextcloud_domain  : $ncdm "
-	echo -e "$bold | state             : $state "
-	echo -e "$bold | webserver         : $webserv "
-	echo -e "$bold | dbtype            : $dbtype "
-	if [ "$state" = "o" ]; then
-	echo -e "$bold | email             : $email "
+# +============================+
+# [        TEST DOMAIN         ]
+TESTDOMAIN(){
+	while ! ping -c1 $1 &>/dev/null 
+	do 
+		return 1
+	done
+		return 0
+}
+
+
+# +============================+
+# [        TEST EMAIL          ]
+TESTEMAIL(){
+	if [[ "$email" =~ "$regex" ]]; then
+		return 0
 	fi
-	echo -e "$bold +================================+ "
-	read -p "$pressenter" en
+	return 1
+}
+
+
+# +============================+
+# [       RUN NEXTCLOUD        ]
+RUNNCWITHVARS(){
+	if [ "$state" = "o" ]; then
+		if ! TESTDOMAIN "$ncdm"; then
+			echo
+			echo -e "$bold [#] Cannot ping [$ncdm] $reset"
+			echo
+			exit 1
+		else
+			if TESTEMAIL "$email"; then
+				echo
+				echo -e "$bold [#] Email [$email] invalid $reset"
+				echo
+				exit 1
+			fi
+		fi
+	fi
 	clear
 	ansible-playbook ../playbook.yaml
 }
 
+
+# +============================+
+# [       RUN ONLYOFFICE       ]
+RUNOOWITHVARS(){
+	if [ "$state" = "o" ]; then
+		if ! TESTDOMAIN "$oodm"; then
+			echo
+			echo -e "$bold [#] Cannot ping [$oodm] $reset"
+			echo
+			exit 1
+		else
+			if TESTEMAIL "$email"; then
+				echo
+				echo -e "$bold [#] Email [$email] invalid $reset"
+				echo
+				exit 1
+			fi
+		fi
+	fi
+	clear
+	ansible-playbook ../playbook.yaml
+}
+
+
+# +============================+
+# [       RUN ONLYOFFICE       ]
+RUNONLYOFFICE(){
+	# +==================================================+
+	# | Testing: oodm , email , webserv , state , dbtype |
+	# +==================================================+
+	if [ -z "$oodm" ]; then
+		echo
+		echo -e "$bold [#] Please set [oodm] for onlyoffice $reset"
+		echo
+	else
+		if [ -z "$webserv" ]; then
+			echo
+			echo -e "$bold [#] Please set [webserv] for onlyoffice $reset"
+			echo
+		else
+			if [ -z "$dbtype" ]; then
+				echo
+				echo -e "$bold [#] Please set [dbtype] for onlyoffice $reset"
+				echo
+			else
+				if [ -z "$state" ]; then
+					echo
+					echo -e "$bold [#] Please set [state] for onlyoffice $reset"
+					echo
+				else
+					if [ "$state" = "o" ]; then
+						if [ -z "$email" ]; then
+							echo
+							echo -e "$bold [#] Please set [email] for onlyoffice $reset"
+							echo
+						else
+							echo "    - onlyoffice" >> ../playbook.yaml
+							RUNOOWITHVARS
+						fi
+					else
+						echo "    - onlyoffice" >> ../playbook.yaml
+						RUNOOWITHVARS
+					fi
+				fi
+			fi
+		fi
+	fi
+}
 
 
 # +============================+
@@ -285,7 +380,7 @@ if [[ "$1" == *","* ]]; then
 else
 	case "$1" in
 		"nc"|"nextcloud") RUNNEXTCLOUD ;;
-		"oo"|"onlyoffice") echo "Testing and running onlyoffice" ;;
+		"oo"|"onlyoffice") RUNONLYOFFICE ;;
 		"co"|"collabora") echo "Testing and running collabora" ;;
 		"t"|"talk") echo "Testing and running talk" ;;
 		"dr"|"draw") echo "Testing and running draw" ;;
@@ -356,8 +451,8 @@ sed -i '/nextcloud_userpass.*/c\'"$newline" ../group_vars/all.yaml
 # +============================+
 # [ Set: nextcloud_domain      ]
 SETNCDM(){
-newline="nextcloud_domain: $1"
-sed -i '/nextcloud_domain.*/c\'"$newline" ../group_vars/all.yaml
+	newline="nextcloud_domain: $1"
+	sed -i '/nextcloud_domain.*/c\'"$newline" ../group_vars/all.yaml
 }
 
 # +============================+

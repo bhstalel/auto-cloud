@@ -58,8 +58,8 @@
 
 - name: CREATING DB USER MYSQL 
   mysql_user:
-    name: {{nextcloud_username}}
-    password: {{nextcloud_userpass}}
+    name: "{{nextcloud_username}}"
+    password: "{{nextcloud_userpass}}"
     priv: '*.*:ALL,GRANT'
     state: present
   when: dbtype == "m"

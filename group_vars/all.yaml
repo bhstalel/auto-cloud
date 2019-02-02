@@ -51,9 +51,9 @@ package_name: onlyoffice-documentserver
 
 # +============================+
 
-onlyoffice_username: 
-onlyoffice_userpass: 
-onlyoffice_domain:
+onlyoffice_username: onlyoffice
+onlyoffice_userpass: onlyoffice
+onlyoffice_domain: ootest.dotfoss.com
 
 # +============================+
 
@@ -65,7 +65,7 @@ onlyoffice_with_nextcloud:
 
 # +============================+
 
-state:
+state: l
 
 # +============================+
 
@@ -73,10 +73,10 @@ collabora_domain:
 
 # +============================+
 
-webserver:
+webserver: n
 
 # +============================+
 
-dbtype:
+dbtype: p
 
 # +============================+
