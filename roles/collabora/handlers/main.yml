@@ -7,3 +7,15 @@
 #    name: collabra_online
 #    state: started
 #    restart: yes
+
+- name: restart apache2
+  service:
+    name: apache2
+    state: restarted
+  become: yes
+
+- name: rerstart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: yes

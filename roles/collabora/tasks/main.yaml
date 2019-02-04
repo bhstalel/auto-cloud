@@ -1,3 +1,39 @@
+- name: Checking apache
+  command: dpkg-query -l apache2
+  register: deb_check
+  when: webserver == "a"
+
+- name: Installing apache2
+  apt:
+    name: apache2
+    state: latest
+    update_cache: yes
+  become: yes
+  when: deb_check.stdout.find('no packages found') != -1 and webserver == "a"
+
+- name: Configuring apache2 
+  command: "{{ item }}"
+  with_items:
+    - a2enmod proxy
+    - a2enmod proxy_wstunnel
+    - a2enmod proxy_http
+    - a2enmod ssl
+  when: webserver == "a"
+  notify: restart apache2
+
+- name: Checking Nginx
+  command: dpkg-query -l nginx
+  register: deb_check
+  when: webserver == "n"
+
+- name: Installing Nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+  become: yes
+  when: deb_check.stdout.find('no packages found') != -1 and webserver == "n"
+
 - name: Including docker
   inlcude_tasks: "{{autocloud_dir}}/roles/docker/tasks/main.yml"
 
@@ -5,11 +41,13 @@
   stat:
     path: /usr/share/nginx/office
   register: office_check
+  when: webserver == "n"
 
 - name: Making office directory
   file:
-    path: sudo /usr/share/nginx/office
+    path: /usr/share/nginx/office
     state: directory 
+  become: yes
   when: office_check.stat.exists == false and webserver == "n"
 
 - name: Setting permissions
@@ -19,6 +57,54 @@
     group: www-data
     recurse: yes
   when: webserver == "n"
+
+- name: checking office directory
+  state:
+    path: /usr/share/apache2/office
+  register: office_check
+  when: webserver == "a"
+
+- name: making office directory
+  file:
+    path: /usr/share/apache2/office
+    state: directory
+  become: yes
+  when: webserver == "a"
+
+- name: Setting permissions
+  file:
+    dest: /usr/share/apache2/office
+    owner: www-data
+    group: www-data
+    recurse: yes
+  when: webserver == "a"
+
+- name: checking /etc/apache2/ssl
+  state:
+    path: /etc/apache2/ssl
+  register: ssl_check
+  when: webserver == "a" and state == "l"
+
+- name: creating ssl folder
+  file:
+    path: /etc/apache2/ssl
+    state: directory
+  become: yes
+  when: ssl_check.stat.exists == false and state == "l" and webserver == "a"
+
+- name: COPYING SSLCertificate FILE
+  template:
+    src: "ssl/collabora.crt"
+    dest: "/etc/apache2/ssl/collabora.crt"
+  become: yes
+  when: webserver == "a" and state == "l"
+
+- name: COPYING SSLCertificateKey FILE
+  template:
+    src: "ssl/collabora.key"
+    dest: "/etc/apache2/ssl/collabora.key"
+  become: yes
+  when: webserver == "a" and state == "l"
 
 - name: COPYING SSLCertificate FILE
   template:
@@ -48,17 +134,37 @@
   become: yes
   when: webserver == "n" and state == "o"
 
-- name: Creating SSL
-  command: sudo certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email {{email}} -d {{collabora_domain}}
+- name: Setting up apache conf file
+  template:
+    src: "{{autocloud_dir}}/roles/collabora/templates/collabora-apache-local.conf.tpl"
+    dest: "/etc/apache2/sites-available/{{collabora_domain}}.conf"
   become: yes
+  when: webserver == "a" and state == "l"
+
+- name: Setting up nginx conf file
+  template:
+    src: "{{autocloud_dir}}/roles/collabora/templates/collabora-apache-official.conf.tpl"
+    dest: "/etc/apache2/sites-available/{{collabora_domain}}.conf"
+  become: yes
+  when: webserver == "a" and state == "o"
+
+- name: Activating site
+  command: a2ensite collabora.conf
+  become: yes
+  notify: restart apache2
+  when: webserver == "a"
+
+- name: Creating SSL
+  command: certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email {{email}} -d {{collabora_domain}}
+  become: yes
+  notify: restart nginx
   when: webserver == "n" and state == "o"
 
-- name: Retarting nginx
-  service:
-    name: nginx
-    state: restarted
+- name: Creating SSL
+  command: certbot --apache --agree-tos --redirect --hsts --staple-ocsp --email {{email}} -d {{collabora_domain}}
   become: yes
-  when: webserver == "n"
+  notify: restart apache2
+  when: webserver == "a" and state == "o"
 
 - name: install collabora app
   shell: sudo -u www-data php occ app:install richdocuments

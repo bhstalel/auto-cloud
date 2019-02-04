@@ -12,6 +12,7 @@ yellow="\e[33m"
 
 # +============================+
 
+READY=()
 ch=`echo -e "$bold [$green choice$reset $bold]$ $reset "`
 pressenter=`echo -e "$bold [PRESS ENTER TO CONTINUE] $reset"`
 regex="^[a-z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
@@ -219,6 +220,33 @@ TESTEMAIL(){
 	return 1
 }
 
+# +============================+
+# [         RUN TALK           ]
+RUNTALK(){
+	if [ -z "$ncdm" ]; then
+		echo
+		echo -e "$bold [#] Please set [ncdm] for Talk $reset"
+		echo
+		return 1
+	else
+		if [ -z "$state" ]; then
+			echo
+			echo -e "$bold [#] Please set [state]$reset"
+			echo
+			return 1
+		else
+			if ! TESTDOMAIN "$ncdm"; then
+				echo
+				echo -e "$bold [#] Cannot ping [$ncdm] $reset"
+				echo
+				return 1
+			else
+				echo "    - t-nc" >> ../playbook.yaml
+				return 0
+			fi
+		fi
+	fi
+}
 
 # +============================+
 # [       RUN NEXTCLOUD        ]
@@ -228,18 +256,17 @@ RUNNCWITHVARS(){
 			echo
 			echo -e "$bold [#] Cannot ping [$ncdm] $reset"
 			echo
-			exit 1
+			return 1
 		else
 			if TESTEMAIL "$email"; then
 				echo
 				echo -e "$bold [#] Email [$email] invalid $reset"
 				echo
-				exit 1
+				return 1
 			fi
 		fi
 	fi
-	clear
-	ansible-playbook ../playbook.yaml
+	return 0
 }
 
 
@@ -251,18 +278,83 @@ RUNOOWITHVARS(){
 			echo
 			echo -e "$bold [#] Cannot ping [$oodm] $reset"
 			echo
-			exit 1
+			return 1
 		else
 			if TESTEMAIL "$email"; then
 				echo
 				echo -e "$bold [#] Email [$email] invalid $reset"
 				echo
-				exit 1
+				return 1
+			else
+				return 0
 			fi
 		fi
 	fi
-	clear
-	ansible-playbook ../playbook.yaml
+	return 0
+}
+
+
+# +============================+
+# [       RUN COLLABORA        ]
+RUNCOWITHVARS(){
+	if [ "$state" = "o" ]; then
+		if ! TESTDOMAIN "$codm"; then
+			echo
+			echo -e "$bold [#] Cannot ping [$codm] $reset"
+			echo
+			return 1
+		else
+			if TESTEMAIL "$email"; then
+				echo
+				echo -e "$bold [#] Email [$email] invalid $reset"
+				echo
+				return 1
+			fi
+		fi
+	fi
+	return 0
+}
+
+
+# +============================+
+# [       RUN COLLABORA        ]
+RUNCOLLABORA(){
+	if [ -z "$codm" ]; then
+		echo
+		echo -e "$bold [#] Please set [codm] for collabora $reset"
+		echo
+		return 1
+	else
+		if [ -z "$webserv" ]; then
+			echo
+			echo -e "$bold [#] Please set [webserv] for collabora $reset"
+			echo
+			return 1
+		else
+			if [ "$state" = "o" ]; then
+				if [ -z "$email" ]; then
+					echo
+					echo -e "$bold [#] Please set [email] for collabora $reset"
+					echo
+					return 1
+				else
+					if ! RUNCOWITHVARS; then
+						return 1
+					else
+						echo "    - collabora" >> ../playbook.yaml
+						return 0
+					fi
+				fi
+			else
+				if ! RUNCOWITHVARS; then
+					return 1
+				else
+					echo "    - collabora" >> ../playbook.yaml
+					return 0
+				fi
+			fi
+		fi
+	fi
 }
 
 
@@ -276,34 +368,47 @@ RUNONLYOFFICE(){
 		echo
 		echo -e "$bold [#] Please set [oodm] for onlyoffice $reset"
 		echo
+		return 1
 	else
 		if [ -z "$webserv" ]; then
 			echo
 			echo -e "$bold [#] Please set [webserv] for onlyoffice $reset"
 			echo
+			return 1
 		else
 			if [ -z "$dbtype" ]; then
 				echo
 				echo -e "$bold [#] Please set [dbtype] for onlyoffice $reset"
 				echo
+				return 1
 			else
 				if [ -z "$state" ]; then
 					echo
 					echo -e "$bold [#] Please set [state] for onlyoffice $reset"
 					echo
+					return 1
 				else
 					if [ "$state" = "o" ]; then
 						if [ -z "$email" ]; then
 							echo
 							echo -e "$bold [#] Please set [email] for onlyoffice $reset"
 							echo
+							return 1
 						else
-							echo "    - onlyoffice" >> ../playbook.yaml
-							RUNOOWITHVARS
+							if ! RUNOOWITHVARS; then
+								return 1
+							else
+								echo "    - onlyoffice" >> ../playbook.yaml
+								return 0
+							fi
 						fi
 					else
-						echo "    - onlyoffice" >> ../playbook.yaml
-						RUNOOWITHVARS
+						if ! RUNOOWITHVARS; then
+							return 1
+						else
+							echo "    - onlyoffice" >> ../playbook.yaml
+							return 0
+						fi
 					fi
 				fi
 			fi
@@ -322,44 +427,59 @@ RUNNEXTCLOUD(){
 		echo
 		echo -e "$bold [#] Please set [ncdbuser] for nextcloud $reset"
 		echo
+		return 1
 	else
 		if [ -z "$ncdbpass" ]; then
 			echo
 			echo -e "$bold [#] Please set [ncdbpass] for nextcloud $reset"
 			echo
+			return 1
 		else
 			if [ -z "$ncdm" ]; then
 				echo
 				echo -e "$bold [#] Please set [ncdm] for nextcloud $reset"
 				echo
+				return 1
 			else
 				if [ -z "$webserv" ]; then
 					echo
 					echo -e "$bold [#] Please set [webserv] for nextcloud $reset"
 					echo
+					return 1
 				else
 					if [ -z "$dbtype" ]; then
 						echo
 						echo -e "$bold [#] Please set [dhtype] for nextcloud $reset"
 						echo
+						return 1
 					else
 						if [ -z "$state" ]; then
 							echo
 							echo -e "$bold [#] Please set [state] for nextcloud $reset"
 							echo
+							return 1
 						else
 							if [ "$state" = "o" ]; then		
 								if [ -z "$email" ]; then
 									echo
 									echo -e "$bold [#] Please set [email] for nextcloud $reset"
 									echo
+									return 1
 								else
+									if ! RUNNCWITHVARS; then
+										return 1
+									else
 										echo "    - nextcloud" >> ../playbook.yaml
-										RUNNCWITHVARS
+										return 0
+									fi
 								fi
 							else
-								echo "    - nextcloud" >> ../playbook.yaml
-								RUNNCWITHVARS
+								if ! RUNNCWITHVARS; then
+									return 1
+								else
+									echo "    - nextcloud" >> ../playbook.yaml
+									return 0
+								fi
 							fi
 						fi
 					fi
@@ -379,10 +499,26 @@ if [[ "$1" == *","* ]]; then
 	echo "$1" | awk -F"${char}" '{print NF}'
 else
 	case "$1" in
-		"nc"|"nextcloud") RUNNEXTCLOUD ;;
-		"oo"|"onlyoffice") RUNONLYOFFICE ;;
-		"co"|"collabora") echo "Testing and running collabora" ;;
-		"t"|"talk") echo "Testing and running talk" ;;
+		"nc"|"nextcloud") 
+			if RUNNEXTCLOUD; then
+				ansible-playbook ../playbook.yaml
+			fi
+		;;
+		"oo"|"onlyoffice") 
+			if RUNONLYOFFICE; then
+				ansible-playbook ../playbook.yaml
+			fi
+		;;
+		"co"|"collabora") 
+		if RUNCOLLABORA; then
+			ansible-playbook ../playbook.yaml
+		fi
+		;;
+		"t"|"talk") 
+		if RUNTALK; then
+			ansible-playbook ../playbook.yaml
+		fi
+		;;
 		"dr"|"draw") echo "Testing and running draw" ;;
 		"ow"|"ownpad") echo "Testing and running ownpad" ;;
 		*) PLUGERR ;;
