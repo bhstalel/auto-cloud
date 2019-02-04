@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain:
-nextcloud_username:
-nextcloud_userpass:
+nextcloud_domain: nctest.dotfoss.com
+nextcloud_username: talel
+nextcloud_userpass: talelpass
 
 # +============================+
 
@@ -57,7 +57,7 @@ onlyoffice_domain:
 
 # +============================+
 
-email:
+email: bhstalel@gmail.com
 
 # +============================+
 
@@ -65,7 +65,7 @@ onlyoffice_with_nextcloud: 1
 
 # +============================+
 
-state:
+state: o
 
 # +============================+
 
@@ -73,11 +73,11 @@ collabora_domain:
 
 # +============================+
 
-webserver:
+webserver: n
 
 # +============================+
 
-dbtype:
+dbtype: m
 
 # +============================+
 
