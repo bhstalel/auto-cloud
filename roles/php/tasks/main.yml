@@ -42,11 +42,15 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart php-fpm
+
+- name: restart php-fpm
+  systemd:
+    name: "php{{php_version}}-fpm"
+    state: restarted
 
 - name: configure php
   copy:
-    src: "{{ item.file }}"
+    src: "{{autocloud_dir}}/roles/php/files/{{ item.file }}"
     dest: "{{ item.dest }}"
     owner: root
     group: root
@@ -56,7 +60,11 @@
     - { file: 'fpm.php.ini',  dest: '/etc/php/{{php_version}}/fpm/php.ini' }
     - { file: 'www.conf',     dest: '/etc/php/{{php_version}}/fpm/pool.d/www.conf' }
     - { file: 'php-fpm.conf', dest: '/etc/php/{{php_version}}/fpm/php-fpm.conf' }
-  notify: restart php-fpm
+
+- name: restart php-fpm
+  systemd:
+    name: "php{{php_version}}-fpm"
+    state: restarted
 
 - name: enable php-fpm
   systemd:

@@ -25,13 +25,10 @@
     enabled: True
   become: yes
 
-# +======================================+
-# +           POSTGRESQL                 +
-
 - name: Checking postgresql
   command: dpkq-query -l postgresql
   register: postgres_check
-  when: webserver == "p"
+  when: dbtype == "p"
 
 - name: INSTALLING POSTGRESQL
   apt:
@@ -55,12 +52,8 @@
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
   when: dbtype == "p"
 
-
-# +======================================+
-# +              MYSQL                   +
-
 - name: INCLUDE MYSQL 
-  include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yml"
+  include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yaml"
   when: dbtype == "m"
 
 - name: Creating db for nextcloud
@@ -84,8 +77,6 @@
     priv: "nextcloud.*:ALL,GRANT"
     state: present
   when: dbtype == "m"
-
-# +======================================+
 
 - name: DOWNLOADING NEXTCLOUD
   get_url:
