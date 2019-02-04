@@ -110,50 +110,56 @@
 - name: GENERATING NGINX CONF
   template:
     src: "roles/nextcloud/templates/nginx-local.conf.tpl"
-    dest: "/etc/nginx/sites-available/nextcloud.conf"
+    dest: "/etc/nginx/sites-available/{{nextcloud_domain}}.conf"
     owner: www-data
     group: www-data
   become: yes
-  when: webserver == "n" and state == "l"
+  when: state == "l" and webserver == "n"
 
 - name: GENERATING NGINX CONF
   template:
     src: "roles/nextcloud/templates/nginx-official.conf.tpl"
-    dest: "/etc/nginx/sites-available/nextcloud.conf"
+    dest: "/etc/nginx/sites-available/{{nextcloud_domain}}.conf"
     owner: www-data
     group: www-data
   become: yes
-  when: webserver == "n" and state == "o"
+  when: state == "o" and webserver == "n"
 
 - name: CHECKING /etc/nginx/ssl
   stat:
    path: /etc/nginx/ssl
   register: folder_stat
-  when: webserver == "n" and state == "l"
+  when: state == "l" and webserver == "n"
 
 - name: CREATING /etc/nginx/ssl
   file:
    path: /etc/nginx/ssl
    state: directory
-  when: folder_stat.results.stat.exists == false and webserver == "n" and state == "l"
+  when: state == "l" and folder_stat.stat.exists == false and webserver == "n"
 
 - name: COPYING SSLCertificate FILE
   template:
     src: "ssl/nextcloud.crt"
     dest: "/etc/nginx/ssl/nextcloud.crt"
   become: yes
-  when: webserver == "n" and state == "l"
+  when: state == "l" and webserver == "n"
 
 - name: COPYING SSLCertificateKey FILE
   template:
     src: "ssl/nextcloud.key"
     dest: "/etc/nginx/ssl/nextcloud.key"
   become: yes
-  when: webserver == "n" and state == "l"
+  when: state == "l" and webserver == "n"
 
 - name: Generating SSL Certificate
-  shell: sudo certbot --nginx -m {{email}} -d {{nextcloud_domain}}
+  shell: letsencrypt --authenticator standalone --installer nginx -d {{nextcloud_domain}} --email {{email}} --agree-tos -n --no-verify-ssl --pre-hook "sudo systemctl stop nginx" --post-hook "sudo systemctl start nginx" --redirect
   when: state == "o" and webserver == "n"
+
+- name: Changing values
+  shell: mv {{nextcloud_domain}}* {{nextcloud_domain}}
+    chdir: /etc/letsencrypt/live/
+  become: yes
+  when: state == "o"
 
 - name: ACTIVATING NEXTCLOUD SITE
   file: 
