@@ -25,13 +25,21 @@
     enabled: True
   become: yes
 
+# +======================================+
+# +           POSTGRESQL                 +
+
+- name: Checking postgresql
+  command: dpkq-query -l postgresql
+  register: postgres_check
+  when: webserver == "p"
+
 - name: INSTALLING POSTGRESQL
   apt:
     name: "postgresql"
     state: present
     update_cache: yes
   become: yes
-  when: dbtype == "p"
+  when: dbtype == "p" and postgres_check.stdout.find('no packages found') != -1
 
 - name: CREATING DB USER POSTGRESQL
   shell: sudo -u postgres psql -c "CREATE USER {{nextcloud_username}} WITH password '{{nextcloud_userpass}}'";
@@ -47,22 +55,37 @@
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
   when: dbtype == "p"
 
+
+# +======================================+
+# +              MYSQL                   +
+
 - name: INCLUDE MYSQL 
   include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yml"
+  when: dbtype == "m"
 
-- name: CREATING DATABASE MYSQL
+- name: Creating db for nextcloud
   mysql_db:
-    name: nextcloud
+    login_user: root
+    login_password: root
+    db: nextcloud
     state: present
   when: dbtype == "m"
 
-- name: CREATING DB USER MYSQL 
+- name: Creating user for nextcloud
+  mysql_user:
+    user: "{{nextcloud_username}}"
+    password: "{{nextcloud_userpass}}"
+    state: present
+  when: dbtype == "m"
+
+- name: giving permissions
   mysql_user:
     name: "{{nextcloud_username}}"
-    password: "{{nextcloud_userpass}}"
-    priv: '*.*:ALL,GRANT'
+    priv: "nextcloud.*:ALL,GRANT"
     state: present
   when: dbtype == "m"
+
+# +======================================+
 
 - name: DOWNLOADING NEXTCLOUD
   get_url:

@@ -1,0 +1,67 @@
+- name: Cloning webapp
+  git:
+    repo: jgraph@github.com:drawio.git
+    dest: /tmp
+  become: yes
+
+- name: Copying webapp
+  command: cp -r /tmp/drawio/src/main/webapp /var/www/
+  become: yes
+
+- name: Setting owner
+  command: chown www-data:www-data /var/www/webapp
+  become: yes
+
+- name: Setting up NGINX config file
+  template:
+    src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-local.conf.tpl"
+    dest: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+  become: yes
+  when: webserv == "n" and state == "l"
+
+- name: Setting up NGINX config file
+  template:
+    src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-official.conf.tpl"
+    dest: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+  become: yes
+  when: webserv == "n" and state == "o"
+
+- name: Activating site
+  file:
+    src: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+    dest: "/etc/nginx/sites-enabled/{{draw_domain}}.conf"
+    state: link
+  become: yes
+  when: webserv == "n"
+
+- name: Checking ssl folder
+  stat:
+    path: /var/www/webapp/ssl
+  register: ssl_check
+  when: state == "l"
+
+- name: Creating ssl folder
+  file:
+    path: /var/www/webapp/ssl
+    state: directory
+  become: yes
+  when: state == "l"
+
+- name: Setting up SSLCertificate file
+  template:
+    src: "ssl/draw.crt"
+    dest: "/var/www/webapp/ssl/draw.crt"
+  become: yes
+  when: state == "l"
+
+- name: Setting up SSLCertificateKey file
+  template:
+    src: "ssl/draw.key"
+    dest: "/var/www/webapp/draw.key"
+  become: yes
+  when: state == "l"
+
+- name: Generating SSL Certificate
+  shell: sudo certbot --nginx -m {{email}} -d {{draw_domain}}
+  when: state == "o" and webserver == "n"
+

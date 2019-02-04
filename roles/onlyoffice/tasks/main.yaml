@@ -32,7 +32,68 @@
     question: onlyoffice/accepted-onlyoffice-license
     value: 'true'
     vtype: boolean
-    
+
+# +======================================+
+# +           POSTGRESQL                 +
+
+- name: Checking postgresql
+  command: dpkq-query -l postgresql
+  register: postgres_check
+  when: webserver == "p"
+
+- name: INSTALLING POSTGRESQL
+  apt:
+    name: "postgresql"
+    state: present
+    update_cache: yes
+  become: yes
+  when: dbtype == "p" and postgres_check.stdout.find('no packages found') != -1
+
+- name: CREATING DB USER POSTGRESQL
+  shell: sudo -u postgres psql -c "CREATE USER {{onlyoffice_username}} WITH password '{{onlyoffice_userpass}}'";
+  become: yes
+  register: out
+  failed_when: out.rc != 0 and 'already exists' not in out.stderr
+  when: dbtype == "p"
+
+- name: CREATING DB POSTGRESQL
+  shell: sudo -u postgres psql -c "CREATE DATABASE onlyoffice WITH owner '{{onlyoffice_username}}';";
+  become: yes
+  register: out
+  failed_when: out.rc != 0 and 'already exists' not in out.stderr
+  when: dbtype == "p"
+
+# +======================================+
+# +              MYSQL                   +
+
+- name: INCLUDE MYSQL 
+  include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yml"
+  when: dbtype == "m"
+
+- name: Creating db for onlyoffice
+  mysql_db:
+    login_user: root
+    login_password: root
+    db: onlyoffice
+    state: present
+  when: dbtype == "m"
+
+- name: Creating user for nextcloud
+  mysql_user:
+    user: "{{onlyoffice_username}}"
+    password: "{{onlyoffice_userpass}}"
+    state: present
+  when: dbtype == "m"
+
+- name: giving permissions
+  mysql_user:
+    name: "{{onlyoffice_username}}"
+    priv: "onlyoffice.*:ALL,GRANT"
+    state: present
+  when: dbtype == "m"
+
+# +======================================+
+
 - name: Set up db host name
   debconf:
     name: "{{ package_name }}"
@@ -67,6 +128,19 @@
     update_cache: yes
     state: latest
   become: yes
+
+- name: Checking folder
+  stat:
+    path: /var/www/onlyoffice/ssl
+  register: ssloffice_check
+  when: state == "l"
+
+- name: Creating ssl folder
+  file:
+    path: /var/www/onlyoffice/ssl
+    state: directory
+  become: yes
+  when: state == "l"
 
 - name: Setting up SSLCertficate file
   template:
@@ -129,11 +203,16 @@
   become: yes
   when: webserver == "n"
 
+- name: Checking onlyoffice app
+  command: sudo -u www-data php occ app:list
+  register: check_app
+     chdir: /var/www/nextcloud
+
 - name: Installing onlyoffice app
   shell: sudo -u www-data php occ app:install onlyoffice
   args:
     chdir: /var/wwww/nextcloud/
-  when: onlyoffice_with_nextcloud == 1
+  when: onlyoffice_with_nextcloud == 1 and check_app.stdout.find('onlyoffice') != -1
 
 - name: Enabling onlyoffice app
   shell: sudo -u www-data php occ app:enable onlyoffice
