@@ -687,7 +687,7 @@ sed -i '/collabora_domain.*/c\'"$newline" ../group_vars/all.yaml
 
 # +============================+
 # [ Set: draw_domain           ]
-SETCODM(){
+SETDRDM(){
 newline="draw_domain: $1"
 sed -i '/draw_domain.*/c\'"$newline" ../group_vars/all.yaml
 }
@@ -769,6 +769,7 @@ elif [ $# -eq 3 ]; then
 			"ncdm") SETNCDM "$3";;
 			"oodm") SETOODM "$3";;
 			"codm") SETCODM "$3";;
+			"drdm") SETDRDM "$3";;
 			"email") SETEMAIL "$3";;
 			"webserv") SETWEBSERV "$3";;
 			"dbtype") SETDBTYPE "$3";;
