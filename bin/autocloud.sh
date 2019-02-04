@@ -27,6 +27,7 @@ dbtype=`cat ../group_vars/all.yaml | sed -n -e 's/^.*dbtype: //p'`
 state=`cat ../group_vars/all.yaml | sed -n -e 's/^.*state: //p'`
 email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
 oodm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*onlyoffice_domain: //p'`
+drdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*draw_domain: //p'`
 
 # +============================+
 
@@ -62,6 +63,8 @@ echo -e "$bold |  + oodm                    | $blue [onlyoffice_domain]$reset"
 echo -e "$bold |                            |"
 echo -e "$bold |  + codm                    | $blue [collabora_domain]$reset"
 echo -e "$bold |                            |"
+echo -e "$bold |  + drdm                    | $blue [draw_domain]$reset"
+echo -e "$bold |                            |"
 echo -e "$bold |  + email                   | $blue [email]$reset"
 echo -e "$bold |                            |"
 echo -e "$bold |  + webserver               | $blue [a=apache,n=nginx]$reset"
@@ -88,8 +91,6 @@ echo -e "$bold |  + Talk                    |"
 echo -e "$bold |                            |"
 echo -e "$bold |  + Draw                    |"
 echo -e "$bold |                            |"
-echo -e "$bold |  + Ownpad                  |"
-echo -e "$bold |                            |"
 echo -e "$bold +============================+$reset"
 echo
 }
@@ -115,6 +116,8 @@ newline="email:"
 sed -i '/email.*/c\'"$newline" ../group_vars/all.yaml
 newline="dbtype:"
 sed -i '/dbtype.*/c\'"$newline" ../group_vars/all.yaml
+newline="draw_domain:"
+sed -i '/draw_domain.*/c\'"$newline" ../group_vars/all.yaml
 }
 
 
@@ -168,6 +171,14 @@ if [ -z "$codm" ]; then
 	echo -e "$bold | + collabora_domain     :         $red[NOT SET]$reset"
 else
 	echo -e "$bold | + collabora_domain     :         $blue$codm$reset"
+fi
+
+echo -e "$bold |                        |"
+drdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*draw_domain: //p'`
+if [ -z "$codm" ]; then
+	echo -e "$bold | + draw_domain          :         $red[NOT SET]$reset"
+else
+	echo -e "$bold | + draw_domain          :         $blue$drdm$reset"
 fi
 
 echo -e "$bold |                        |"
@@ -315,6 +326,27 @@ RUNCOWITHVARS(){
 	return 0
 }
 
+# +============================+
+# [       RUN COLLABORA        ]
+RUNDRWITHVARS(){
+	if [ "$state" = "o" ]; then
+		if ! TESTDOMAIN "$drdm"; then
+			echo
+			echo -e "$bold [#] Cannot ping [$drdm] $reset"
+			echo
+			return 1
+		else
+			if TESTEMAIL "$email"; then
+				echo
+				echo -e "$bold [#] Email [$email] invalid $reset"
+				echo
+				return 1
+			fi
+		fi
+	fi
+	return 0
+}
+
 
 # +============================+
 # [       RUN COLLABORA        ]
@@ -415,6 +447,50 @@ RUNONLYOFFICE(){
 		fi
 	fi
 }
+
+
+# +============================+
+# [         RUN DRAW           ]
+RUNDRAW(){
+	if [ -z "$drdm" ]; then
+		echo
+		echo -e "$bold [#] Please set [drdm] for draw $reset"
+		echo
+		return 1
+	else
+		if [ -z "$state" ]; then
+			echo
+			echo -e "$bold [#] Please set [state] for draw $reset"
+			echo
+			return 1
+		else
+			if [ "$state" = "o" ]; then		
+				if [ -z "$email" ]; then
+					echo
+					echo -e "$bold [#] Please set [email] for draw $reset"
+					echo
+					return 1
+				else
+					if ! RUNDRWITHVARS; then
+						return 1
+					else
+					echo "    - draw" >> ../playbook.yaml
+					return 0
+				fi
+			fi
+			else
+				if ! RUNDRWITHVARS; then
+					return 1
+				else
+					echo "    - draw" >> ../playbook.yaml
+					return 0
+				fi
+			fi
+		fi
+
+	fi
+}
+
 
 
 # +============================+
@@ -519,7 +595,11 @@ else
 			ansible-playbook ../playbook.yaml
 		fi
 		;;
-		"dr"|"draw") echo "Testing and running draw" ;;
+		"dr"|"draw") 
+		if RUNDRAW; then
+			ansible-playbook ../playbook.yaml
+		fi
+		;;
 		"ow"|"ownpad") echo "Testing and running ownpad" ;;
 		*) PLUGERR ;;
 	esac
@@ -603,6 +683,13 @@ sed -i '/onlyoffice_domain.*/c\'"$newline" ../group_vars/all.yaml
 SETCODM(){
 newline="collabora_domain: $1"
 sed -i '/collabora_domain.*/c\'"$newline" ../group_vars/all.yaml
+}
+
+# +============================+
+# [ Set: draw_domain           ]
+SETCODM(){
+newline="draw_domain: $1"
+sed -i '/draw_domain.*/c\'"$newline" ../group_vars/all.yaml
 }
 
 # +============================+

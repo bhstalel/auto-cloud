@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain: benihassennnn.gov
-nextcloud_username: talel
-nextcloud_userpass: talelpass
+nextcloud_domain:
+nextcloud_username:
+nextcloud_userpass:
 
 # +============================+
 
@@ -57,15 +57,15 @@ onlyoffice_domain:
 
 # +============================+
 
-email: talel@blabla
+email:
 
 # +============================+
 
-onlyoffice_with_nextcloud: 
+onlyoffice_with_nextcloud: 1 
 
 # +============================+
 
-state: l
+state:
 
 # +============================+
 
@@ -73,10 +73,14 @@ collabora_domain:
 
 # +============================+
 
-webserver: n
+webserver:
 
 # +============================+
 
-dbtype: p
+dbtype:
+
+# +============================+
+
+draw_domain:
 
 # +============================+

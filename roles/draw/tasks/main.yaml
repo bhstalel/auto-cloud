@@ -15,24 +15,24 @@
 - name: Setting up NGINX config file
   template:
     src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-local.conf.tpl"
-    dest: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+    dest: "/etc/nginx/conf.d/{{draw_domain}}.conf"
   become: yes
   when: webserv == "n" and state == "l"
 
 - name: Setting up NGINX config file
   template:
     src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-official.conf.tpl"
-    dest: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+    dest: "/etc/nginx/conf.d/{{draw_domain}}.conf"
   become: yes
   when: webserv == "n" and state == "o"
 
-- name: Activating site
-  file:
-    src: "/etc/nginx/sites-available/{{draw_domain}}.conf"
-    dest: "/etc/nginx/sites-enabled/{{draw_domain}}.conf"
-    state: link
-  become: yes
-  when: webserv == "n"
+#- name: Activating site
+#  file:
+#    src: "/etc/nginx/sites-available/{{draw_domain}}.conf"
+#    dest: "/etc/nginx/sites-enabled/{{draw_domain}}.conf"
+#    state: link
+#  become: yes
+#  when: webserv == "n"
 
 - name: Checking ssl folder
   stat:
@@ -62,6 +62,5 @@
   when: state == "l"
 
 - name: Generating SSL Certificate
-  shell: sudo certbot --nginx -m {{email}} -d {{draw_domain}}
+  shell: letsencrypt --authenticator standalone --installer nginx -d {{draw_domain}} --email {{email}} --agree-tos -n --no-verify-ssl --redirect
   when: state == "o" and webserver == "n"
-
