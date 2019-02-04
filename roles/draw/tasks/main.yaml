@@ -1,7 +1,7 @@
 - name: Cloning webapp
   git:
-    repo: jgraph@github.com:drawio.git
-    dest: /tmp
+    repo: 'https://github.com/jgraph/drawio.git'
+    dest: /tmp/drawio
   become: yes
 
 - name: Copying webapp
@@ -17,22 +17,14 @@
     src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-local.conf.tpl"
     dest: "/etc/nginx/conf.d/{{draw_domain}}.conf"
   become: yes
-  when: webserv == "n" and state == "l"
+  when: webserver == "n" and state == "l"
 
 - name: Setting up NGINX config file
   template:
     src: "{{autocloud_dir}}/roles/draw/templates/draw-nginx-official.conf.tpl"
     dest: "/etc/nginx/conf.d/{{draw_domain}}.conf"
   become: yes
-  when: webserv == "n" and state == "o"
-
-#- name: Activating site
-#  file:
-#    src: "/etc/nginx/sites-available/{{draw_domain}}.conf"
-#    dest: "/etc/nginx/sites-enabled/{{draw_domain}}.conf"
-#    state: link
-#  become: yes
-#  when: webserv == "n"
+  when: webserver == "n" and state == "o"
 
 - name: Checking ssl folder
   stat:

@@ -154,10 +154,29 @@
     dest: "/var/www/onlyoffice/ssl/onlyoffice.key"
   when: state == "l"
 
+- name: Setting up Nginx Configuration
+  template:
+    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-local.conf"
+    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+  become: yes
+  when: state == "l" and webserver == "n"
+
+- name: Setting up Nginx Configuration
+  template:
+    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-official.conf"
+    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+  become: yes
+  when: state == "o" and webserver == "n"
+
 - name: Setting up SSL
   command: letsencrypt certonly --webroot --agree-tos --email {{email}} -d {{onlyoffice_domain}} -w /var/www/onlyoffice/
   become: yes
   when: state == "o"
+
+- name: Restarting Nginx
+  shell: systemctl restart nginx
+  become: yes
+  when: webserver == "n"
 
 - name: Setting up nextcloud Config file
   template:
@@ -183,25 +202,6 @@
 - name: Creagting dhparam
   shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
   become: yes
-
-- name: Setting up Nginx Configuration
-  template:
-    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-local.conf"
-    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
-  become: yes
-  when: state == "l" and webserver == "n"
-
-- name: Setting up Nginx Configuration
-  template:
-    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-official.conf"
-    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
-  become: yes
-  when: state == "o" and webserver == "n"
-
-- name: Restarting Nginx
-  shell: systemctl restart nginx
-  become: yes
-  when: webserver == "n"
 
 - name: Checking onlyoffice app
   command: sudo -u www-data php occ app:list
