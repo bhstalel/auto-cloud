@@ -110,7 +110,7 @@
 - name: GENERATING NGINX CONF
   template:
     src: "roles/nextcloud/templates/nginx-local.conf.tpl"
-    dest: "/etc/nginx/sites-available/{{nextcloud_domain}}.conf"
+    dest: "/etc/nginx/conf.d/{{nextcloud_domain}}.conf"
     owner: www-data
     group: www-data
   become: yes
@@ -119,7 +119,7 @@
 - name: GENERATING NGINX CONF
   template:
     src: "roles/nextcloud/templates/nginx-official.conf.tpl"
-    dest: "/etc/nginx/sites-available/{{nextcloud_domain}}.conf"
+    dest: "/etc/nginx/conf.d/{{nextcloud_domain}}.conf"
     owner: www-data
     group: www-data
   become: yes
@@ -151,22 +151,29 @@
   become: yes
   when: state == "l" and webserver == "n"
 
+- name: STOPPING NGINX
+  shell: systemctl stop nginx
+  when: webserver == "n"
+
 - name: Generating SSL Certificate
-  shell: letsencrypt --authenticator standalone --installer nginx -d {{nextcloud_domain}} --email {{email}} --agree-tos -n --no-verify-ssl --pre-hook "sudo systemctl stop nginx" --post-hook "sudo systemctl start nginx" --redirect
+  shell: letsencrypt --authenticator standalone --installer nginx -d {{nextcloud_domain}} --email {{email}} --agree-tos -n --no-verify-ssl --redirect
   when: state == "o" and webserver == "n"
 
-- name: Changing values
-  shell: mv {{nextcloud_domain}}* {{nextcloud_domain}}
-    chdir: /etc/letsencrypt/live/
-  become: yes
-  when: state == "o"
+#- name: Changing values
+#  shell: mv /etc/letsencrypt/live/{{nextcloud_domain}}* /etc/letsencrypt/live/{{nextcloud_domain}}
+#  become: yes
+#  when: state == "o"
 
-- name: ACTIVATING NEXTCLOUD SITE
-  file: 
-    src: "/etc/nginx/sites-available/nextcloud.conf"
-    dest: "/etc/nginx/sites-enabled/nextcloud.conf"
-    state: link
+- name: STARTING NGINX
+  shell: systemctl start nginx
   when: webserver == "n"
+
+#- name: ACTIVATING NEXTCLOUD SITE
+#  file: 
+#    src: "/etc/nginx/sites-available/nextcloud.conf"
+#    dest: "/etc/nginx/sites-enabled/nextcloud.conf"
+#    state: link
+#  when: webserver == "n"
 
 - name: RESTARTING NGINX
   shell: systemctl restart nginx
