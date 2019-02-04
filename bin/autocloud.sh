@@ -175,7 +175,7 @@ fi
 
 echo -e "$bold |                        |"
 drdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*draw_domain: //p'`
-if [ -z "$codm" ]; then
+if [ -z "$drdm" ]; then
 	echo -e "$bold | + draw_domain          :         $red[NOT SET]$reset"
 else
 	echo -e "$bold | + draw_domain          :         $blue$drdm$reset"
