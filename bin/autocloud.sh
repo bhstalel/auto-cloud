@@ -1,5 +1,5 @@
 #!/bin/bash
-# EDITED xxxxxxxxxxxxxxxx
+
 # +============================+
 
 bold="\e[1m"
