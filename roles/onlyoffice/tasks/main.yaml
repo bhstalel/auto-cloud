@@ -1,3 +1,12 @@
+- name: Install nodejs TLS
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  become: yes
+
+- name: Install the nodejs,redis,rabbitmq
+  apt:
+    name: ['nodejs','nginx-extras','redis-server','rabbitmq-server']
+    state: present  
+
 - name: Add onlyoffice gpg keys
   apt_key:
     keyserver: "keyserver.ubuntu.com"
@@ -36,39 +45,39 @@
 # +======================================+
 # +           POSTGRESQL                 +
 
-- name: Checking postgresql
-  command: dpkq-query -l postgresql
-  register: postgres_check
-  when: webserver == "p"
-
 - name: INSTALLING POSTGRESQL
   apt:
     name: "postgresql"
     state: present
     update_cache: yes
   become: yes
-  when: dbtype == "p" and postgres_check.stdout.find('no packages found') != -1
+  when: dbtype == "p"
 
-- name: CREATING DB USER POSTGRESQL
-  shell: sudo -u postgres psql -c "CREATE USER {{onlyoffice_username}} WITH password '{{onlyoffice_userpass}}'";
+- name: Creating database
+  shell: sudo -u postgres psql -c "CREATE DATABASE onlyoffice;"
   become: yes
   register: out
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
   when: dbtype == "p"
 
-- name: CREATING DB POSTGRESQL
-  shell: sudo -u postgres psql -c "CREATE DATABASE onlyoffice WITH owner '{{onlyoffice_username}}';";
+- name: Creating user
+  shell: sudo -u postgres psql -c "CREATE USER onlyoffice WITH password 'onlyoffice';"
   become: yes
   register: out
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
+  when: dbtype == "p"
+
+- name: Granting access
+  shell: sudo -u postgres psql -c "GRANT ALL privileges ON DATABASE onlyoffice TO onlyoffice;"
+  become: yes
   when: dbtype == "p"
 
 # +======================================+
 # +              MYSQL                   +
 
 - name: INCLUDE MYSQL 
-  include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yml"
-  when: dbtype == "m"
+  include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yaml"
+  when: dbtype == "k"
 
 - name: Creating db for onlyoffice
   mysql_db:
@@ -76,21 +85,21 @@
     login_password: root
     db: onlyoffice
     state: present
-  when: dbtype == "m"
+  when: dbtype == "k"
 
-- name: Creating user for nextcloud
+- name: Creating user for onlyoffice
   mysql_user:
-    user: "{{onlyoffice_username}}"
-    password: "{{onlyoffice_userpass}}"
+    user: onlyoffice
+    password: onlyoffice
     state: present
-  when: dbtype == "m"
+  when: dbtype == "k"
 
 - name: giving permissions
   mysql_user:
-    name: "{{onlyoffice_username}}"
+    name: onlyoffice
     priv: "onlyoffice.*:ALL,GRANT"
     state: present
-  when: dbtype == "m"
+  when: dbtype == "k"
 
 # +======================================+
 
@@ -112,14 +121,14 @@
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-user
-    value: "{{onlyoffice_username}}"
+    value: onlyoffice
     vtype: string
 
 - name: Set up db user password
   debconf:
     name: "{{ package_name }}"
     question: onlyoffice/db-pwd
-    value: "{{onlyoffice_userpass}}"
+    value: onlyoffice
     vtype: password
 
 - name: Install documentserver
@@ -161,15 +170,20 @@
   become: yes
   when: state == "l" and webserver == "n"
 
-- name: Setting up Nginx Configuration
-  template:
-    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-official.conf"
-    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+#- name: Setting up Nginx Configuration
+#  template:
+#    src: "{{autocloud_dir}}/roles/onlyoffice/templates/onlyoffice-documentserver-official.conf"
+#    dest: "/etc/nginx/conf.d/onlyoffice-documentserver.conf"
+#  become: yes
+#  when: state == "o" and webserver == "n"
+
+- name: Stop nginx
+  shell: systemctl stop nginx
   become: yes
-  when: state == "o" and webserver == "n"
+  when: webserver == "n"
 
 - name: Setting up SSL
-  command: letsencrypt certonly --webroot --agree-tos --email {{email}} -d {{onlyoffice_domain}} -w /var/www/onlyoffice/
+  command: letsencrypt --authenticator standalone --installer nginx -d {{onlyoffice_domain}} --email {{email}}--agree-tos -n --no-verify-ssl --redirect
   become: yes
   when: state == "o"
 
@@ -203,16 +217,11 @@
   shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
   become: yes
 
-- name: Checking onlyoffice app
-  command: sudo -u www-data php occ app:list
-  register: check_app
-     chdir: /var/www/nextcloud
-
 - name: Installing onlyoffice app
   shell: sudo -u www-data php occ app:install onlyoffice
   args:
     chdir: /var/wwww/nextcloud/
-  when: onlyoffice_with_nextcloud == 1 and check_app.stdout.find('onlyoffice') != -1
+  when: onlyoffice_with_nextcloud == 1
 
 - name: Enabling onlyoffice app
   shell: sudo -u www-data php occ app:enable onlyoffice

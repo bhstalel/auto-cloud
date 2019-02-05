@@ -28,6 +28,7 @@ state=`cat ../group_vars/all.yaml | sed -n -e 's/^.*state: //p'`
 email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
 oodm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*onlyoffice_domain: //p'`
 drdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*draw_domain: //p'`
+codm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*collabora_domain: //p'`
 
 # +============================+
 

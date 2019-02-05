@@ -25,31 +25,31 @@
     enabled: True
   become: yes
 
-- name: Checking postgresql
-  command: dpkq-query -l postgresql
-  register: postgres_check
-  when: dbtype == "p"
-
 - name: INSTALLING POSTGRESQL
   apt:
     name: "postgresql"
     state: present
     update_cache: yes
   become: yes
-  when: dbtype == "p" and postgres_check.stdout.find('no packages found') != -1
+  when: dbtype == "p"
 
-- name: CREATING DB USER POSTGRESQL
-  shell: sudo -u postgres psql -c "CREATE USER {{nextcloud_username}} WITH password '{{nextcloud_userpass}}'";
+- name: Creating database
+  shell: sudo -u postgres psql -c "CREATE DATABASE nextcloud;"
   become: yes
   register: out
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
   when: dbtype == "p"
 
-- name: CREATING DB POSTGRESQL
-  shell: sudo -u postgres psql -c "CREATE DATABASE nextcloud WITH owner '{{nextcloud_username}}';";
+- name: Creating user
+  shell: sudo -u postgres psql -c "CREATE USER {{nextcloud_username}} WITH password '{{nextcloud_userpass}}';"
   become: yes
   register: out
   failed_when: out.rc != 0 and 'already exists' not in out.stderr
+  when: dbtype == "p"
+
+- name: Granting access
+  shell: sudo -u postgres psql -c "GRANT ALL privileges ON DATABASE nextcloud TO {{nextcloud_username}};"
+  become: yes
   when: dbtype == "p"
 
 - name: INCLUDE MYSQL 

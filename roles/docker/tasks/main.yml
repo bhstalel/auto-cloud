@@ -1,5 +1,3 @@
----
-
 - name: remove ubuntu repo docker
   apt:
     name: "{{ item }}"
@@ -37,7 +35,6 @@
 
 - name: add additional docker repo
   command: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  update_cache: yes
 
 - name: install docker
   apt:

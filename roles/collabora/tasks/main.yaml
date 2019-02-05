@@ -9,7 +9,7 @@
     state: latest
     update_cache: yes
   become: yes
-  when: deb_check.stdout.find('no packages found') != -1 and webserver == "a"
+  when: webserver == "a" and deb_check.stdout.find('no packages found') != -1
 
 - name: Configuring apache2 
   command: "{{ item }}"
@@ -21,21 +21,16 @@
   when: webserver == "a"
   notify: restart apache2
 
-- name: Checking Nginx
-  command: dpkg-query -l nginx
-  register: deb_check
-  when: webserver == "n"
-
 - name: Installing Nginx
   apt:
     name: nginx
     state: latest
     update_cache: yes
   become: yes
-  when: deb_check.stdout.find('no packages found') != -1 and webserver == "n"
+  when: webserver == "n"
 
 - name: Including docker
-  inlcude_tasks: "{{autocloud_dir}}/roles/docker/tasks/main.yml"
+  include_tasks: "{{autocloud_dir}}/roles/docker/tasks/main.yml"
 
 - name: checking office directory
   stat:
@@ -48,7 +43,7 @@
     path: /usr/share/nginx/office
     state: directory 
   become: yes
-  when: office_check.stat.exists == false and webserver == "n"
+  when: webserver == "n" and office_check.stat.exists == false
 
 - name: Setting permissions
   file:
@@ -59,7 +54,7 @@
   when: webserver == "n"
 
 - name: checking office directory
-  state:
+  stat:
     path: /usr/share/apache2/office
   register: office_check
   when: webserver == "a"
@@ -80,7 +75,7 @@
   when: webserver == "a"
 
 - name: checking /etc/apache2/ssl
-  state:
+  stat:
     path: /etc/apache2/ssl
   register: ssl_check
   when: webserver == "a" and state == "l"
@@ -90,7 +85,7 @@
     path: /etc/apache2/ssl
     state: directory
   become: yes
-  when: ssl_check.stat.exists == false and state == "l" and webserver == "a"
+  when: webserver == "a" and state == "l" and ssl_check.stat.exists == false
 
 - name: COPYING SSLCertificate FILE
   template:
