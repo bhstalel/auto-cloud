@@ -9,8 +9,8 @@ server {
     listen 443 ssl; # managed by Certbot
     ssl_certificate /var/www/webapp/ssl/draw.crt; # managed by Certbot
     ssl_certificate_key /var/www/webapp/ssl/draw.key; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
 }
 

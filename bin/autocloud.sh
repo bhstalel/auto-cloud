@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# EDITED xxxxxxxxxxxxxxxx
 # +============================+
 
 bold="\e[1m"
@@ -215,7 +215,7 @@ echo
 # +============================+
 # [        TEST DOMAIN         ]
 TESTDOMAIN(){
-	while ! ping -c1 $1 &>/dev/null 
+	while ! ping -c1 $1 &>/dev/null
 	do 
 		return 1
 	done

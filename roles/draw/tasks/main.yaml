@@ -49,10 +49,29 @@
 - name: Setting up SSLCertificateKey file
   template:
     src: "ssl/draw.key"
-    dest: "/var/www/webapp/draw.key"
+    dest: "/var/www/webapp/ssl/draw.key"
   become: yes
   when: state == "l"
 
 - name: Generating SSL Certificate
   shell: letsencrypt --authenticator standalone --installer nginx -d {{draw_domain}} --email {{email}} --agree-tos -n --no-verify-ssl --redirect
   when: state == "o" and webserver == "n"
+
+- name: Installing nextcloud-DrawIO app
+  shell: sudo -u www-data php occ app:install drawio
+  args:
+    chdir: /var/www/nextcloud/
+
+- name: Enabling the app
+  shell: sudo -u www-data php occ app:enable drawio
+  args:
+    chdir: /var/www/nextcloud/
+
+- name: Embedding the URL
+  shell: sudo -u www-data php occ config:app:set drawio wopi_url --value https://{{ draw_domain }}
+  args:
+    chdir: /var/www/nextcloud/
+
+- name: Restarting nginx 
+  shell: systemctl restart nginx
+  become: yes
