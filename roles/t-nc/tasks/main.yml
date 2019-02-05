@@ -1,5 +1,3 @@
----
-
 - name: install coturn
   apt:
    name: coturn
@@ -57,5 +55,3 @@
   vars:
     ufw_applications: 
       - { name: TurnServer, rule: allow, from_ip: any }
-
-

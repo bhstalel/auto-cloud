@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain:
-nextcloud_username:
-nextcloud_userpass:
+nextcloud_domain: cloud.talel.com
+nextcloud_username: talel
+nextcloud_userpass: talelpass
 
 # +============================+
 
@@ -65,7 +65,7 @@ onlyoffice_with_nextcloud: 1
 
 # +============================+
 
-state:
+state: l
 
 # +============================+
 
@@ -73,11 +73,11 @@ collabora_domain:
 
 # +============================+
 
-webserver:
+webserver: n
 
 # +============================+
 
-dbtype:
+dbtype: p
 
 # +============================+
 

@@ -51,16 +51,12 @@
 
 - name: configure php
   copy:
-    src: "{{autocloud_dir}}/roles/php/files/{{ item.file }}"
-    dest: "{{ item.dest }}"
+    src: "{{autocloud_dir}}/roles/php/files/www.conf"
+    dest: "/etc/php/{{php_version}}/fpm/pool.d/www.conf"
     owner: root
     group: root
     mode: 0644
     force: true
-  with_items:
-    - { file: 'fpm.php.ini',  dest: '/etc/php/{{php_version}}/fpm/php.ini' }
-    - { file: 'www.conf',     dest: '/etc/php/{{php_version}}/fpm/pool.d/www.conf' }
-    - { file: 'php-fpm.conf', dest: '/etc/php/{{php_version}}/fpm/php-fpm.conf' }
 
 - name: restart php-fpm
   systemd:
