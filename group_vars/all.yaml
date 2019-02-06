@@ -1,8 +1,8 @@
 # +============================+
 
-nextcloud_domain: zadzadzeg
-nextcloud_username: talel
-nextcloud_userpass: talelpass
+nextcloud_domain:
+nextcloud_username:
+nextcloud_userpass:
 
 # +============================+
 
@@ -15,7 +15,7 @@ port_ssl: 443
 
 # +============================+
 
-autocloud_dir: /opt/auto-cloud
+autocloud_dir: /home/ubuntu/Desktop/auto-cloud
 
 # +============================+
 
@@ -53,11 +53,11 @@ package_name: onlyoffice-documentserver
 
 onlyoffice_username: onlyoffice
 onlyoffice_userpass: onlyoffice
-onlyoffice_domain: zafa
+onlyoffice_domain: onlyoffice.talel.com
 
 # +============================+
 
-email: zaf
+email:
 
 # +============================+
 

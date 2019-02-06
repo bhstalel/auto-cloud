@@ -1,15 +1,16 @@
-- name: Checking apache
-  command: dpkg-query -l apache2
-  register: deb_check
-  when: webserver == "a"
+- name: Check if apache2 is installed
+  shell: dpkg-query -W -f='${Status}' apache2 | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
 
-- name: Installing apache2
+- name: INSTALLING APACHE2
   apt:
-    name: apache2
-    state: latest
+    name: "apache2"
+    state: present
     update_cache: yes
   become: yes
-  when: webserver == "a" and deb_check.stdout.find('no packages found') != -1
+  when: is_installed.rc == -1 and webserver == "a"
 
 - name: Configuring apache2 
   command: "{{ item }}"
@@ -21,13 +22,19 @@
   when: webserver == "a"
   notify: restart apache2
 
-- name: Installing Nginx
+- name: Check if nginx is installed
+  shell: dpkg-query -W -f='${Status}' nginx | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
+
+- name: INSTALLING NGINX
   apt:
-    name: nginx
-    state: latest
+    name: "nginx"
+    state: present
     update_cache: yes
   become: yes
-  when: webserver == "n"
+  when: is_installed.rc == -1 and webserver == "n"
 
 - name: Including docker
   include_tasks: "{{autocloud_dir}}/roles/docker/tasks/main.yml"

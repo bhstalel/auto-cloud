@@ -1,10 +1,22 @@
+- name: Check if nginx is installed
+  shell: dpkg-query -W -f='${Status}' nginx | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
+
 - name: INSTALLING NGINX
   apt:
     name: "nginx"
     state: present
     update_cache: yes
   become: yes
-  when: webserver == "n"
+  when: is_installed.rc == -1 and webserver == "n"
+
+- name: Check if apache2 is installed
+  shell: dpkg-query -W -f='${Status}' apache2 | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
 
 - name: INSTALLING APACHE2
   apt:
@@ -12,7 +24,7 @@
     state: present
     update_cache: yes
   become: yes
-  when: webserver == "a"
+  when: is_installed.rc == -1 and webserver == "a"
 
 - name: INCLUDE PHP 
   include_tasks: "{{autocloud_dir}}/roles/php/tasks/main.yml"
@@ -25,13 +37,19 @@
     enabled: True
   become: yes
 
+- name: Check if postgresql is installed
+  shell: dpkg-query -W -f='${Status}' postgresql | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
+
 - name: INSTALLING POSTGRESQL
   apt:
-    name: "postgresql"
+    name: postgresql
     state: present
     update_cache: yes
   become: yes
-  when: dbtype == "p"
+  when: is_installed.rc == -1 and dbtype == "p"
 
 - name: Creating database
   shell: sudo -u postgres psql -c "CREATE DATABASE nextcloud;"
@@ -179,12 +197,19 @@
   shell: systemctl restart nginx
   when: webserver == "n"
 
+- name: Check if ufw is installed
+  shell: dpkg-query -W -f='${Status}' ufw | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
+
 - name: Installing ufw
   apt:
     name: ufw
     state: present
     update_cache: yes
   become: yes
+  when: is_installed.rc == -1
 
 - name: Enabling ufw
   shell: ufw enable

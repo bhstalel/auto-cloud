@@ -5,7 +5,7 @@
 - name: Install the nodejs,redis,rabbitmq
   apt:
     name: ['nodejs','nginx-extras','redis-server','rabbitmq-server']
-    state: present  
+    state: present
 
 - name: Add onlyoffice gpg keys
   apt_key:
@@ -45,13 +45,19 @@
 # +======================================+
 # +           POSTGRESQL                 +
 
+- name: Check if Package is installed
+  shell: dpkg-query -W -f='${Status}' postgresql | grep 'install ok installed'
+  register: is_installed
+  failed_when: no
+  changed_when: no
+
 - name: INSTALLING POSTGRESQL
   apt:
-    name: "postgresql"
+    name: postgresql
     state: present
     update_cache: yes
   become: yes
-  when: dbtype == "p"
+  when: is_installed.rc == -1 and dbtype == "p"
 
 - name: Creating database
   shell: sudo -u postgres psql -c "CREATE DATABASE onlyoffice;"
@@ -77,7 +83,7 @@
 
 - name: INCLUDE MYSQL 
   include_tasks: "{{autocloud_dir}}/roles/mysql/tasks/main.yaml"
-  when: dbtype == "k"
+  when: dbtype == "m"
 
 - name: Creating db for onlyoffice
   mysql_db:
@@ -85,21 +91,21 @@
     login_password: root
     db: onlyoffice
     state: present
-  when: dbtype == "k"
+  when: dbtype == "m"
 
 - name: Creating user for onlyoffice
   mysql_user:
     user: onlyoffice
     password: onlyoffice
     state: present
-  when: dbtype == "k"
+  when: dbtype == "m"
 
 - name: giving permissions
   mysql_user:
     name: onlyoffice
     priv: "onlyoffice.*:ALL,GRANT"
     state: present
-  when: dbtype == "k"
+  when: dbtype == "m"
 
 # +======================================+
 
@@ -186,41 +192,45 @@
   command: letsencrypt --authenticator standalone --installer nginx -d {{onlyoffice_domain}} --email {{email}}--agree-tos -n --no-verify-ssl --redirect
   become: yes
   when: state == "o"
+  
+- name: Setting up nextcloud Config file
+  blockinfile:
+    path: /var/www/nextcloud/config/config.php
+    insertafter: "'installed' => true,"
+    block: |
+      'onlyoffice' =>
+       array (
+      'verify_peer_off' => TRUE,
+      )
+  become: yes
+  when: onlyoffice_with_nextcloud == 1 and state == "l"
 
 - name: Restarting Nginx
   shell: systemctl restart nginx
   become: yes
   when: webserver == "n"
 
-- name: Setting up nextcloud Config file
-  template:
-    src: "{{autocloud_dir}}/roles/onlyoffice/templates/nc-config.php"
-    dest: "/var/www/nextcloud/config/config.php"
-  when: onlyoffice_with_nextcloud == 1 and state == "l"
-
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"
   when: redis_server_host != ""
-  notify: restart-ds
 
 - name: Set up redis port number
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.port  = \"{{ redis_server_port }}\"'"
   when: redis_server_port != ""
-  notify: restart-ds
 
 - name: Set up rabbitmq url
   shell: "{{ json }} -I -e 'this.rabbitmq.url = \"{{ rabbitmq_server_url }}\"'"
   when: rabbitmq_server_url != ""
-  notify: restart-ds
 
 - name: Creagting dhparam
-  shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 4096
+  shell: cd /etc/ssl/certs && openssl dhparam -out dhparam.pem 1024
   become: yes
+  when: state == "o"
 
 - name: Installing onlyoffice app
   shell: sudo -u www-data php occ app:install onlyoffice
   args:
-    chdir: /var/wwww/nextcloud/
+    chdir: /var/www/nextcloud/
   when: onlyoffice_with_nextcloud == 1
 
 - name: Enabling onlyoffice app
@@ -230,7 +240,7 @@
   when: onlyoffice_with_nextcloud == 1
 
 - name: Setting up the domain
-  shell: sudo -u www-data php occ config:app:set onlyoffice serverurl --value="{{onlyoffice_domain}}"
+  shell: sudo -u www-data php occ config:app:set onlyoffice serverurl --value="https://{{onlyoffice_domain}}"
   args:
     chdir: /var/www/nextcloud/
   when: onlyoffice_with_nextcloud == 1
