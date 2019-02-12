@@ -1,6 +1,6 @@
 # +============================+
 
-nextcloud_domain: cloud.talel.com
+nextcloud_domain:
 nextcloud_username:
 nextcloud_userpass:
 
@@ -10,12 +10,7 @@ php_version: 7.2
 
 # +============================+
 
-port_http: 81
-port_ssl: 443
-
-# +============================+
-
-autocloud_dir: /home/ubuntu/Desktop/auto-cloud
+autocloud_dir:
 
 # +============================+
 
@@ -65,7 +60,7 @@ onlyoffice_with_nextcloud: 1
 
 # +============================+
 
-state: l
+state: 
 
 # +============================+
 
@@ -84,16 +79,3 @@ dbtype:
 draw_domain:
 
 # +============================+
-
-openldap_server_user: "openldap"
-openldap_server_domain_name: omar.com
-
-#The self signed ssl parameters
-openldap_server_country: US
-openldap_server_state: oregon
-openldap_server_location: portland
-openldap_server_organization: IT
-
-openldap_server_enable_ssl: true
-
-openldap_server_app_path: "/etc/ldap/"
