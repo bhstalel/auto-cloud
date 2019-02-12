@@ -5,7 +5,7 @@ upstream php-handler {
 
 server {
     listen 80;
-    listen [::]:80;
+    #listen [::]:80 ipv6only=on;
     server_name {{nextcloud_domain}};
     # enforce https
     return 301 https://$server_name$request_uri;
@@ -13,14 +13,14 @@ server {
 
 server {
     listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    #listen [::]:443 ssl http2;
     server_name {{nextcloud_domain}};
 
     # Use Mozilla's guidelines for SSL/TLS settings
     # https://mozilla.github.io/server-side-tls/ssl-config-generator/
     # NOTE: some settings below might be redundant
-    ssl_certificate /etc/letsencrypt/live/{{nextcloud_domain}}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{nextcloud_domain}}//privkey.pem;
+    #ssl_certificate /etc/letsencrypt/live/{{nextcloud_domain}}/fullchain.pem;
+    #ssl_certificate_key /etc/letsencrypt/live/{{nextcloud_domain}}//privkey.pem;
 
     # Add headers to serve security related headers
     # Before enabling Strict-Transport-Security headers please read into this

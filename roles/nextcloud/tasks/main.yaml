@@ -134,7 +134,7 @@
   become: yes
   when: state == "l" and webserver == "n"
 
-- name: GENERATING NGINX CONF
+- name: GENERATING NGINX CONF (state=o)
   template:
     src: "roles/nextcloud/templates/nginx-official.conf.tpl"
     dest: "/etc/nginx/conf.d/{{nextcloud_domain}}.conf"
@@ -182,20 +182,13 @@
 #  become: yes
 #  when: state == "o"
 
-- name: STARTING NGINX
-  shell: systemctl start nginx
-  when: webserver == "n"
-
-#- name: ACTIVATING NEXTCLOUD SITE
-#  file: 
-#    src: "/etc/nginx/sites-available/nextcloud.conf"
-#    dest: "/etc/nginx/sites-enabled/nextcloud.conf"
-#    state: link
+#- name: STARTING NGINX
+#  shell: systemctl start nginx
 #  when: webserver == "n"
 
-- name: RESTARTING NGINX
-  shell: systemctl restart nginx
-  when: webserver == "n"
+#- name: RESTARTING NGINX
+#  shell: systemctl restart nginx
+#  when: webserver == "n"
 
 - name: Check if ufw is installed
   shell: dpkg-query -W -f='${Status}' ufw | grep 'install ok installed'

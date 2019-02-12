@@ -1,0 +1,1292 @@
+-- Logs begin at Mon 2019-02-11 18:40:44 +01, end at Tue 2019-02-12 13:03:55 +01. --
+Feb 12 11:41:07 nctest sshd[29629]: Disconnected from 81.183.28.245 port 38260 [preauth]
+Feb 12 11:41:27 nctest sshd[29637]: Invalid user mailserver from 35.229.147.116
+Feb 12 11:41:27 nctest sshd[29637]: input_userauth_request: invalid user mailserver [preauth]
+Feb 12 11:41:27 nctest sshd[29637]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:41:27 nctest sshd[29637]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=35.229.147.116[0m
+Feb 12 11:41:29 nctest sshd[29637]: Failed password for invalid user mailserver from 35.229.147.116 port 49912 ssh2
+Feb 12 11:41:29 nctest sshd[29637]: Received disconnect from 35.229.147.116 port 49912:11: Bye Bye [preauth]
+Feb 12 11:41:29 nctest sshd[29637]: Disconnected from 35.229.147.116 port 49912 [preauth]
+Feb 12 11:41:33 nctest sshd[29641]: Invalid user andrew from 194.152.206.93
+Feb 12 11:41:33 nctest sshd[29641]: input_userauth_request: invalid user andrew [preauth]
+Feb 12 11:41:33 nctest sshd[29641]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:41:33 nctest sshd[29641]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=194.152.206.93[0m
+Feb 12 11:41:34 nctest sshd[29641]: Failed password for invalid user andrew from 194.152.206.93 port 57040 ssh2
+Feb 12 11:41:34 nctest sshd[29641]: Received disconnect from 194.152.206.93 port 57040:11: Bye Bye [preauth]
+Feb 12 11:41:34 nctest sshd[29641]: Disconnected from 194.152.206.93 port 57040 [preauth]
+Feb 12 11:42:38 nctest sshd[29658]: Invalid user willy from 37.59.38.137
+Feb 12 11:42:38 nctest sshd[29658]: input_userauth_request: invalid user willy [preauth]
+Feb 12 11:42:38 nctest sshd[29658]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:42:38 nctest sshd[29658]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=37.59.38.137[0m
+Feb 12 11:42:40 nctest sshd[29658]: Failed password for invalid user willy from 37.59.38.137 port 53262 ssh2
+Feb 12 11:42:40 nctest sshd[29658]: Received disconnect from 37.59.38.137 port 53262:11: Bye Bye [preauth]
+Feb 12 11:42:40 nctest sshd[29658]: Disconnected from 37.59.38.137 port 53262 [preauth]
+Feb 12 11:43:09 nctest sshd[29668]: Invalid user gmodserver from 45.55.35.40
+Feb 12 11:43:09 nctest sshd[29668]: input_userauth_request: invalid user gmodserver [preauth]
+Feb 12 11:43:09 nctest sshd[29668]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:43:09 nctest sshd[29668]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.55.35.40[0m
+Feb 12 11:43:12 nctest sshd[29668]: Failed password for invalid user gmodserver from 45.55.35.40 port 52714 ssh2
+Feb 12 11:43:12 nctest sshd[29668]: Received disconnect from 45.55.35.40 port 52714:11: Bye Bye [preauth]
+Feb 12 11:43:12 nctest sshd[29668]: Disconnected from 45.55.35.40 port 52714 [preauth]
+Feb 12 11:43:31 nctest sshd[29675]: Invalid user wsdata from 129.204.65.29
+Feb 12 11:43:31 nctest sshd[29675]: input_userauth_request: invalid user wsdata [preauth]
+Feb 12 11:43:31 nctest sshd[29675]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:43:31 nctest sshd[29675]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=129.204.65.29[0m
+Feb 12 11:43:33 nctest sshd[29675]: Failed password for invalid user wsdata from 129.204.65.29 port 54160 ssh2
+Feb 12 11:43:34 nctest sshd[29675]: Received disconnect from 129.204.65.29 port 54160:11: Bye Bye [preauth]
+Feb 12 11:43:34 nctest sshd[29675]: Disconnected from 129.204.65.29 port 54160 [preauth]
+Feb 12 11:43:50 nctest sshd[29682]: Invalid user admin from 128.199.145.242
+Feb 12 11:43:50 nctest sshd[29682]: input_userauth_request: invalid user admin [preauth]
+Feb 12 11:43:50 nctest sshd[29682]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:43:50 nctest sshd[29682]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=128.199.145.242[0m
+Feb 12 11:43:52 nctest sshd[29682]: Failed password for invalid user admin from 128.199.145.242 port 48700 ssh2
+Feb 12 11:43:52 nctest sshd[29682]: Received disconnect from 128.199.145.242 port 48700:11: Bye Bye [preauth]
+Feb 12 11:43:52 nctest sshd[29682]: Disconnected from 128.199.145.242 port 48700 [preauth]
+Feb 12 11:43:57 nctest sshd[29686]: Invalid user wordpress from 201.49.127.212
+Feb 12 11:43:57 nctest sshd[29686]: input_userauth_request: invalid user wordpress [preauth]
+Feb 12 11:43:57 nctest sshd[29686]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:43:57 nctest sshd[29686]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=201.49.127.212[0m
+Feb 12 11:44:00 nctest sshd[29686]: Failed password for invalid user wordpress from 201.49.127.212 port 52354 ssh2
+Feb 12 11:44:00 nctest sshd[29686]: Received disconnect from 201.49.127.212 port 52354:11: Bye Bye [preauth]
+Feb 12 11:44:00 nctest sshd[29686]: Disconnected from 201.49.127.212 port 52354 [preauth]
+Feb 12 11:44:07 nctest sshd[29691]: Invalid user admin from 61.12.84.13
+Feb 12 11:44:07 nctest sshd[29691]: input_userauth_request: invalid user admin [preauth]
+Feb 12 11:44:07 nctest sshd[29691]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:44:07 nctest sshd[29691]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=61.12.84.13[0m
+Feb 12 11:44:09 nctest sshd[29691]: Failed password for invalid user admin from 61.12.84.13 port 46670 ssh2
+Feb 12 11:44:09 nctest sshd[29691]: Received disconnect from 61.12.84.13 port 46670:11: Bye Bye [preauth]
+Feb 12 11:44:09 nctest sshd[29691]: Disconnected from 61.12.84.13 port 46670 [preauth]
+Feb 12 11:44:24 nctest sshd[29703]: Invalid user oracle from 35.229.147.116
+Feb 12 11:44:24 nctest sshd[29703]: input_userauth_request: invalid user oracle [preauth]
+Feb 12 11:44:24 nctest sshd[29703]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:44:24 nctest sshd[29703]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=35.229.147.116[0m
+Feb 12 11:44:26 nctest sshd[29703]: Failed password for invalid user oracle from 35.229.147.116 port 44178 ssh2
+Feb 12 11:44:26 nctest sshd[29703]: Received disconnect from 35.229.147.116 port 44178:11: Bye Bye [preauth]
+Feb 12 11:44:26 nctest sshd[29703]: Disconnected from 35.229.147.116 port 44178 [preauth]
+Feb 12 11:44:35 nctest sshd[29707]: Invalid user willy from 194.152.206.93
+Feb 12 11:44:35 nctest sshd[29707]: input_userauth_request: invalid user willy [preauth]
+Feb 12 11:44:35 nctest sshd[29707]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:44:35 nctest sshd[29707]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=194.152.206.93[0m
+Feb 12 11:44:37 nctest sshd[29707]: Failed password for invalid user willy from 194.152.206.93 port 40546 ssh2
+Feb 12 11:44:37 nctest sshd[29707]: Received disconnect from 194.152.206.93 port 40546:11: Bye Bye [preauth]
+Feb 12 11:44:37 nctest sshd[29707]: Disconnected from 194.152.206.93 port 40546 [preauth]
+Feb 12 11:45:01 nctest CRON[29717]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 11:45:01 nctest CRON[29718]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 11:45:01 nctest CRON[29717]: pam_unix(cron:session): session closed for user root
+Feb 12 11:45:24 nctest sshd[29725]: Invalid user storm from 37.59.38.137
+Feb 12 11:45:24 nctest sshd[29725]: input_userauth_request: invalid user storm [preauth]
+Feb 12 11:45:24 nctest sshd[29725]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:45:24 nctest sshd[29725]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=37.59.38.137[0m
+Feb 12 11:45:25 nctest sshd[29725]: Failed password for invalid user storm from 37.59.38.137 port 36993 ssh2
+Feb 12 11:45:25 nctest sshd[29725]: Received disconnect from 37.59.38.137 port 36993:11: Bye Bye [preauth]
+Feb 12 11:45:25 nctest sshd[29725]: Disconnected from 37.59.38.137 port 36993 [preauth]
+Feb 12 11:45:45 nctest sshd[29733]: Invalid user postgres2 from 45.55.35.40
+Feb 12 11:45:45 nctest sshd[29733]: input_userauth_request: invalid user postgres2 [preauth]
+Feb 12 11:45:45 nctest sshd[29733]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:45:45 nctest sshd[29733]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.55.35.40[0m
+Feb 12 11:45:47 nctest sshd[29733]: Failed password for invalid user postgres2 from 45.55.35.40 port 48594 ssh2
+Feb 12 11:45:47 nctest sshd[29733]: Received disconnect from 45.55.35.40 port 48594:11: Bye Bye [preauth]
+Feb 12 11:45:47 nctest sshd[29733]: Disconnected from 45.55.35.40 port 48594 [preauth]
+Feb 12 11:46:31 nctest sshd[29745]: Invalid user svn from 81.183.28.245
+Feb 12 11:46:31 nctest sshd[29745]: input_userauth_request: invalid user svn [preauth]
+Feb 12 11:46:31 nctest sshd[29745]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:46:31 nctest sshd[29745]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=81.183.28.245[0m
+Feb 12 11:46:33 nctest sshd[29745]: Failed password for invalid user svn from 81.183.28.245 port 49398 ssh2
+Feb 12 11:46:33 nctest sshd[29745]: Received disconnect from 81.183.28.245 port 49398:11: Bye Bye [preauth]
+Feb 12 11:46:33 nctest sshd[29745]: Disconnected from 81.183.28.245 port 49398 [preauth]
+Feb 12 11:47:01 nctest sshd[29755]: Invalid user df from 128.199.145.242
+Feb 12 11:47:01 nctest sshd[29755]: input_userauth_request: invalid user df [preauth]
+Feb 12 11:47:01 nctest sshd[29755]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:47:01 nctest sshd[29755]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=128.199.145.242[0m
+Feb 12 11:47:03 nctest sshd[29755]: Failed password for invalid user df from 128.199.145.242 port 60598 ssh2
+Feb 12 11:47:03 nctest sshd[29755]: Received disconnect from 128.199.145.242 port 60598:11: Bye Bye [preauth]
+Feb 12 11:47:03 nctest sshd[29755]: Disconnected from 128.199.145.242 port 60598 [preauth]
+Feb 12 11:47:18 nctest sshd[29761]: Invalid user comercial from 35.229.147.116
+Feb 12 11:47:18 nctest sshd[29761]: input_userauth_request: invalid user comercial [preauth]
+Feb 12 11:47:18 nctest sshd[29761]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:47:18 nctest sshd[29761]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=35.229.147.116[0m
+Feb 12 11:47:20 nctest sshd[29761]: Failed password for invalid user comercial from 35.229.147.116 port 38448 ssh2
+Feb 12 11:47:20 nctest sshd[29761]: Received disconnect from 35.229.147.116 port 38448:11: Bye Bye [preauth]
+Feb 12 11:47:20 nctest sshd[29761]: Disconnected from 35.229.147.116 port 38448 [preauth]
+Feb 12 11:47:24 nctest sshd[29766]: Invalid user df from 61.12.84.13
+Feb 12 11:47:24 nctest sshd[29766]: input_userauth_request: invalid user df [preauth]
+Feb 12 11:47:24 nctest sshd[29766]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:47:24 nctest sshd[29766]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=61.12.84.13[0m
+Feb 12 11:47:26 nctest sshd[29766]: Failed password for invalid user df from 61.12.84.13 port 42596 ssh2
+Feb 12 11:47:26 nctest sshd[29766]: Received disconnect from 61.12.84.13 port 42596:11: Bye Bye [preauth]
+Feb 12 11:47:26 nctest sshd[29766]: Disconnected from 61.12.84.13 port 42596 [preauth]
+Feb 12 11:47:30 nctest sshd[29769]: Invalid user admin from 201.49.127.212
+Feb 12 11:47:30 nctest sshd[29769]: input_userauth_request: invalid user admin [preauth]
+Feb 12 11:47:30 nctest sshd[29769]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:47:30 nctest sshd[29769]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=201.49.127.212[0m
+Feb 12 11:47:32 nctest sshd[29769]: Failed password for invalid user admin from 201.49.127.212 port 48268 ssh2
+Feb 12 11:47:32 nctest sshd[29769]: Received disconnect from 201.49.127.212 port 48268:11: Bye Bye [preauth]
+Feb 12 11:47:32 nctest sshd[29769]: Disconnected from 201.49.127.212 port 48268 [preauth]
+Feb 12 11:47:53 nctest sshd[29778]: Invalid user storm from 194.152.206.93
+Feb 12 11:47:53 nctest sshd[29778]: input_userauth_request: invalid user storm [preauth]
+Feb 12 11:47:53 nctest sshd[29778]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:47:53 nctest sshd[29778]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=194.152.206.93[0m
+Feb 12 11:47:55 nctest sshd[29778]: Failed password for invalid user storm from 194.152.206.93 port 52284 ssh2
+Feb 12 11:47:55 nctest sshd[29778]: Received disconnect from 194.152.206.93 port 52284:11: Bye Bye [preauth]
+Feb 12 11:47:55 nctest sshd[29778]: Disconnected from 194.152.206.93 port 52284 [preauth]
+Feb 12 11:48:16 nctest sshd[29785]: Invalid user avahi from 45.55.35.40
+Feb 12 11:48:16 nctest sshd[29785]: input_userauth_request: invalid user avahi [preauth]
+Feb 12 11:48:16 nctest sshd[29785]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:48:16 nctest sshd[29785]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.55.35.40[0m
+Feb 12 11:48:18 nctest sshd[29785]: Failed password for invalid user avahi from 45.55.35.40 port 44450 ssh2
+Feb 12 11:48:18 nctest sshd[29785]: Received disconnect from 45.55.35.40 port 44450:11: Bye Bye [preauth]
+Feb 12 11:48:18 nctest sshd[29785]: Disconnected from 45.55.35.40 port 44450 [preauth]
+Feb 12 11:49:49 nctest sshd[29810]: Invalid user admin from 80.15.161.135
+Feb 12 11:49:49 nctest sshd[29810]: input_userauth_request: invalid user admin [preauth]
+Feb 12 11:49:49 nctest sshd[29810]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:49:49 nctest sshd[29810]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.15.161.135[0m
+Feb 12 11:49:52 nctest sshd[29810]: Failed password for invalid user admin from 80.15.161.135 port 44346 ssh2
+Feb 12 11:49:52 nctest sshd[29810]: Received disconnect from 80.15.161.135 port 44346:11: Bye Bye [preauth]
+Feb 12 11:49:52 nctest sshd[29810]: Disconnected from 80.15.161.135 port 44346 [preauth]
+Feb 12 11:50:13 nctest sshd[29819]: Invalid user history from 35.229.147.116
+Feb 12 11:50:13 nctest sshd[29819]: input_userauth_request: invalid user history [preauth]
+Feb 12 11:50:13 nctest sshd[29819]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:50:13 nctest sshd[29819]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=35.229.147.116[0m
+Feb 12 11:50:15 nctest sshd[29819]: Failed password for invalid user history from 35.229.147.116 port 60946 ssh2
+Feb 12 11:50:15 nctest sshd[29819]: Received disconnect from 35.229.147.116 port 60946:11: Bye Bye [preauth]
+Feb 12 11:50:15 nctest sshd[29819]: Disconnected from 35.229.147.116 port 60946 [preauth]
+Feb 12 11:50:22 nctest sshd[29822]: Invalid user teste from 128.199.145.242
+Feb 12 11:50:22 nctest sshd[29822]: input_userauth_request: invalid user teste [preauth]
+Feb 12 11:50:22 nctest sshd[29822]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:50:22 nctest sshd[29822]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=128.199.145.242[0m
+Feb 12 11:50:24 nctest sshd[29822]: Failed password for invalid user teste from 128.199.145.242 port 44263 ssh2
+Feb 12 11:50:24 nctest sshd[29822]: Received disconnect from 128.199.145.242 port 44263:11: Bye Bye [preauth]
+Feb 12 11:50:24 nctest sshd[29822]: Disconnected from 128.199.145.242 port 44263 [preauth]
+Feb 12 11:50:43 nctest sshd[29832]: Invalid user teste from 61.12.84.13
+Feb 12 11:50:43 nctest sshd[29832]: input_userauth_request: invalid user teste [preauth]
+Feb 12 11:50:43 nctest sshd[29832]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:50:43 nctest sshd[29832]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=61.12.84.13[0m
+Feb 12 11:50:45 nctest sshd[29832]: Failed password for invalid user teste from 61.12.84.13 port 38566 ssh2
+Feb 12 11:50:46 nctest sshd[29832]: Received disconnect from 61.12.84.13 port 38566:11: Bye Bye [preauth]
+Feb 12 11:50:46 nctest sshd[29832]: Disconnected from 61.12.84.13 port 38566 [preauth]
+Feb 12 11:50:50 nctest sshd[29834]: Invalid user ehsan from 45.55.35.40
+Feb 12 11:50:50 nctest sshd[29834]: input_userauth_request: invalid user ehsan [preauth]
+Feb 12 11:50:50 nctest sshd[29834]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:50:50 nctest sshd[29834]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=45.55.35.40[0m
+Feb 12 11:50:53 nctest sshd[29834]: Failed password for invalid user ehsan from 45.55.35.40 port 40310 ssh2
+Feb 12 11:50:53 nctest sshd[29834]: Received disconnect from 45.55.35.40 port 40310:11: Bye Bye [preauth]
+Feb 12 11:50:53 nctest sshd[29834]: Disconnected from 45.55.35.40 port 40310 [preauth]
+Feb 12 11:51:24 nctest sshd[29846]: Invalid user saned from 81.183.28.245
+Feb 12 11:51:24 nctest sshd[29846]: input_userauth_request: invalid user saned [preauth]
+Feb 12 11:51:24 nctest sshd[29846]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:51:24 nctest sshd[29846]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=81.183.28.245[0m
+Feb 12 11:51:26 nctest sshd[29846]: Failed password for invalid user saned from 81.183.28.245 port 59806 ssh2
+Feb 12 11:51:26 nctest sshd[29846]: Received disconnect from 81.183.28.245 port 59806:11: Bye Bye [preauth]
+Feb 12 11:51:26 nctest sshd[29846]: Disconnected from 81.183.28.245 port 59806 [preauth]
+Feb 12 11:54:06 nctest sshd[29889]: Invalid user ftpuser from 103.229.116.75
+Feb 12 11:54:06 nctest sshd[29889]: input_userauth_request: invalid user ftpuser [preauth]
+Feb 12 11:54:06 nctest sshd[29889]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:54:06 nctest sshd[29889]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=103.229.116.75[0m
+Feb 12 11:54:08 nctest sshd[29889]: Failed password for invalid user ftpuser from 103.229.116.75 port 43068 ssh2
+Feb 12 11:54:08 nctest sshd[29889]: Received disconnect from 103.229.116.75 port 43068:11: Normal Shutdown, Thank you for playing [preauth]
+Feb 12 11:54:08 nctest sshd[29889]: Disconnected from 103.229.116.75 port 43068 [preauth]
+Feb 12 11:54:36 nctest sshd[29898]: Invalid user redmine from 140.143.228.75
+Feb 12 11:54:36 nctest sshd[29898]: input_userauth_request: invalid user redmine [preauth]
+Feb 12 11:54:36 nctest sshd[29898]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:54:36 nctest sshd[29898]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.143.228.75[0m
+Feb 12 11:54:39 nctest sshd[29898]: Failed password for invalid user redmine from 140.143.228.75 port 35250 ssh2
+Feb 12 11:54:39 nctest sshd[29898]: Received disconnect from 140.143.228.75 port 35250:11: Bye Bye [preauth]
+Feb 12 11:54:39 nctest sshd[29898]: Disconnected from 140.143.228.75 port 35250 [preauth]
+Feb 12 11:55:01 nctest CRON[29908]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 11:55:01 nctest CRON[29909]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 11:55:01 nctest CRON[29908]: pam_unix(cron:session): session closed for user root
+Feb 12 11:56:08 nctest sshd[29927]: Invalid user transmission from 81.183.28.245
+Feb 12 11:56:08 nctest sshd[29927]: input_userauth_request: invalid user transmission [preauth]
+Feb 12 11:56:08 nctest sshd[29927]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:56:08 nctest sshd[29927]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=81.183.28.245[0m
+Feb 12 11:56:11 nctest sshd[29927]: Failed password for invalid user transmission from 81.183.28.245 port 41981 ssh2
+Feb 12 11:56:11 nctest sshd[29927]: Received disconnect from 81.183.28.245 port 41981:11: Bye Bye [preauth]
+Feb 12 11:56:11 nctest sshd[29927]: Disconnected from 81.183.28.245 port 41981 [preauth]
+Feb 12 11:56:34 nctest sshd[29934]: Invalid user freyna from 80.15.161.135
+Feb 12 11:56:34 nctest sshd[29934]: input_userauth_request: invalid user freyna [preauth]
+Feb 12 11:56:34 nctest sshd[29934]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:56:34 nctest sshd[29934]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.15.161.135[0m
+Feb 12 11:56:37 nctest sshd[29934]: Failed password for invalid user freyna from 80.15.161.135 port 57432 ssh2
+Feb 12 11:56:37 nctest sshd[29934]: Received disconnect from 80.15.161.135 port 57432:11: Bye Bye [preauth]
+Feb 12 11:56:37 nctest sshd[29934]: Disconnected from 80.15.161.135 port 57432 [preauth]
+Feb 12 11:58:41 nctest sshd[29969]: Invalid user csgo from 140.143.228.75
+Feb 12 11:58:41 nctest sshd[29969]: input_userauth_request: invalid user csgo [preauth]
+Feb 12 11:58:41 nctest sshd[29969]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 11:58:41 nctest sshd[29969]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.143.228.75[0m
+Feb 12 11:58:43 nctest sshd[29969]: Failed password for invalid user csgo from 140.143.228.75 port 60194 ssh2
+Feb 12 11:58:44 nctest sshd[29969]: Received disconnect from 140.143.228.75 port 60194:11: Bye Bye [preauth]
+Feb 12 11:58:44 nctest sshd[29969]: Disconnected from 140.143.228.75 port 60194 [preauth]
+Feb 12 12:00:01 nctest CRON[29994]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:00:01 nctest CRON[29995]: (root) CMD (test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew)
+Feb 12 12:00:01 nctest CRON[29994]: pam_unix(cron:session): session closed for user root
+Feb 12 12:02:10 nctest sshd[30027]: Invalid user noreply from 80.15.161.135
+Feb 12 12:02:10 nctest sshd[30027]: input_userauth_request: invalid user noreply [preauth]
+Feb 12 12:02:10 nctest sshd[30027]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:02:10 nctest sshd[30027]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.15.161.135[0m
+Feb 12 12:02:12 nctest sshd[30027]: Failed password for invalid user noreply from 80.15.161.135 port 41706 ssh2
+Feb 12 12:02:12 nctest sshd[30027]: Received disconnect from 80.15.161.135 port 41706:11: Bye Bye [preauth]
+Feb 12 12:02:12 nctest sshd[30027]: Disconnected from 80.15.161.135 port 41706 [preauth]
+Feb 12 12:02:20 nctest sshd[30032]: Invalid user musikbot from 140.143.228.75
+Feb 12 12:02:20 nctest sshd[30032]: input_userauth_request: invalid user musikbot [preauth]
+Feb 12 12:02:20 nctest sshd[30032]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:02:20 nctest sshd[30032]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.143.228.75[0m
+Feb 12 12:02:22 nctest sshd[30032]: Failed password for invalid user musikbot from 140.143.228.75 port 55644 ssh2
+Feb 12 12:02:22 nctest sshd[30032]: Received disconnect from 140.143.228.75 port 55644:11: Bye Bye [preauth]
+Feb 12 12:02:22 nctest sshd[30032]: Disconnected from 140.143.228.75 port 55644 [preauth]
+Feb 12 12:05:01 nctest CRON[30075]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:05:01 nctest CRON[30076]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:05:01 nctest CRON[30075]: pam_unix(cron:session): session closed for user root
+Feb 12 12:06:05 nctest sshd[30094]: Invalid user test from 140.143.228.75
+Feb 12 12:06:05 nctest sshd[30094]: input_userauth_request: invalid user test [preauth]
+Feb 12 12:06:05 nctest sshd[30094]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:06:05 nctest sshd[30094]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.143.228.75[0m
+Feb 12 12:06:07 nctest sshd[30094]: Failed password for invalid user test from 140.143.228.75 port 51096 ssh2
+Feb 12 12:06:10 nctest sshd[30094]: Received disconnect from 140.143.228.75 port 51096:11: Bye Bye [preauth]
+Feb 12 12:06:10 nctest sshd[30094]: Disconnected from 140.143.228.75 port 51096 [preauth]
+Feb 12 12:07:45 nctest sshd[30120]: Invalid user chris from 80.15.161.135
+Feb 12 12:07:45 nctest sshd[30120]: input_userauth_request: invalid user chris [preauth]
+Feb 12 12:07:45 nctest sshd[30120]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:07:45 nctest sshd[30120]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.15.161.135[0m
+Feb 12 12:07:47 nctest sshd[30120]: Failed password for invalid user chris from 80.15.161.135 port 54217 ssh2
+Feb 12 12:07:47 nctest sshd[30120]: Received disconnect from 80.15.161.135 port 54217:11: Bye Bye [preauth]
+Feb 12 12:07:47 nctest sshd[30120]: Disconnected from 80.15.161.135 port 54217 [preauth]
+Feb 12 12:09:01 nctest CRON[30143]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:09:01 nctest CRON[30144]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+Feb 12 12:09:01 nctest CRON[30143]: pam_unix(cron:session): session closed for user root
+Feb 12 12:09:03 nctest systemd[1]: Starting Clean php session files...
+-- Subject: Unit phpsessionclean.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit phpsessionclean.service has begun starting up.
+Feb 12 12:09:03 nctest systemd[1]: Started Clean php session files.
+-- Subject: Unit phpsessionclean.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit phpsessionclean.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:09:59 nctest sshd[30248]: Invalid user cssserver from 140.143.228.75
+Feb 12 12:09:59 nctest sshd[30248]: input_userauth_request: invalid user cssserver [preauth]
+Feb 12 12:09:59 nctest sshd[30248]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:09:59 nctest sshd[30248]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.143.228.75[0m
+Feb 12 12:10:02 nctest sshd[30248]: Failed password for invalid user cssserver from 140.143.228.75 port 46560 ssh2
+Feb 12 12:10:02 nctest sshd[30248]: Received disconnect from 140.143.228.75 port 46560:11: Bye Bye [preauth]
+Feb 12 12:10:02 nctest sshd[30248]: Disconnected from 140.143.228.75 port 46560 [preauth]
+Feb 12 12:15:01 nctest CRON[30329]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:15:01 nctest CRON[30330]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:15:01 nctest CRON[30329]: pam_unix(cron:session): session closed for user root
+Feb 12 12:17:01 nctest CRON[30364]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:17:01 nctest CRON[30365]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Feb 12 12:17:01 nctest CRON[30364]: pam_unix(cron:session): session closed for user root
+Feb 12 12:19:35 nctest sshd[30404]: Invalid user test from 59.177.250.32
+Feb 12 12:19:35 nctest sshd[30404]: input_userauth_request: invalid user test [preauth]
+Feb 12 12:19:35 nctest sshd[30404]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:19:35 nctest sshd[30404]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=59.177.250.32[0m
+Feb 12 12:19:36 nctest sshd[30404]: Failed password for invalid user test from 59.177.250.32 port 21591 ssh2
+Feb 12 12:19:36 nctest sshd[30404]: Received disconnect from 59.177.250.32 port 21591:11: Normal Shutdown, Thank you for playing [preauth]
+Feb 12 12:19:36 nctest sshd[30404]: Disconnected from 59.177.250.32 port 21591 [preauth]
+Feb 12 12:20:10 nctest sshd[30416]: Invalid user ircbot from 51.77.212.179
+Feb 12 12:20:10 nctest sshd[30416]: input_userauth_request: invalid user ircbot [preauth]
+Feb 12 12:20:10 nctest sshd[30416]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:20:10 nctest sshd[30416]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=51.77.212.179[0m
+Feb 12 12:20:12 nctest sshd[30416]: Failed password for invalid user ircbot from 51.77.212.179 port 40375 ssh2
+Feb 12 12:20:12 nctest sshd[30416]: Received disconnect from 51.77.212.179 port 40375:11: Bye Bye [preauth]
+Feb 12 12:20:12 nctest sshd[30416]: Disconnected from 51.77.212.179 port 40375 [preauth]
+Feb 12 12:20:27 nctest sshd[30423]: Invalid user ircbot from 46.101.77.58
+Feb 12 12:20:27 nctest sshd[30423]: input_userauth_request: invalid user ircbot [preauth]
+Feb 12 12:20:27 nctest sshd[30423]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:20:27 nctest sshd[30423]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=46.101.77.58[0m
+Feb 12 12:20:29 nctest sshd[30423]: Failed password for invalid user ircbot from 46.101.77.58 port 38967 ssh2
+Feb 12 12:20:29 nctest sshd[30423]: Received disconnect from 46.101.77.58 port 38967:11: Bye Bye [preauth]
+Feb 12 12:20:29 nctest sshd[30423]: Disconnected from 46.101.77.58 port 38967 [preauth]
+Feb 12 12:21:23 nctest sshd[30439]: Invalid user martin from 104.168.170.92
+Feb 12 12:21:23 nctest sshd[30439]: input_userauth_request: invalid user martin [preauth]
+Feb 12 12:21:24 nctest sshd[30439]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:21:24 nctest sshd[30439]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=104.168.170.92[0m
+Feb 12 12:21:25 nctest sshd[30439]: Failed password for invalid user martin from 104.168.170.92 port 33768 ssh2
+Feb 12 12:21:25 nctest sshd[30439]: Received disconnect from 104.168.170.92 port 33768:11: Bye Bye [preauth]
+Feb 12 12:21:25 nctest sshd[30439]: Disconnected from 104.168.170.92 port 33768 [preauth]
+Feb 12 12:23:02 nctest sshd[30467]: Invalid user hadoop from 41.79.95.124
+Feb 12 12:23:02 nctest sshd[30467]: input_userauth_request: invalid user hadoop [preauth]
+Feb 12 12:23:02 nctest sshd[30467]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:23:02 nctest sshd[30467]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=41.79.95.124[0m
+Feb 12 12:23:04 nctest sshd[30469]: Invalid user desadm from 51.77.212.179
+Feb 12 12:23:04 nctest sshd[30469]: input_userauth_request: invalid user desadm [preauth]
+Feb 12 12:23:04 nctest sshd[30469]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:23:04 nctest sshd[30469]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=51.77.212.179[0m
+Feb 12 12:23:04 nctest sshd[30467]: Failed password for invalid user hadoop from 41.79.95.124 port 48794 ssh2
+Feb 12 12:23:04 nctest sshd[30467]: Received disconnect from 41.79.95.124 port 48794:11: Bye Bye [preauth]
+Feb 12 12:23:04 nctest sshd[30467]: Disconnected from 41.79.95.124 port 48794 [preauth]
+Feb 12 12:23:06 nctest sshd[30469]: Failed password for invalid user desadm from 51.77.212.179 port 48651 ssh2
+Feb 12 12:23:06 nctest sshd[30469]: Received disconnect from 51.77.212.179 port 48651:11: Bye Bye [preauth]
+Feb 12 12:23:06 nctest sshd[30469]: Disconnected from 51.77.212.179 port 48651 [preauth]
+Feb 12 12:23:19 nctest sshd[30476]: Invalid user martin from 192.99.252.97
+Feb 12 12:23:19 nctest sshd[30476]: input_userauth_request: invalid user martin [preauth]
+Feb 12 12:23:19 nctest sshd[30476]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:23:19 nctest sshd[30476]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.99.252.97[0m
+Feb 12 12:23:21 nctest sshd[30476]: Failed password for invalid user martin from 192.99.252.97 port 56954 ssh2
+Feb 12 12:23:21 nctest sshd[30476]: Received disconnect from 192.99.252.97 port 56954:11: Bye Bye [preauth]
+Feb 12 12:23:21 nctest sshd[30476]: Disconnected from 192.99.252.97 port 56954 [preauth]
+Feb 12 12:24:16 nctest sshd[30492]: Invalid user sftp from 159.89.182.5
+Feb 12 12:24:16 nctest sshd[30492]: input_userauth_request: invalid user sftp [preauth]
+Feb 12 12:24:16 nctest sshd[30492]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:24:16 nctest sshd[30492]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.89.182.5[0m
+Feb 12 12:24:17 nctest sshd[30492]: Failed password for invalid user sftp from 159.89.182.5 port 43686 ssh2
+Feb 12 12:24:17 nctest sshd[30492]: Received disconnect from 159.89.182.5 port 43686:11: Bye Bye [preauth]
+Feb 12 12:24:17 nctest sshd[30492]: Disconnected from 159.89.182.5 port 43686 [preauth]
+Feb 12 12:24:26 nctest sshd[30495]: Invalid user desadm from 46.101.77.58
+Feb 12 12:24:26 nctest sshd[30495]: input_userauth_request: invalid user desadm [preauth]
+Feb 12 12:24:26 nctest sshd[30495]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:24:26 nctest sshd[30495]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=46.101.77.58[0m
+Feb 12 12:24:28 nctest sshd[30495]: Failed password for invalid user desadm from 46.101.77.58 port 51616 ssh2
+Feb 12 12:24:28 nctest sshd[30495]: Received disconnect from 46.101.77.58 port 51616:11: Bye Bye [preauth]
+Feb 12 12:24:28 nctest sshd[30495]: Disconnected from 46.101.77.58 port 51616 [preauth]
+Feb 12 12:24:30 nctest sshd[30499]: Invalid user test from 104.168.170.92
+Feb 12 12:24:30 nctest sshd[30499]: input_userauth_request: invalid user test [preauth]
+Feb 12 12:24:30 nctest sshd[30499]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:24:30 nctest sshd[30499]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=104.168.170.92[0m
+Feb 12 12:24:32 nctest sshd[30499]: Failed password for invalid user test from 104.168.170.92 port 59312 ssh2
+Feb 12 12:24:32 nctest sshd[30499]: Received disconnect from 104.168.170.92 port 59312:11: Bye Bye [preauth]
+Feb 12 12:24:32 nctest sshd[30499]: Disconnected from 104.168.170.92 port 59312 [preauth]
+Feb 12 12:24:43 nctest sshd[30504]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=185.58.53.66  user=root[0m
+Feb 12 12:24:45 nctest sshd[30504]: Failed password for root from 185.58.53.66 port 41850 ssh2
+Feb 12 12:24:45 nctest sshd[30504]: Received disconnect from 185.58.53.66 port 41850:11: Normal Shutdown, Thank you for playing [preauth]
+Feb 12 12:24:45 nctest sshd[30504]: Disconnected from 185.58.53.66 port 41850 [preauth]
+Feb 12 12:25:01 nctest CRON[30511]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:25:01 nctest CRON[30512]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:25:01 nctest CRON[30511]: pam_unix(cron:session): session closed for user root
+Feb 12 12:25:48 nctest sshd[30527]: Invalid user teamspeak from 51.77.212.179
+Feb 12 12:25:48 nctest sshd[30527]: input_userauth_request: invalid user teamspeak [preauth]
+Feb 12 12:25:48 nctest sshd[30527]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:25:48 nctest sshd[30527]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=51.77.212.179[0m
+Feb 12 12:25:50 nctest sshd[30527]: Failed password for invalid user teamspeak from 51.77.212.179 port 36351 ssh2
+Feb 12 12:25:50 nctest sshd[30527]: Received disconnect from 51.77.212.179 port 36351:11: Bye Bye [preauth]
+Feb 12 12:25:50 nctest sshd[30527]: Disconnected from 51.77.212.179 port 36351 [preauth]
+Feb 12 12:26:12 nctest sshd[30534]: Invalid user jp from 190.147.178.100
+Feb 12 12:26:12 nctest sshd[30534]: input_userauth_request: invalid user jp [preauth]
+Feb 12 12:26:12 nctest sshd[30534]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:26:12 nctest sshd[30534]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.147.178.100[0m
+Feb 12 12:26:14 nctest sshd[30534]: Failed password for invalid user jp from 190.147.178.100 port 33449 ssh2
+Feb 12 12:26:14 nctest sshd[30534]: Received disconnect from 190.147.178.100 port 33449:11: Bye Bye [preauth]
+Feb 12 12:26:14 nctest sshd[30534]: Disconnected from 190.147.178.100 port 33449 [preauth]
+Feb 12 12:27:00 nctest sshd[30549]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.89.182.5  user=ubuntu[0m
+Feb 12 12:27:01 nctest sshd[30549]: Failed password for ubuntu from 159.89.182.5 port 40492 ssh2
+Feb 12 12:27:01 nctest sshd[30549]: Received disconnect from 159.89.182.5 port 40492:11: Bye Bye [preauth]
+Feb 12 12:27:01 nctest sshd[30549]: Disconnected from 159.89.182.5 port 40492 [preauth]
+Feb 12 12:27:02 nctest sshd[30551]: Invalid user toro from 41.79.95.124
+Feb 12 12:27:02 nctest sshd[30551]: input_userauth_request: invalid user toro [preauth]
+Feb 12 12:27:02 nctest sshd[30551]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:27:02 nctest sshd[30551]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=41.79.95.124[0m
+Feb 12 12:27:05 nctest sshd[30551]: Failed password for invalid user toro from 41.79.95.124 port 45804 ssh2
+Feb 12 12:27:05 nctest sshd[30551]: Received disconnect from 41.79.95.124 port 45804:11: Bye Bye [preauth]
+Feb 12 12:27:05 nctest sshd[30551]: Disconnected from 41.79.95.124 port 45804 [preauth]
+Feb 12 12:27:16 nctest sshd[30557]: Invalid user sammy from 104.168.170.92
+Feb 12 12:27:16 nctest sshd[30557]: input_userauth_request: invalid user sammy [preauth]
+Feb 12 12:27:16 nctest sshd[30557]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:27:16 nctest sshd[30557]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=104.168.170.92[0m
+Feb 12 12:27:18 nctest sshd[30557]: Failed password for invalid user sammy from 104.168.170.92 port 55442 ssh2
+Feb 12 12:27:18 nctest sshd[30557]: Received disconnect from 104.168.170.92 port 55442:11: Bye Bye [preauth]
+Feb 12 12:27:18 nctest sshd[30557]: Disconnected from 104.168.170.92 port 55442 [preauth]
+Feb 12 12:27:41 nctest sshd[30565]: Invalid user math from 195.25.22.185
+Feb 12 12:27:41 nctest sshd[30565]: input_userauth_request: invalid user math [preauth]
+Feb 12 12:27:41 nctest sshd[30565]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:27:41 nctest sshd[30565]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=195.25.22.185[0m
+Feb 12 12:27:43 nctest sshd[30565]: Failed password for invalid user math from 195.25.22.185 port 53494 ssh2
+Feb 12 12:27:43 nctest sshd[30565]: Received disconnect from 195.25.22.185 port 53494:11: Bye Bye [preauth]
+Feb 12 12:27:43 nctest sshd[30565]: Disconnected from 195.25.22.185 port 53494 [preauth]
+Feb 12 12:27:51 nctest sshd[30569]: Invalid user teamspeak from 46.101.77.58
+Feb 12 12:27:51 nctest sshd[30569]: input_userauth_request: invalid user teamspeak [preauth]
+Feb 12 12:27:51 nctest sshd[30569]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:27:51 nctest sshd[30569]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=46.101.77.58[0m
+Feb 12 12:27:53 nctest sshd[30569]: Failed password for invalid user teamspeak from 46.101.77.58 port 35433 ssh2
+Feb 12 12:27:53 nctest sshd[30569]: Received disconnect from 46.101.77.58 port 35433:11: Bye Bye [preauth]
+Feb 12 12:27:53 nctest sshd[30569]: Disconnected from 46.101.77.58 port 35433 [preauth]
+Feb 12 12:28:06 nctest sshd[30576]: Invalid user test from 192.99.252.97
+Feb 12 12:28:06 nctest sshd[30576]: input_userauth_request: invalid user test [preauth]
+Feb 12 12:28:06 nctest sshd[30576]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:28:06 nctest sshd[30576]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.99.252.97[0m
+Feb 12 12:28:07 nctest sshd[30576]: Failed password for invalid user test from 192.99.252.97 port 41176 ssh2
+Feb 12 12:28:07 nctest sshd[30576]: Received disconnect from 192.99.252.97 port 41176:11: Bye Bye [preauth]
+Feb 12 12:28:07 nctest sshd[30576]: Disconnected from 192.99.252.97 port 41176 [preauth]
+Feb 12 12:28:31 nctest sshd[30583]: Invalid user vps from 51.77.212.179
+Feb 12 12:28:31 nctest sshd[30583]: input_userauth_request: invalid user vps [preauth]
+Feb 12 12:28:31 nctest sshd[30583]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:28:31 nctest sshd[30583]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=51.77.212.179[0m
+Feb 12 12:28:33 nctest sshd[30583]: Failed password for invalid user vps from 51.77.212.179 port 52295 ssh2
+Feb 12 12:28:33 nctest sshd[30583]: Received disconnect from 51.77.212.179 port 52295:11: Bye Bye [preauth]
+Feb 12 12:28:33 nctest sshd[30583]: Disconnected from 51.77.212.179 port 52295 [preauth]
+Feb 12 12:29:37 nctest sshd[30602]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.89.182.5  user=ubuntu[0m
+Feb 12 12:29:38 nctest sshd[30604]: Invalid user webmaster from 190.147.178.100
+Feb 12 12:29:38 nctest sshd[30604]: input_userauth_request: invalid user webmaster [preauth]
+Feb 12 12:29:38 nctest sshd[30604]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:29:38 nctest sshd[30604]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.147.178.100[0m
+Feb 12 12:29:39 nctest sshd[30602]: Failed password for ubuntu from 159.89.182.5 port 36102 ssh2
+Feb 12 12:29:39 nctest sshd[30602]: Received disconnect from 159.89.182.5 port 36102:11: Bye Bye [preauth]
+Feb 12 12:29:39 nctest sshd[30602]: Disconnected from 159.89.182.5 port 36102 [preauth]
+Feb 12 12:29:40 nctest sshd[30604]: Failed password for invalid user webmaster from 190.147.178.100 port 57716 ssh2
+Feb 12 12:29:40 nctest sshd[30604]: Received disconnect from 190.147.178.100 port 57716:11: Bye Bye [preauth]
+Feb 12 12:29:40 nctest sshd[30604]: Disconnected from 190.147.178.100 port 57716 [preauth]
+Feb 12 12:30:05 nctest sshd[30613]: Invalid user jaydeep from 104.168.170.92
+Feb 12 12:30:05 nctest sshd[30613]: input_userauth_request: invalid user jaydeep [preauth]
+Feb 12 12:30:05 nctest sshd[30613]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:30:05 nctest sshd[30613]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=104.168.170.92[0m
+Feb 12 12:30:07 nctest sshd[30613]: Failed password for invalid user jaydeep from 104.168.170.92 port 51572 ssh2
+Feb 12 12:30:07 nctest sshd[30613]: Received disconnect from 104.168.170.92 port 51572:11: Bye Bye [preauth]
+Feb 12 12:30:07 nctest sshd[30613]: Disconnected from 104.168.170.92 port 51572 [preauth]
+Feb 12 12:30:35 nctest sshd[30622]: Invalid user jenkins from 203.223.143.114
+Feb 12 12:30:35 nctest sshd[30622]: input_userauth_request: invalid user jenkins [preauth]
+Feb 12 12:30:35 nctest sshd[30622]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:30:35 nctest sshd[30622]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.223.143.114[0m
+Feb 12 12:30:36 nctest sshd[30622]: Failed password for invalid user jenkins from 203.223.143.114 port 48418 ssh2
+Feb 12 12:30:36 nctest sshd[30622]: Received disconnect from 203.223.143.114 port 48418:11: Bye Bye [preauth]
+Feb 12 12:30:36 nctest sshd[30622]: Disconnected from 203.223.143.114 port 48418 [preauth]
+Feb 12 12:30:40 nctest sshd[30627]: Invalid user intro from 195.25.22.185
+Feb 12 12:30:40 nctest sshd[30627]: input_userauth_request: invalid user intro [preauth]
+Feb 12 12:30:40 nctest sshd[30627]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:30:40 nctest sshd[30627]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=195.25.22.185[0m
+Feb 12 12:30:43 nctest sshd[30627]: Failed password for invalid user intro from 195.25.22.185 port 49854 ssh2
+Feb 12 12:30:43 nctest sshd[30627]: Received disconnect from 195.25.22.185 port 49854:11: Bye Bye [preauth]
+Feb 12 12:30:43 nctest sshd[30627]: Disconnected from 195.25.22.185 port 49854 [preauth]
+Feb 12 12:30:43 nctest sshd[30630]: Invalid user test from 41.79.95.124
+Feb 12 12:30:43 nctest sshd[30630]: input_userauth_request: invalid user test [preauth]
+Feb 12 12:30:43 nctest sshd[30630]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:30:43 nctest sshd[30630]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=41.79.95.124[0m
+Feb 12 12:30:46 nctest sshd[30630]: Failed password for invalid user test from 41.79.95.124 port 41580 ssh2
+Feb 12 12:30:46 nctest sshd[30630]: Received disconnect from 41.79.95.124 port 41580:11: Bye Bye [preauth]
+Feb 12 12:30:46 nctest sshd[30630]: Disconnected from 41.79.95.124 port 41580 [preauth]
+Feb 12 12:30:57 nctest sshd[30636]: Invalid user vps from 46.101.77.58
+Feb 12 12:30:57 nctest sshd[30636]: input_userauth_request: invalid user vps [preauth]
+Feb 12 12:30:57 nctest sshd[30636]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:30:57 nctest sshd[30636]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=46.101.77.58[0m
+Feb 12 12:30:59 nctest sshd[30636]: Failed password for invalid user vps from 46.101.77.58 port 47485 ssh2
+Feb 12 12:30:59 nctest sshd[30636]: Received disconnect from 46.101.77.58 port 47485:11: Bye Bye [preauth]
+Feb 12 12:30:59 nctest sshd[30636]: Disconnected from 46.101.77.58 port 47485 [preauth]
+Feb 12 12:31:17 nctest sshd[30643]: Invalid user testftp from 159.65.22.120
+Feb 12 12:31:17 nctest sshd[30643]: input_userauth_request: invalid user testftp [preauth]
+Feb 12 12:31:17 nctest sshd[30643]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:31:17 nctest sshd[30643]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.65.22.120[0m
+Feb 12 12:31:18 nctest sshd[30645]: Invalid user mark from 51.77.212.179
+Feb 12 12:31:18 nctest sshd[30645]: input_userauth_request: invalid user mark [preauth]
+Feb 12 12:31:18 nctest sshd[30645]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:31:18 nctest sshd[30645]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=51.77.212.179[0m
+Feb 12 12:31:19 nctest sshd[30643]: Failed password for invalid user testftp from 159.65.22.120 port 54400 ssh2
+Feb 12 12:31:19 nctest sshd[30643]: Received disconnect from 159.65.22.120 port 54400:11: Bye Bye [preauth]
+Feb 12 12:31:19 nctest sshd[30643]: Disconnected from 159.65.22.120 port 54400 [preauth]
+Feb 12 12:31:20 nctest sshd[30645]: Failed password for invalid user mark from 51.77.212.179 port 46792 ssh2
+Feb 12 12:31:20 nctest sshd[30645]: Received disconnect from 51.77.212.179 port 46792:11: Bye Bye [preauth]
+Feb 12 12:31:20 nctest sshd[30645]: Disconnected from 51.77.212.179 port 46792 [preauth]
+Feb 12 12:32:08 nctest sshd[30660]: Invalid user sysadm from 159.89.182.5
+Feb 12 12:32:08 nctest sshd[30660]: input_userauth_request: invalid user sysadm [preauth]
+Feb 12 12:32:08 nctest sshd[30660]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:32:08 nctest sshd[30660]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.89.182.5[0m
+Feb 12 12:32:10 nctest sshd[30660]: Failed password for invalid user sysadm from 159.89.182.5 port 59964 ssh2
+Feb 12 12:32:10 nctest sshd[30660]: Received disconnect from 159.89.182.5 port 59964:11: Bye Bye [preauth]
+Feb 12 12:32:10 nctest sshd[30660]: Disconnected from 159.89.182.5 port 59964 [preauth]
+Feb 12 12:32:24 nctest sshd[30665]: Invalid user sammy from 192.99.252.97
+Feb 12 12:32:24 nctest sshd[30665]: input_userauth_request: invalid user sammy [preauth]
+Feb 12 12:32:24 nctest sshd[30665]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:32:24 nctest sshd[30665]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.99.252.97[0m
+Feb 12 12:32:25 nctest sshd[30665]: Failed password for invalid user sammy from 192.99.252.97 port 53008 ssh2
+Feb 12 12:32:25 nctest sshd[30665]: Received disconnect from 192.99.252.97 port 53008:11: Bye Bye [preauth]
+Feb 12 12:32:25 nctest sshd[30665]: Disconnected from 192.99.252.97 port 53008 [preauth]
+Feb 12 12:32:43 nctest sshd[30672]: Invalid user mani from 190.147.178.100
+Feb 12 12:32:43 nctest sshd[30672]: input_userauth_request: invalid user mani [preauth]
+Feb 12 12:32:43 nctest sshd[30672]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:32:43 nctest sshd[30672]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.147.178.100[0m
+Feb 12 12:32:45 nctest sshd[30672]: Failed password for invalid user mani from 190.147.178.100 port 54896 ssh2
+Feb 12 12:32:45 nctest sshd[30672]: Received disconnect from 190.147.178.100 port 54896:11: Bye Bye [preauth]
+Feb 12 12:32:45 nctest sshd[30672]: Disconnected from 190.147.178.100 port 54896 [preauth]
+Feb 12 12:32:49 nctest sshd[30676]: Invalid user teste from 104.168.170.92
+Feb 12 12:32:49 nctest sshd[30676]: input_userauth_request: invalid user teste [preauth]
+Feb 12 12:32:49 nctest sshd[30676]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:32:49 nctest sshd[30676]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=104.168.170.92[0m
+Feb 12 12:32:50 nctest sshd[30676]: Failed password for invalid user teste from 104.168.170.92 port 47666 ssh2
+Feb 12 12:32:51 nctest sshd[30676]: Received disconnect from 104.168.170.92 port 47666:11: Bye Bye [preauth]
+Feb 12 12:32:51 nctest sshd[30676]: Disconnected from 104.168.170.92 port 47666 [preauth]
+Feb 12 12:33:16 nctest sshd[30685]: Invalid user admin from 195.25.22.185
+Feb 12 12:33:16 nctest sshd[30685]: input_userauth_request: invalid user admin [preauth]
+Feb 12 12:33:16 nctest sshd[30685]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:33:16 nctest sshd[30685]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=195.25.22.185[0m
+Feb 12 12:33:18 nctest sshd[30685]: Failed password for invalid user admin from 195.25.22.185 port 44970 ssh2
+Feb 12 12:33:18 nctest sshd[30685]: Received disconnect from 195.25.22.185 port 44970:11: Bye Bye [preauth]
+Feb 12 12:33:18 nctest sshd[30685]: Disconnected from 195.25.22.185 port 44970 [preauth]
+Feb 12 12:33:57 nctest sshd[30697]: Invalid user craig from 159.65.22.120
+Feb 12 12:33:57 nctest sshd[30697]: input_userauth_request: invalid user craig [preauth]
+Feb 12 12:33:57 nctest sshd[30697]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:33:57 nctest sshd[30697]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.65.22.120[0m
+Feb 12 12:34:00 nctest sshd[30697]: Failed password for invalid user craig from 159.65.22.120 port 50908 ssh2
+Feb 12 12:34:00 nctest sshd[30697]: Received disconnect from 159.65.22.120 port 50908:11: Bye Bye [preauth]
+Feb 12 12:34:00 nctest sshd[30697]: Disconnected from 159.65.22.120 port 50908 [preauth]
+Feb 12 12:34:03 nctest sshd[30700]: Invalid user himanshu from 203.223.143.114
+Feb 12 12:34:03 nctest sshd[30700]: input_userauth_request: invalid user himanshu [preauth]
+Feb 12 12:34:03 nctest sshd[30700]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:34:03 nctest sshd[30700]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.223.143.114[0m
+Feb 12 12:34:05 nctest sshd[30700]: Failed password for invalid user himanshu from 203.223.143.114 port 32944 ssh2
+Feb 12 12:34:05 nctest sshd[30700]: Received disconnect from 203.223.143.114 port 32944:11: Bye Bye [preauth]
+Feb 12 12:34:05 nctest sshd[30700]: Disconnected from 203.223.143.114 port 32944 [preauth]
+Feb 12 12:34:15 nctest sshd[30704]: Invalid user tmp from 41.79.95.124
+Feb 12 12:34:15 nctest sshd[30704]: input_userauth_request: invalid user tmp [preauth]
+Feb 12 12:34:15 nctest sshd[30704]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:34:15 nctest sshd[30704]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=41.79.95.124[0m
+Feb 12 12:34:17 nctest sshd[30708]: Invalid user mark from 46.101.77.58
+Feb 12 12:34:17 nctest sshd[30708]: input_userauth_request: invalid user mark [preauth]
+Feb 12 12:34:17 nctest sshd[30708]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:34:17 nctest sshd[30708]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=46.101.77.58[0m
+Feb 12 12:34:17 nctest sshd[30704]: Failed password for invalid user tmp from 41.79.95.124 port 37370 ssh2
+Feb 12 12:34:18 nctest sshd[30704]: Received disconnect from 41.79.95.124 port 37370:11: Bye Bye [preauth]
+Feb 12 12:34:18 nctest sshd[30704]: Disconnected from 41.79.95.124 port 37370 [preauth]
+Feb 12 12:34:19 nctest sshd[30708]: Failed password for invalid user mark from 46.101.77.58 port 59535 ssh2
+Feb 12 12:34:19 nctest sshd[30708]: Received disconnect from 46.101.77.58 port 59535:11: Bye Bye [preauth]
+Feb 12 12:34:19 nctest sshd[30708]: Disconnected from 46.101.77.58 port 59535 [preauth]
+Feb 12 12:34:36 nctest sshd[30715]: Invalid user linuxadmin from 159.89.182.5
+Feb 12 12:34:36 nctest sshd[30715]: input_userauth_request: invalid user linuxadmin [preauth]
+Feb 12 12:34:36 nctest sshd[30715]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:34:36 nctest sshd[30715]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.89.182.5[0m
+Feb 12 12:34:38 nctest sshd[30715]: Failed password for invalid user linuxadmin from 159.89.182.5 port 55578 ssh2
+Feb 12 12:34:38 nctest sshd[30715]: Received disconnect from 159.89.182.5 port 55578:11: Bye Bye [preauth]
+Feb 12 12:34:38 nctest sshd[30715]: Disconnected from 159.89.182.5 port 55578 [preauth]
+Feb 12 12:35:01 nctest CRON[30723]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:35:01 nctest CRON[30724]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:35:01 nctest CRON[30723]: pam_unix(cron:session): session closed for user root
+Feb 12 12:35:47 nctest sshd[30739]: Invalid user testbed from 190.147.178.100
+Feb 12 12:35:47 nctest sshd[30739]: input_userauth_request: invalid user testbed [preauth]
+Feb 12 12:35:47 nctest sshd[30739]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:35:47 nctest sshd[30739]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.147.178.100[0m
+Feb 12 12:35:48 nctest sshd[30739]: Failed password for invalid user testbed from 190.147.178.100 port 44942 ssh2
+Feb 12 12:35:49 nctest sshd[30739]: Received disconnect from 190.147.178.100 port 44942:11: Bye Bye [preauth]
+Feb 12 12:35:49 nctest sshd[30739]: Disconnected from 190.147.178.100 port 44942 [preauth]
+Feb 12 12:36:00 nctest sshd[30744]: Invalid user physics from 195.25.22.185
+Feb 12 12:36:00 nctest sshd[30744]: input_userauth_request: invalid user physics [preauth]
+Feb 12 12:36:00 nctest sshd[30744]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:36:00 nctest sshd[30744]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=195.25.22.185[0m
+Feb 12 12:36:02 nctest sshd[30744]: Failed password for invalid user physics from 195.25.22.185 port 40084 ssh2
+Feb 12 12:36:02 nctest sshd[30744]: Received disconnect from 195.25.22.185 port 40084:11: Bye Bye [preauth]
+Feb 12 12:36:02 nctest sshd[30744]: Disconnected from 195.25.22.185 port 40084 [preauth]
+Feb 12 12:36:31 nctest sshd[30754]: Invalid user zimbra from 159.65.22.120
+Feb 12 12:36:31 nctest sshd[30754]: input_userauth_request: invalid user zimbra [preauth]
+Feb 12 12:36:31 nctest sshd[30754]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:36:31 nctest sshd[30754]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.65.22.120[0m
+Feb 12 12:36:33 nctest sshd[30754]: Failed password for invalid user zimbra from 159.65.22.120 port 46180 ssh2
+Feb 12 12:36:33 nctest sshd[30754]: Received disconnect from 159.65.22.120 port 46180:11: Bye Bye [preauth]
+Feb 12 12:36:33 nctest sshd[30754]: Disconnected from 159.65.22.120 port 46180 [preauth]
+Feb 12 12:36:34 nctest sshd[30756]: Invalid user jaydeep from 192.99.252.97
+Feb 12 12:36:34 nctest sshd[30756]: input_userauth_request: invalid user jaydeep [preauth]
+Feb 12 12:36:34 nctest sshd[30756]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:36:34 nctest sshd[30756]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.99.252.97[0m
+Feb 12 12:36:37 nctest sshd[30756]: Failed password for invalid user jaydeep from 192.99.252.97 port 36607 ssh2
+Feb 12 12:36:37 nctest sshd[30756]: Received disconnect from 192.99.252.97 port 36607:11: Bye Bye [preauth]
+Feb 12 12:36:37 nctest sshd[30756]: Disconnected from 192.99.252.97 port 36607 [preauth]
+Feb 12 12:36:52 nctest sshd[30763]: Invalid user admin from 209.97.142.250
+Feb 12 12:36:52 nctest sshd[30763]: input_userauth_request: invalid user admin [preauth]
+Feb 12 12:36:52 nctest sshd[30763]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:36:52 nctest sshd[30763]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=209.97.142.250[0m
+Feb 12 12:36:54 nctest sshd[30763]: Failed password for invalid user admin from 209.97.142.250 port 48962 ssh2
+Feb 12 12:36:54 nctest sshd[30763]: Received disconnect from 209.97.142.250 port 48962:11: Bye Bye [preauth]
+Feb 12 12:36:54 nctest sshd[30763]: Disconnected from 209.97.142.250 port 48962 [preauth]
+Feb 12 12:37:18 nctest sshd[30772]: Invalid user riley from 203.223.143.114
+Feb 12 12:37:18 nctest sshd[30772]: input_userauth_request: invalid user riley [preauth]
+Feb 12 12:37:18 nctest sshd[30772]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:37:18 nctest sshd[30772]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.223.143.114[0m
+Feb 12 12:37:20 nctest sshd[30772]: Failed password for invalid user riley from 203.223.143.114 port 44945 ssh2
+Feb 12 12:37:21 nctest sshd[30772]: Received disconnect from 203.223.143.114 port 44945:11: Bye Bye [preauth]
+Feb 12 12:37:21 nctest sshd[30772]: Disconnected from 203.223.143.114 port 44945 [preauth]
+Feb 12 12:37:38 nctest sshd[30779]: Did not receive identification string from 106.75.64.59
+Feb 12 12:38:02 nctest sshd[30786]: Invalid user kent from 41.79.95.124
+Feb 12 12:38:02 nctest sshd[30786]: input_userauth_request: invalid user kent [preauth]
+Feb 12 12:38:02 nctest sshd[30786]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:38:02 nctest sshd[30786]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=41.79.95.124[0m
+Feb 12 12:38:03 nctest sshd[30786]: Failed password for invalid user kent from 41.79.95.124 port 33140 ssh2
+Feb 12 12:38:03 nctest sshd[30786]: Received disconnect from 41.79.95.124 port 33140:11: Bye Bye [preauth]
+Feb 12 12:38:03 nctest sshd[30786]: Disconnected from 41.79.95.124 port 33140 [preauth]
+Feb 12 12:38:35 nctest sshd[30795]: Invalid user developer from 195.25.22.185
+Feb 12 12:38:35 nctest sshd[30795]: input_userauth_request: invalid user developer [preauth]
+Feb 12 12:38:35 nctest sshd[30795]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:38:35 nctest sshd[30795]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=195.25.22.185[0m
+Feb 12 12:38:36 nctest sshd[30795]: Failed password for invalid user developer from 195.25.22.185 port 35202 ssh2
+Feb 12 12:38:36 nctest sshd[30795]: Received disconnect from 195.25.22.185 port 35202:11: Bye Bye [preauth]
+Feb 12 12:38:36 nctest sshd[30795]: Disconnected from 195.25.22.185 port 35202 [preauth]
+Feb 12 12:38:51 nctest sshd[30802]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.147.178.100  user=ubuntu[0m
+Feb 12 12:38:53 nctest sshd[30802]: Failed password for ubuntu from 190.147.178.100 port 57250 ssh2
+Feb 12 12:38:53 nctest sshd[30802]: Received disconnect from 190.147.178.100 port 57250:11: Bye Bye [preauth]
+Feb 12 12:38:53 nctest sshd[30802]: Disconnected from 190.147.178.100 port 57250 [preauth]
+Feb 12 12:38:59 nctest sshd[30807]: Invalid user dk from 159.65.22.120
+Feb 12 12:38:59 nctest sshd[30807]: input_userauth_request: invalid user dk [preauth]
+Feb 12 12:38:59 nctest sshd[30807]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:38:59 nctest sshd[30807]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.65.22.120[0m
+Feb 12 12:39:01 nctest sshd[30807]: Failed password for invalid user dk from 159.65.22.120 port 41452 ssh2
+Feb 12 12:39:01 nctest sshd[30807]: Received disconnect from 159.65.22.120 port 41452:11: Bye Bye [preauth]
+Feb 12 12:39:01 nctest sshd[30807]: Disconnected from 159.65.22.120 port 41452 [preauth]
+Feb 12 12:39:01 nctest systemd[1]: Starting Clean php session files...
+-- Subject: Unit phpsessionclean.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit phpsessionclean.service has begun starting up.
+Feb 12 12:39:01 nctest systemd[1]: Started Clean php session files.
+-- Subject: Unit phpsessionclean.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit phpsessionclean.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:39:01 nctest CRON[30898]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:39:01 nctest CRON[30899]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+Feb 12 12:39:01 nctest CRON[30898]: pam_unix(cron:session): session closed for user root
+Feb 12 12:39:04 nctest sshd[30900]: Invalid user usenet from 105.247.158.86
+Feb 12 12:39:04 nctest sshd[30900]: input_userauth_request: invalid user usenet [preauth]
+Feb 12 12:39:04 nctest sshd[30900]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:39:04 nctest sshd[30900]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=105.247.158.86[0m
+Feb 12 12:39:06 nctest sshd[30900]: Failed password for invalid user usenet from 105.247.158.86 port 41706 ssh2
+Feb 12 12:39:06 nctest sshd[30900]: Received disconnect from 105.247.158.86 port 41706:11: Bye Bye [preauth]
+Feb 12 12:39:06 nctest sshd[30900]: Disconnected from 105.247.158.86 port 41706 [preauth]
+Feb 12 12:39:38 nctest sshd[30909]: Invalid user webaccess from 106.2.6.143
+Feb 12 12:39:38 nctest sshd[30909]: input_userauth_request: invalid user webaccess [preauth]
+Feb 12 12:39:38 nctest sshd[30909]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:39:38 nctest sshd[30909]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.2.6.143[0m
+Feb 12 12:39:39 nctest sshd[30909]: Failed password for invalid user webaccess from 106.2.6.143 port 50170 ssh2
+Feb 12 12:39:39 nctest sshd[30909]: Received disconnect from 106.2.6.143 port 50170:11: Bye Bye [preauth]
+Feb 12 12:39:39 nctest sshd[30909]: Disconnected from 106.2.6.143 port 50170 [preauth]
+Feb 12 12:40:10 nctest sshd[30921]: Invalid user gis from 209.97.142.250
+Feb 12 12:40:10 nctest sshd[30921]: input_userauth_request: invalid user gis [preauth]
+Feb 12 12:40:10 nctest sshd[30921]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:40:10 nctest sshd[30921]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=209.97.142.250[0m
+Feb 12 12:40:12 nctest sshd[30921]: Failed password for invalid user gis from 209.97.142.250 port 46110 ssh2
+Feb 12 12:40:12 nctest sshd[30921]: Received disconnect from 209.97.142.250 port 46110:11: Bye Bye [preauth]
+Feb 12 12:40:12 nctest sshd[30921]: Disconnected from 209.97.142.250 port 46110 [preauth]
+Feb 12 12:40:26 nctest sshd[30926]: Invalid user server from 203.223.143.114
+Feb 12 12:40:26 nctest sshd[30926]: input_userauth_request: invalid user server [preauth]
+Feb 12 12:40:26 nctest sshd[30926]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:40:26 nctest sshd[30926]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.223.143.114[0m
+Feb 12 12:40:28 nctest sshd[30926]: Failed password for invalid user server from 203.223.143.114 port 57092 ssh2
+Feb 12 12:40:28 nctest sshd[30926]: Received disconnect from 203.223.143.114 port 57092:11: Bye Bye [preauth]
+Feb 12 12:40:28 nctest sshd[30926]: Disconnected from 203.223.143.114 port 57092 [preauth]
+Feb 12 12:40:59 nctest sshd[30936]: Invalid user teste from 192.99.252.97
+Feb 12 12:40:59 nctest sshd[30936]: input_userauth_request: invalid user teste [preauth]
+Feb 12 12:40:59 nctest sshd[30936]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:40:59 nctest sshd[30936]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.99.252.97[0m
+Feb 12 12:41:01 nctest sshd[30936]: Failed password for invalid user teste from 192.99.252.97 port 48439 ssh2
+Feb 12 12:41:02 nctest sshd[30936]: Received disconnect from 192.99.252.97 port 48439:11: Bye Bye [preauth]
+Feb 12 12:41:02 nctest sshd[30936]: Disconnected from 192.99.252.97 port 48439 [preauth]
+Feb 12 12:41:30 nctest sshd[30948]: Invalid user xavier from 159.65.22.120
+Feb 12 12:41:30 nctest sshd[30948]: input_userauth_request: invalid user xavier [preauth]
+Feb 12 12:41:30 nctest sshd[30948]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:41:30 nctest sshd[30948]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=159.65.22.120[0m
+Feb 12 12:41:32 nctest sshd[30948]: Failed password for invalid user xavier from 159.65.22.120 port 36726 ssh2
+Feb 12 12:41:32 nctest sshd[30948]: Received disconnect from 159.65.22.120 port 36726:11: Bye Bye [preauth]
+Feb 12 12:41:32 nctest sshd[30948]: Disconnected from 159.65.22.120 port 36726 [preauth]
+Feb 12 12:42:45 nctest sshd[30969]: Invalid user torrent from 105.247.158.86
+Feb 12 12:42:45 nctest sshd[30969]: input_userauth_request: invalid user torrent [preauth]
+Feb 12 12:42:45 nctest sshd[30969]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:42:45 nctest sshd[30969]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=105.247.158.86[0m
+Feb 12 12:42:47 nctest sshd[30969]: Failed password for invalid user torrent from 105.247.158.86 port 32916 ssh2
+Feb 12 12:42:48 nctest sshd[30969]: Received disconnect from 105.247.158.86 port 32916:11: Bye Bye [preauth]
+Feb 12 12:42:48 nctest sshd[30969]: Disconnected from 105.247.158.86 port 32916 [preauth]
+Feb 12 12:42:55 nctest sshd[30973]: Invalid user ftpuser from 209.97.142.250
+Feb 12 12:42:55 nctest sshd[30973]: input_userauth_request: invalid user ftpuser [preauth]
+Feb 12 12:42:55 nctest sshd[30973]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:42:55 nctest sshd[30973]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=209.97.142.250[0m
+Feb 12 12:42:56 nctest sshd[30973]: Failed password for invalid user ftpuser from 209.97.142.250 port 42054 ssh2
+Feb 12 12:42:56 nctest sshd[30973]: Received disconnect from 209.97.142.250 port 42054:11: Bye Bye [preauth]
+Feb 12 12:42:56 nctest sshd[30973]: Disconnected from 209.97.142.250 port 42054 [preauth]
+Feb 12 12:43:41 nctest sshd[30988]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.223.143.114  user=ubuntu[0m
+Feb 12 12:43:43 nctest sshd[30988]: Failed password for ubuntu from 203.223.143.114 port 40918 ssh2
+Feb 12 12:43:44 nctest sshd[30988]: Received disconnect from 203.223.143.114 port 40918:11: Bye Bye [preauth]
+Feb 12 12:43:44 nctest sshd[30988]: Disconnected from 203.223.143.114 port 40918 [preauth]
+Feb 12 12:44:06 nctest sshd[30995]: Invalid user antoine from 106.2.6.143
+Feb 12 12:44:06 nctest sshd[30995]: input_userauth_request: invalid user antoine [preauth]
+Feb 12 12:44:06 nctest sshd[30995]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:44:06 nctest sshd[30995]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.2.6.143[0m
+Feb 12 12:44:08 nctest sshd[30995]: Failed password for invalid user antoine from 106.2.6.143 port 34143 ssh2
+Feb 12 12:44:08 nctest sshd[30995]: Received disconnect from 106.2.6.143 port 34143:11: Bye Bye [preauth]
+Feb 12 12:44:08 nctest sshd[30995]: Disconnected from 106.2.6.143 port 34143 [preauth]
+Feb 12 12:44:36 nctest sshd[31004]: Invalid user ghost from 192.241.249.53
+Feb 12 12:44:36 nctest sshd[31004]: input_userauth_request: invalid user ghost [preauth]
+Feb 12 12:44:36 nctest sshd[31004]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:44:36 nctest sshd[31004]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.241.249.53[0m
+Feb 12 12:44:37 nctest sshd[31004]: Failed password for invalid user ghost from 192.241.249.53 port 33153 ssh2
+Feb 12 12:44:37 nctest sshd[31004]: Received disconnect from 192.241.249.53 port 33153:11: Bye Bye [preauth]
+Feb 12 12:44:37 nctest sshd[31004]: Disconnected from 192.241.249.53 port 33153 [preauth]
+Feb 12 12:45:01 nctest CRON[31014]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:45:01 nctest CRON[31015]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:45:01 nctest CRON[31014]: pam_unix(cron:session): session closed for user root
+Feb 12 12:45:33 nctest sshd[31024]: Invalid user usuario from 209.97.142.250
+Feb 12 12:45:33 nctest sshd[31024]: input_userauth_request: invalid user usuario [preauth]
+Feb 12 12:45:33 nctest sshd[31024]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:45:33 nctest sshd[31024]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=209.97.142.250[0m
+Feb 12 12:45:35 nctest sshd[31024]: Failed password for invalid user usuario from 209.97.142.250 port 37998 ssh2
+Feb 12 12:45:35 nctest sshd[31024]: Received disconnect from 209.97.142.250 port 37998:11: Bye Bye [preauth]
+Feb 12 12:45:35 nctest sshd[31024]: Disconnected from 209.97.142.250 port 37998 [preauth]
+Feb 12 12:45:57 nctest sshd[31032]: Invalid user gnat from 105.247.158.86
+Feb 12 12:45:57 nctest sshd[31032]: input_userauth_request: invalid user gnat [preauth]
+Feb 12 12:45:57 nctest sshd[31032]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:45:57 nctest sshd[31032]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=105.247.158.86[0m
+Feb 12 12:45:59 nctest sshd[31032]: Failed password for invalid user gnat from 105.247.158.86 port 50802 ssh2
+Feb 12 12:46:00 nctest sshd[31032]: Received disconnect from 105.247.158.86 port 50802:11: Bye Bye [preauth]
+Feb 12 12:46:00 nctest sshd[31032]: Disconnected from 105.247.158.86 port 50802 [preauth]
+Feb 12 12:48:06 nctest sshd[31067]: Invalid user emiliojose from 106.2.6.143
+Feb 12 12:48:06 nctest sshd[31067]: input_userauth_request: invalid user emiliojose [preauth]
+Feb 12 12:48:06 nctest sshd[31067]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:48:06 nctest sshd[31067]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.2.6.143[0m
+Feb 12 12:48:08 nctest sshd[31067]: Failed password for invalid user emiliojose from 106.2.6.143 port 45712 ssh2
+Feb 12 12:48:08 nctest sshd[31067]: Received disconnect from 106.2.6.143 port 45712:11: Bye Bye [preauth]
+Feb 12 12:48:08 nctest sshd[31067]: Disconnected from 106.2.6.143 port 45712 [preauth]
+Feb 12 12:48:10 nctest sshd[31071]: Invalid user cacti from 209.97.142.250
+Feb 12 12:48:10 nctest sshd[31071]: input_userauth_request: invalid user cacti [preauth]
+Feb 12 12:48:10 nctest sshd[31071]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:48:10 nctest sshd[31071]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=209.97.142.250[0m
+Feb 12 12:48:12 nctest sshd[31071]: Failed password for invalid user cacti from 209.97.142.250 port 33942 ssh2
+Feb 12 12:48:12 nctest sshd[31071]: Received disconnect from 209.97.142.250 port 33942:11: Bye Bye [preauth]
+Feb 12 12:48:12 nctest sshd[31071]: Disconnected from 209.97.142.250 port 33942 [preauth]
+Feb 12 12:48:20 nctest sshd[31076]: Invalid user mobile from 192.241.249.53
+Feb 12 12:48:20 nctest sshd[31076]: input_userauth_request: invalid user mobile [preauth]
+Feb 12 12:48:20 nctest sshd[31076]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:48:20 nctest sshd[31076]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.241.249.53[0m
+Feb 12 12:48:22 nctest sshd[31076]: Failed password for invalid user mobile from 192.241.249.53 port 45888 ssh2
+Feb 12 12:48:22 nctest sshd[31076]: Received disconnect from 192.241.249.53 port 45888:11: Bye Bye [preauth]
+Feb 12 12:48:22 nctest sshd[31076]: Disconnected from 192.241.249.53 port 45888 [preauth]
+Feb 12 12:49:11 nctest sshd[31091]: Invalid user dimas from 105.247.158.86
+Feb 12 12:49:11 nctest sshd[31091]: input_userauth_request: invalid user dimas [preauth]
+Feb 12 12:49:11 nctest sshd[31091]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:49:11 nctest sshd[31091]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=105.247.158.86[0m
+Feb 12 12:49:14 nctest sshd[31091]: Failed password for invalid user dimas from 105.247.158.86 port 40458 ssh2
+Feb 12 12:49:14 nctest sshd[31091]: Received disconnect from 105.247.158.86 port 40458:11: Bye Bye [preauth]
+Feb 12 12:49:14 nctest sshd[31091]: Disconnected from 105.247.158.86 port 40458 [preauth]
+Feb 12 12:50:51 nctest sshd[31113]: Connection closed by 94.233.79.122 port 43604 [preauth]
+Feb 12 12:51:37 nctest sshd[31131]: Invalid user sinusbot from 192.241.249.53
+Feb 12 12:51:37 nctest sshd[31131]: input_userauth_request: invalid user sinusbot [preauth]
+Feb 12 12:51:37 nctest sshd[31131]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:51:37 nctest sshd[31131]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.241.249.53[0m
+Feb 12 12:51:38 nctest sshd[31131]: Failed password for invalid user sinusbot from 192.241.249.53 port 58005 ssh2
+Feb 12 12:51:38 nctest sshd[31131]: Received disconnect from 192.241.249.53 port 58005:11: Bye Bye [preauth]
+Feb 12 12:51:38 nctest sshd[31131]: Disconnected from 192.241.249.53 port 58005 [preauth]
+Feb 12 12:52:15 nctest sshd[31143]: Invalid user apache from 106.2.6.143
+Feb 12 12:52:15 nctest sshd[31143]: input_userauth_request: invalid user apache [preauth]
+Feb 12 12:52:15 nctest sshd[31143]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:52:15 nctest sshd[31143]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.2.6.143[0m
+Feb 12 12:52:16 nctest sshd[31143]: Failed password for invalid user apache from 106.2.6.143 port 57266 ssh2
+Feb 12 12:52:16 nctest sshd[31143]: Received disconnect from 106.2.6.143 port 57266:11: Bye Bye [preauth]
+Feb 12 12:52:16 nctest sshd[31143]: Disconnected from 106.2.6.143 port 57266 [preauth]
+Feb 12 12:52:25 nctest sshd[31148]: Invalid user copy from 105.247.158.86
+Feb 12 12:52:25 nctest sshd[31148]: input_userauth_request: invalid user copy [preauth]
+Feb 12 12:52:25 nctest sshd[31148]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:52:25 nctest sshd[31148]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=105.247.158.86[0m
+Feb 12 12:52:27 nctest sshd[31148]: Failed password for invalid user copy from 105.247.158.86 port 58344 ssh2
+Feb 12 12:52:27 nctest sshd[31148]: Received disconnect from 105.247.158.86 port 58344:11: Bye Bye [preauth]
+Feb 12 12:52:27 nctest sshd[31148]: Disconnected from 105.247.158.86 port 58344 [preauth]
+Feb 12 12:54:40 nctest sshd[31186]: Invalid user cy from 192.241.249.53
+Feb 12 12:54:40 nctest sshd[31186]: input_userauth_request: invalid user cy [preauth]
+Feb 12 12:54:40 nctest sshd[31186]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:54:40 nctest sshd[31186]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.241.249.53[0m
+Feb 12 12:54:41 nctest sshd[31182]: Accepted password for ubuntu from 102.159.59.27 port 40054 ssh2
+Feb 12 12:54:41 nctest sshd[31182]: pam_unix(sshd:session): session opened for user ubuntu by (uid=0)
+Feb 12 12:54:41 nctest systemd[1]: Created slice User Slice of ubuntu.
+-- Subject: Unit user-1000.slice has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit user-1000.slice has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[1]: Starting User Manager for UID 1000...
+-- Subject: Unit user@1000.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit user@1000.service has begun starting up.
+Feb 12 12:54:41 nctest systemd-logind[775]: New session 1691 of user ubuntu.
+-- Subject: A new session 1691 has been created for user ubuntu
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- Documentation: http://www.freedesktop.org/wiki/Software/systemd/multiseat
+-- 
+-- A new session with the ID 1691 has been created for the user ubuntu.
+-- 
+-- The leading process of the session is 31182.
+Feb 12 12:54:41 nctest systemd[1]: Started Session 1691 of user ubuntu.
+-- Subject: Unit session-1691.scope has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit session-1691.scope has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: pam_unix(systemd-user:session): session opened for user ubuntu by (uid=0)
+Feb 12 12:54:41 nctest systemd[31189]: Reached target Sockets.
+-- Subject: Unit UNIT has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit UNIT has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: Reached target Paths.
+-- Subject: Unit UNIT has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit UNIT has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: Reached target Timers.
+-- Subject: Unit UNIT has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit UNIT has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: Reached target Basic System.
+-- Subject: Unit UNIT has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit UNIT has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: Reached target Default.
+-- Subject: Unit UNIT has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit UNIT has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:41 nctest systemd[31189]: Startup finished in 9ms.
+-- Subject: System start-up is now complete
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- All system services necessary queued for starting at boot have been
+-- successfully started. Note that this does not mean that the machine is
+-- now idle as services might still be busy with completing start-up.
+-- 
+-- Kernel start-up required KERNEL_USEC microseconds.
+-- 
+-- Initial RAM disk start-up required INITRD_USEC microseconds.
+-- 
+-- Userspace start-up required 9216 microseconds.
+Feb 12 12:54:41 nctest systemd[1]: Started User Manager for UID 1000.
+-- Subject: Unit user@1000.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit user@1000.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:54:42 nctest sshd[31186]: Failed password for invalid user cy from 192.241.249.53 port 41899 ssh2
+Feb 12 12:54:42 nctest sshd[31186]: Received disconnect from 192.241.249.53 port 41899:11: Bye Bye [preauth]
+Feb 12 12:54:42 nctest sshd[31186]: Disconnected from 192.241.249.53 port 41899 [preauth]
+Feb 12 12:54:50 nctest sudo[31268]: [0;1;39mubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/zsh[0m
+Feb 12 12:54:50 nctest sudo[31268]: pam_unix(sudo:session): session opened for user root by ubuntu(uid=0)
+Feb 12 12:55:01 nctest CRON[31330]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 12 12:55:01 nctest CRON[31331]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Feb 12 12:55:01 nctest CRON[31330]: pam_unix(cron:session): session closed for user root
+Feb 12 12:55:30 nctest sudo[31392]: [0;1;39mroot : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/rm -r auto-cloud[0m
+Feb 12 12:55:30 nctest sudo[31392]: pam_unix(sudo:session): session opened for user root by ubuntu(uid=0)
+Feb 12 12:55:30 nctest sudo[31392]: pam_unix(sudo:session): session closed for user root
+Feb 12 12:56:40 nctest sshd[31491]: Invalid user steven from 106.2.6.143
+Feb 12 12:56:40 nctest sshd[31491]: input_userauth_request: invalid user steven [preauth]
+Feb 12 12:56:40 nctest sshd[31491]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:56:40 nctest sshd[31491]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=106.2.6.143[0m
+Feb 12 12:56:43 nctest sshd[31491]: Failed password for invalid user steven from 106.2.6.143 port 40572 ssh2
+Feb 12 12:56:43 nctest sshd[31491]: Received disconnect from 106.2.6.143 port 40572:11: Bye Bye [preauth]
+Feb 12 12:56:43 nctest sshd[31491]: Disconnected from 106.2.6.143 port 40572 [preauth]
+Feb 12 12:57:35 nctest sshd[31506]: Invalid user rrr from 79.137.64.132
+Feb 12 12:57:35 nctest sshd[31506]: input_userauth_request: invalid user rrr [preauth]
+Feb 12 12:57:35 nctest sshd[31506]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:57:35 nctest sshd[31506]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=79.137.64.132[0m
+Feb 12 12:57:37 nctest sshd[31506]: Failed password for invalid user rrr from 79.137.64.132 port 53000 ssh2
+Feb 12 12:57:37 nctest sshd[31506]: Received disconnect from 79.137.64.132 port 53000:11: Bye Bye [preauth]
+Feb 12 12:57:37 nctest sshd[31506]: Disconnected from 79.137.64.132 port 53000 [preauth]
+Feb 12 12:57:51 nctest sshd[31641]: Invalid user rakhi from 192.241.249.53
+Feb 12 12:57:51 nctest sshd[31641]: input_userauth_request: invalid user rakhi [preauth]
+Feb 12 12:57:51 nctest sshd[31641]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 12:57:51 nctest sshd[31641]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.241.249.53[0m
+Feb 12 12:57:53 nctest sshd[31641]: Failed password for invalid user rakhi from 192.241.249.53 port 54041 ssh2
+Feb 12 12:57:53 nctest sshd[31641]: Received disconnect from 192.241.249.53 port 54041:11: Bye Bye [preauth]
+Feb 12 12:57:53 nctest sshd[31641]: Disconnected from 192.241.249.53 port 54041 [preauth]
+Feb 12 12:58:38 nctest ansible-setup[32120]: Invoked with filter=* gather_subset=['all'] fact_path=/etc/ansible/facts.d gather_timeout=10
+Feb 12 12:58:38 nctest ansible-command[32172]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' nginx | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:58:38 nctest ansible-command[32201]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' apache2 | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:58:39 nctest ansible-apt[32231]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-fpm'] autoclean=False name=php7.2-fpm purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:45 nctest ansible-apt[32715]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-gd'] autoclean=False name=php7.2-gd purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:46 nctest ansible-apt[730]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-json'] autoclean=False name=php7.2-json purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:48 nctest ansible-apt[1222]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-pgsql'] autoclean=False name=php7.2-pgsql purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:49 nctest ansible-apt[1705]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-curl'] autoclean=False name=php7.2-curl purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:51 nctest ansible-apt[2176]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-mbstring'] autoclean=False name=php7.2-mbstring purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:52 nctest ansible-apt[2647]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-intl'] autoclean=False name=php7.2-intl purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:54 nctest ansible-apt[3118]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php-imagick'] autoclean=False name=php-imagick purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:56 nctest ansible-apt[3589]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-xml'] autoclean=False name=php7.2-xml purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:57 nctest ansible-apt[4060]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-zip'] autoclean=False name=php7.2-zip purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:58:59 nctest ansible-apt[4534]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['unzip'] autoclean=False name=unzip purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 12:59:00 nctest ansible-systemd[5008]: Invoked with no_block=False force=None name=php7.2-fpm enabled=None daemon_reload=False state=restarted masked=None scope=None user=None
+Feb 12 12:59:00 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 12:59:00 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 12:59:00 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 12:59:00 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:59:01 nctest ansible-stat[5072]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False checksum_algo=sha1 path=/etc/php/7.2/fpm/pool.d/www.conf get_md5=None get_mime=True get_attributes=True
+Feb 12 12:59:01 nctest ansible-file[5082]: Invoked with directory_mode=None force=True remote_src=None _original_basename=www.conf path=/etc/php/7.2/fpm/pool.d/www.conf owner=root follow=True group=root unsafe_writes=None state=file content=NOT_LOGGING_PARAMETER serole=None access_time=None setype=None dest=/etc/php/7.2/fpm/pool.d/www.conf selevel=None access_time_format=%Y%m%d%H%M.%S modification_time=None regexp=None src=None seuser=None recurse=False _diff_peek=None delimiter=None mode=420 modification_time_format=%Y%m%d%H%M.%S attributes=None backup=None
+Feb 12 12:59:01 nctest ansible-systemd[5106]: Invoked with no_block=False force=None name=php7.2-fpm enabled=None daemon_reload=False state=restarted masked=None scope=None user=None
+Feb 12 12:59:01 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 12:59:01 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 12:59:01 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 12:59:01 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:59:01 nctest ansible-systemd[5164]: Invoked with no_block=False force=None name=php7.2-fpm enabled=True daemon_reload=False state=started masked=None scope=None user=None
+Feb 12 12:59:01 nctest ansible-systemd[5190]: Invoked with no_block=False force=None name=php7.2-fpm enabled=True daemon_reload=True state=restarted user=None scope=None masked=None
+Feb 12 12:59:01 nctest systemd[1]: Reloading.
+Feb 12 12:59:01 nctest systemd[1]: Started ACPI event daemon.
+-- Subject: Unit acpid.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit acpid.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:59:01 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 12:59:01 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 12:59:01 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 12:59:01 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 12:59:01 nctest ansible-command[5243]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' postgresql | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:59:02 nctest ansible-command[5272]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "CREATE DATABASE nextcloud;" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:59:02 nctest ansible-command[5272]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 12:59:02 nctest sudo[5274]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c CREATE DATABASE nextcloud;[0m
+Feb 12 12:59:02 nctest sudo[5274]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 12:59:02 nctest sudo[5274]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 12:59:02 nctest ansible-command[5306]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "CREATE USER talel WITH password 'talelpass';" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:59:02 nctest ansible-command[5306]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 12:59:02 nctest sudo[5308]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c CREATE USER talel WITH password 'talelpass';[0m
+Feb 12 12:59:02 nctest sudo[5308]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 12:59:02 nctest sudo[5308]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 12:59:02 nctest ansible-command[5340]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "GRANT ALL privileges ON DATABASE nextcloud TO talel;" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:59:02 nctest ansible-command[5340]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 12:59:02 nctest sudo[5342]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c GRANT ALL privileges ON DATABASE nextcloud TO talel;[0m
+Feb 12 12:59:02 nctest sudo[5342]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 12:59:02 nctest sudo[5342]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 12:59:02 nctest ansible-get_url[5383]: Invoked with directory_mode=None force=False remote_src=None owner=None follow=False client_key=None group=None use_proxy=True unsafe_writes=None serole=None content=NOT_LOGGING_PARAMETER validate_certs=True setype=None client_cert=None timeout=10 url_password=NOT_LOGGING_PARAMETER dest=/tmp/nextcloud-15.0.2.zip selevel=None force_basic_auth=False sha256sum= http_agent=ansible-httpget regexp=None src=None url=https://download.nextcloud.com/server/releases/nextcloud-15.0.2.zip checksum= seuser=None headers=None delimiter=None mode=None url_username=None attributes=None backup=None tmp_dest=None
+Feb 12 12:59:03 nctest ansible-file[5407]: Invoked with directory_mode=None force=False remote_src=None _original_basename=None path=/var/www owner=www-data follow=True group=www-data unsafe_writes=None state=directory content=NOT_LOGGING_PARAMETER serole=None selevel=None setype=None access_time=None access_time_format=%Y%m%d%H%M.%S modification_time=None regexp=None src=None seuser=None recurse=False _diff_peek=None delimiter=None mode=None modification_time_format=%Y%m%d%H%M.%S attributes=None backup=None
+Feb 12 12:59:03 nctest ansible-stat[5431]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False path=/var/www/nextcloud get_md5=None get_mime=True get_attributes=True
+Feb 12 12:59:03 nctest ansible-stat[5455]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=True checksum_algo=sha1 path=/var/www get_md5=None get_mime=True get_attributes=True
+Feb 12 12:59:03 nctest ansible-unarchive[5465]: Invoked with exclude=[] directory_mode=None force=None remote_src=True extra_opts=[] owner=www-data follow=False group=www-data unsafe_writes=None keep_newer=False setype=None content=NOT_LOGGING_PARAMETER serole=None dest=/var/www selevel=None regexp=None src=/tmp/nextcloud-15.0.2.zip validate_certs=True list_files=False seuser=None creates=None delimiter=None mode=None attributes=None backup=None
+Feb 12 12:59:18 nctest ansible-stat[5498]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False checksum_algo=sha1 path=/etc/nginx/conf.d/nctest.dotfoss.com.conf get_md5=None get_mime=True get_attributes=True
+Feb 12 12:59:18 nctest ansible-copy[5511]: Invoked with directory_mode=None force=True remote_src=None _original_basename=nginx-official.conf.tpl owner=www-data follow=False local_follow=None group=www-data unsafe_writes=None serole=None content=NOT_LOGGING_PARAMETER setype=None dest=/etc/nginx/conf.d/nctest.dotfoss.com.conf selevel=None regexp=None validate=None src=/root/.ansible/tmp/ansible-tmp-1549972758.45-16875280608071/source checksum=0d5f708f376f7b51a0cc431aefc86ccbce288f82 seuser=None delimiter=None mode=None attributes=None backup=False
+Feb 12 12:59:18 nctest ansible-command[5545]: Invoked with warn=True executable=None _uses_shell=True _raw_params=systemctl stop nginx removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 12:59:18 nctest systemd[1]: Stopping A high performance web server and a reverse proxy server...
+-- Subject: Unit nginx.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has begun shutting down.
+Feb 12 12:59:18 nctest systemd[1]: Stopped A high performance web server and a reverse proxy server.
+-- Subject: Unit nginx.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has finished shutting down.
+Feb 12 12:59:19 nctest ansible-command[5588]: Invoked with warn=True executable=None _uses_shell=True _raw_params= removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:00:20 nctest sshd[5626]: Invalid user fauzi from 79.137.64.132
+Feb 12 13:00:20 nctest sshd[5626]: input_userauth_request: invalid user fauzi [preauth]
+Feb 12 13:00:20 nctest sshd[5626]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 13:00:20 nctest sshd[5626]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=79.137.64.132[0m
+Feb 12 13:00:22 nctest sshd[5626]: Failed password for invalid user fauzi from 79.137.64.132 port 49768 ssh2
+Feb 12 13:00:22 nctest sshd[5626]: Received disconnect from 79.137.64.132 port 49768:11: Bye Bye [preauth]
+Feb 12 13:00:22 nctest sshd[5626]: Disconnected from 79.137.64.132 port 49768 [preauth]
+Feb 12 13:01:27 nctest sshd[5802]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=182.243.97.75  user=root[0m
+Feb 12 13:01:28 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:31 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:33 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:35 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:38 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:39 nctest sshd[5802]: Failed password for root from 182.243.97.75 port 48504 ssh2
+Feb 12 13:01:39 nctest sshd[5802]: [0;1;31merror: maximum authentication attempts exceeded for root from 182.243.97.75 port 48504 ssh2 [preauth][0m
+Feb 12 13:01:39 nctest sshd[5802]: Disconnecting: Too many authentication failures [preauth]
+Feb 12 13:01:39 nctest sshd[5802]: [0;1;39mPAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=182.243.97.75  user=root[0m
+Feb 12 13:01:39 nctest sshd[5802]: [0;1;31mPAM service(sshd) ignoring max retries; 6 > 3[0m
+Feb 12 13:02:29 nctest ansible-setup[6433]: Invoked with filter=* gather_subset=['all'] fact_path=/etc/ansible/facts.d gather_timeout=10
+Feb 12 13:02:29 nctest ansible-command[6483]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' nginx | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:29 nctest ansible-command[6512]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' apache2 | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:30 nctest ansible-apt[6542]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-fpm'] autoclean=False name=php7.2-fpm purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:31 nctest ansible-apt[7014]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-gd'] autoclean=False name=php7.2-gd purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:33 nctest ansible-apt[7485]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-json'] autoclean=False name=php7.2-json purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:35 nctest ansible-apt[7956]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-pgsql'] autoclean=False name=php7.2-pgsql purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:36 nctest ansible-apt[8427]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-curl'] autoclean=False name=php7.2-curl purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:38 nctest ansible-apt[8899]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-mbstring'] autoclean=False name=php7.2-mbstring purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:39 nctest ansible-apt[9372]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-intl'] autoclean=False name=php7.2-intl purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:41 nctest ansible-apt[9844]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php-imagick'] autoclean=False name=php-imagick purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:42 nctest ansible-apt[10315]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-xml'] autoclean=False name=php7.2-xml purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:44 nctest ansible-apt[10786]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['php7.2-zip'] autoclean=False name=php7.2-zip purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:45 nctest ansible-apt[11257]: Invoked with dpkg_options=force-confdef,force-confold autoremove=False force=False force_apt_get=False install_recommends=None package=['unzip'] autoclean=False name=unzip purge=False allow_unauthenticated=False state=present upgrade=None update_cache=True default_release=None only_upgrade=False deb=None cache_valid_time=0
+Feb 12 13:02:47 nctest ansible-systemd[11731]: Invoked with no_block=False force=None name=php7.2-fpm enabled=None daemon_reload=False state=restarted masked=None scope=None user=None
+Feb 12 13:02:47 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 13:02:47 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 13:02:47 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 13:02:47 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 13:02:47 nctest ansible-stat[11791]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False checksum_algo=sha1 path=/etc/php/7.2/fpm/pool.d/www.conf get_md5=None get_mime=True get_attributes=True
+Feb 12 13:02:47 nctest ansible-file[11801]: Invoked with directory_mode=None force=True remote_src=None _original_basename=www.conf path=/etc/php/7.2/fpm/pool.d/www.conf owner=root follow=True group=root unsafe_writes=None state=file content=NOT_LOGGING_PARAMETER serole=None access_time=None setype=None dest=/etc/php/7.2/fpm/pool.d/www.conf selevel=None access_time_format=%Y%m%d%H%M.%S modification_time=None regexp=None src=None seuser=None recurse=False _diff_peek=None delimiter=None mode=420 modification_time_format=%Y%m%d%H%M.%S attributes=None backup=None
+Feb 12 13:02:48 nctest ansible-systemd[11825]: Invoked with no_block=False force=None name=php7.2-fpm enabled=None daemon_reload=False state=restarted masked=None scope=None user=None
+Feb 12 13:02:48 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 13:02:48 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 13:02:48 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 13:02:48 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 13:02:48 nctest ansible-systemd[11881]: Invoked with no_block=False force=None name=php7.2-fpm enabled=True daemon_reload=False state=started masked=None scope=None user=None
+Feb 12 13:02:48 nctest ansible-systemd[11920]: Invoked with no_block=False force=None name=php7.2-fpm enabled=True daemon_reload=True state=restarted user=None scope=None masked=None
+Feb 12 13:02:48 nctest systemd[1]: Reloading.
+Feb 12 13:02:48 nctest systemd[1]: Started ACPI event daemon.
+-- Subject: Unit acpid.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit acpid.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 13:02:48 nctest systemd[1]: Stopping The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun shutting down.
+Feb 12 13:02:48 nctest systemd[1]: Stopped The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished shutting down.
+Feb 12 13:02:48 nctest systemd[1]: Starting The PHP 7.2 FastCGI Process Manager...
+-- Subject: Unit php7.2-fpm.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has begun starting up.
+Feb 12 13:02:48 nctest systemd[1]: Started The PHP 7.2 FastCGI Process Manager.
+-- Subject: Unit php7.2-fpm.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit php7.2-fpm.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 12 13:02:48 nctest ansible-command[11987]: Invoked with warn=True executable=None _uses_shell=True _raw_params=dpkg-query -W -f='${Status}' postgresql | grep 'install ok installed' removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:48 nctest ansible-command[12016]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "CREATE DATABASE nextcloud;" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:48 nctest ansible-command[12016]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 13:02:48 nctest sudo[12018]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c CREATE DATABASE nextcloud;[0m
+Feb 12 13:02:48 nctest sudo[12018]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 13:02:48 nctest sudo[12018]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 13:02:48 nctest ansible-command[12051]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "CREATE USER talel WITH password 'talelpass';" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:48 nctest ansible-command[12051]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 13:02:48 nctest sudo[12053]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c CREATE USER talel WITH password 'talelpass';[0m
+Feb 12 13:02:48 nctest sudo[12053]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 13:02:48 nctest sudo[12053]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 13:02:49 nctest ansible-command[12085]: Invoked with warn=True executable=None _uses_shell=True _raw_params=sudo -u postgres psql -c "GRANT ALL privileges ON DATABASE nextcloud TO talel;" removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:49 nctest ansible-command[12085]: [WARNING] Consider using 'become', 'become_method', and 'become_user' rather than running sudo
+Feb 12 13:02:49 nctest sudo[12087]: [0;1;39mroot : TTY=pts/0 ; PWD=/root/auto-cloud ; USER=postgres ; COMMAND=/usr/bin/psql -c GRANT ALL privileges ON DATABASE nextcloud TO talel;[0m
+Feb 12 13:02:49 nctest sudo[12087]: pam_unix(sudo:session): session opened for user postgres by ubuntu(uid=0)
+Feb 12 13:02:49 nctest sudo[12087]: pam_unix(sudo:session): session closed for user postgres
+Feb 12 13:02:49 nctest ansible-get_url[12130]: Invoked with directory_mode=None force=False remote_src=None owner=None follow=False client_key=None group=None use_proxy=True unsafe_writes=None serole=None content=NOT_LOGGING_PARAMETER validate_certs=True setype=None client_cert=None timeout=10 url_password=NOT_LOGGING_PARAMETER dest=/tmp/nextcloud-15.0.2.zip selevel=None force_basic_auth=False sha256sum= http_agent=ansible-httpget regexp=None src=None url=https://download.nextcloud.com/server/releases/nextcloud-15.0.2.zip checksum= seuser=None headers=None delimiter=None mode=None url_username=None attributes=None backup=None tmp_dest=None
+Feb 12 13:02:49 nctest ansible-file[12154]: Invoked with directory_mode=None force=False remote_src=None _original_basename=None path=/var/www owner=www-data follow=True group=www-data unsafe_writes=None state=directory content=NOT_LOGGING_PARAMETER serole=None selevel=None setype=None access_time=None access_time_format=%Y%m%d%H%M.%S modification_time=None regexp=None src=None seuser=None recurse=False _diff_peek=None delimiter=None mode=None modification_time_format=%Y%m%d%H%M.%S attributes=None backup=None
+Feb 12 13:02:49 nctest ansible-stat[12178]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False path=/var/www/nextcloud get_md5=None get_mime=True get_attributes=True
+Feb 12 13:02:49 nctest ansible-stat[12208]: Invoked with checksum_algorithm=sha1 get_checksum=True follow=False checksum_algo=sha1 path=/etc/nginx/conf.d/nctest.dotfoss.com.conf get_md5=None get_mime=True get_attributes=True
+Feb 12 13:02:50 nctest ansible-copy[12220]: Invoked with directory_mode=None force=True remote_src=None _original_basename=nginx-official.conf.tpl owner=www-data follow=False local_follow=None group=www-data unsafe_writes=None serole=None content=NOT_LOGGING_PARAMETER setype=None dest=/etc/nginx/conf.d/nctest.dotfoss.com.conf selevel=None regexp=None validate=None src=/root/.ansible/tmp/ansible-tmp-1549972969.89-17235748340884/source checksum=19173d8c1479f1b6a2bddd91f5fc6f4e3ce8e468 seuser=None delimiter=None mode=None attributes=None backup=False
+Feb 12 13:02:50 nctest ansible-command[12252]: Invoked with warn=True executable=None _uses_shell=True _raw_params=systemctl stop nginx removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:50 nctest systemd[1]: Stopped A high performance web server and a reverse proxy server.
+-- Subject: Unit nginx.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has finished shutting down.
+Feb 12 13:02:50 nctest ansible-command[12278]: Invoked with warn=True executable=None _uses_shell=True _raw_params= removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:02:57 nctest sshd[12288]: Invalid user wyf from 79.137.64.132
+Feb 12 13:02:57 nctest sshd[12288]: input_userauth_request: invalid user wyf [preauth]
+Feb 12 13:02:57 nctest sshd[12288]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 12 13:02:57 nctest sshd[12288]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=79.137.64.132[0m
+Feb 12 13:02:59 nctest sshd[12288]: Failed password for invalid user wyf from 79.137.64.132 port 45302 ssh2
+Feb 12 13:02:59 nctest sshd[12288]: Received disconnect from 79.137.64.132 port 45302:11: Bye Bye [preauth]
+Feb 12 13:02:59 nctest sshd[12288]: Disconnected from 79.137.64.132 port 45302 [preauth]
+Feb 12 13:03:02 nctest ansible-command[12324]: Invoked with warn=True executable=None _uses_shell=True _raw_params=systemctl start nginx removes=None argv=None creates=None chdir=None stdin=None
+Feb 12 13:03:02 nctest systemd[1]: Starting A high performance web server and a reverse proxy server...
+-- Subject: Unit nginx.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has begun starting up.
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:02 nctest nginx[12341]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:03 nctest nginx[12341]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:04 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:04 nctest nginx[12341]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:04 nctest nginx[12341]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:04 nctest nginx[12341]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:04 nctest nginx[12341]: nginx: [emerg] still could not bind()
+Feb 12 13:03:04 nctest systemd[1]: [0;1;39mnginx.service: Control process exited, code=exited status=1[0m
+Feb 12 13:03:04 nctest systemd[1]: [0;1;31mFailed to start A high performance web server and a reverse proxy server.[0m
+-- Subject: Unit nginx.service has failed
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has failed.
+-- 
+-- The result is failed.
+Feb 12 13:03:04 nctest systemd[1]: [0;1;39mnginx.service: Unit entered failed state.[0m
+Feb 12 13:03:04 nctest systemd[1]: [0;1;39mnginx.service: Failed with result 'exit-code'.[0m
+Feb 12 13:03:53 nctest systemd[1]: Starting A high performance web server and a reverse proxy server...
+-- Subject: Unit nginx.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has begun starting up.
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:53 nctest nginx[12445]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:54 nctest nginx[12445]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:55 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Feb 12 13:03:55 nctest nginx[12445]: nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)
+Feb 12 13:03:55 nctest nginx[12445]: nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+Feb 12 13:03:55 nctest nginx[12445]: nginx: [emerg] bind() to [::]:443 failed (98: Address already in use)
+Feb 12 13:03:55 nctest nginx[12445]: nginx: [emerg] still could not bind()
+Feb 12 13:03:55 nctest systemd[1]: [0;1;39mnginx.service: Control process exited, code=exited status=1[0m
+Feb 12 13:03:55 nctest systemd[1]: [0;1;31mFailed to start A high performance web server and a reverse proxy server.[0m
+-- Subject: Unit nginx.service has failed
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit nginx.service has failed.
+-- 
+-- The result is failed.
+Feb 12 13:03:55 nctest systemd[1]: [0;1;39mnginx.service: Unit entered failed state.[0m
+Feb 12 13:03:55 nctest systemd[1]: [0;1;39mnginx.service: Failed with result 'exit-code'.[0m

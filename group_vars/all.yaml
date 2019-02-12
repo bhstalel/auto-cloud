@@ -10,7 +10,7 @@ php_version: 7.2
 
 # +============================+
 
-autocloud_dir:
+autocloud_dir: /root/auto-cloud
 
 # +============================+
 
@@ -52,7 +52,7 @@ onlyoffice_domain:
 
 # +============================+
 
-email:
+email: bhstalel@gmail.com
 
 # +============================+
 
@@ -60,7 +60,7 @@ onlyoffice_with_nextcloud: 1
 
 # +============================+
 
-state: 
+state: o
 
 # +============================+
 
@@ -68,7 +68,7 @@ collabora_domain:
 
 # +============================+
 
-webserver:
+webserver: n
 
 # +============================+
 

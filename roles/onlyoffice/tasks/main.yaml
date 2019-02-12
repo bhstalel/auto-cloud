@@ -205,10 +205,10 @@
   become: yes
   when: onlyoffice_with_nextcloud == 1 and state == "l"
 
-- name: Restarting Nginx
-  shell: systemctl restart nginx
-  become: yes
-  when: webserver == "n"
+#- name: Restarting Nginx
+#  shell: systemctl restart nginx
+#  become: yes
+#  when: webserver == "n"
 
 - name: Set up redis host name
   shell: "{{ json }} -I -e 'this.services.CoAuthoring.redis.host  = \"{{ redis_server_host }}\"'"

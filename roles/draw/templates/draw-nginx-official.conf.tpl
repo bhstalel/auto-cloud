@@ -5,7 +5,7 @@ server {
     # return 301 https://$server_name$request_uri;
     root /var/www/webapp/;
 
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    #listen [::]:443 ssl ipv6only=on; # managed by Certbot
     listen 443 ssl; # managed by Certbot
     #ssl_certificate /etc/letsencrypt/live/{{draw_domain}}/fullchain.pem; # managed by Certbot
     #ssl_certificate_key /etc/letsencrypt/live/{{draw_domain}}/privkey.pem; # managed by Certbot
@@ -20,7 +20,7 @@ server {
     } # managed by Certbot
 
     listen 80;
-    listen [::]:80;
+    #listen [::]:80;
     server_name {{draw_domain}};
     return 404; # managed by Certbot
 }
