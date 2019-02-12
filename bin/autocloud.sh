@@ -29,6 +29,7 @@ email=`cat ../group_vars/all.yaml | sed -n -e 's/^.*email: //p'`
 oodm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*onlyoffice_domain: //p'`
 drdm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*draw_domain: //p'`
 codm=`cat ../group_vars/all.yaml | sed -n -e 's/^.*collabora_domain: //p'`
+nccfile=`cat ../group_vars/all.yaml | sed -n -e 's/^.*nextcloud_cfile:: //p'`
 
 # +============================+
 
@@ -119,6 +120,8 @@ newline="dbtype:"
 sed -i '/dbtype.*/c\'"$newline" ../group_vars/all.yaml
 newline="draw_domain:"
 sed -i '/draw_domain.*/c\'"$newline" ../group_vars/all.yaml
+newline="nextcloud_cfile:"
+sed -i '/nextcloud_cfile.*/c\'"$newline" ../group_vars/all.yaml
 }
 
 
@@ -686,6 +689,11 @@ newline="collabora_domain: $1"
 sed -i '/collabora_domain.*/c\'"$newline" ../group_vars/all.yaml
 }
 
+SETNCCFILE(){
+newline="nextcloud_cfile: $1"
+sed -i '/nextcloud_cfile.*/c\'"$newline" ../group_vars/all.yaml
+}
+
 # +============================+
 # [ Set: draw_domain           ]
 SETDRDM(){
@@ -774,6 +782,7 @@ elif [ $# -eq 3 ]; then
 			"email") SETEMAIL "$3";;
 			"webserv") SETWEBSERV "$3";;
 			"dbtype") SETDBTYPE "$3";;
+			"nccfile") SETNCCFILE "$3";;
 			*) VARNOTFOUND "$2" ;;
 		esac
 	else

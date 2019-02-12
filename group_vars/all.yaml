@@ -1,8 +1,9 @@
 # +============================+
 
-nextcloud_domain:
+nextcloud_domain: nctest.dotfoss.com
 nextcloud_username:
 nextcloud_userpass:
+nextcloud_cfile: nctest.dotfoss.com.conf
 
 # +============================+
 
@@ -64,7 +65,7 @@ state: o
 
 # +============================+
 
-collabora_domain:
+collabora_domain: cotest.dotfoss.com
 
 # +============================+
 

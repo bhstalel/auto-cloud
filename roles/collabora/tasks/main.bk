@@ -202,5 +202,5 @@
      - "127.0.0.1:9980:9980"
     env:
         domain: "{{ nextcloud_domain | regex_replace('\\.', '\\.') }}"
-    capabilities: MKNOD
+    capabilities: MKNOD 
   notify: restart collabora container

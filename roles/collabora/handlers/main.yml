@@ -14,7 +14,7 @@
     state: restarted
   become: yes
 
-- name: rerstart nginx
+- name: restart nginx
   service:
     name: nginx
     state: restarted
