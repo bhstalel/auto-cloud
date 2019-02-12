@@ -1,9 +1,9 @@
 # +============================+
 
-nextcloud_domain: nctest.dotfoss.com
+nextcloud_domain:
 nextcloud_username:
 nextcloud_userpass:
-nextcloud_cfile: nctest.dotfoss.com.conf
+nextcloud_cfile:
 
 # +============================+
 
@@ -53,7 +53,7 @@ onlyoffice_domain:
 
 # +============================+
 
-email: bhstalel@gmail.com
+email:
 
 # +============================+
 
@@ -61,15 +61,15 @@ onlyoffice_with_nextcloud: 1
 
 # +============================+
 
-state: o
+state:
 
 # +============================+
 
-collabora_domain: cotest.dotfoss.com
+collabora_domain:
 
 # +============================+
 
-webserver: n
+webserver:
 
 # +============================+
 
