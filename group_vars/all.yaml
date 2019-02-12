@@ -1,6 +1,6 @@
 # +============================+
 
-nextcloud_domain:
+nextcloud_domain: cloud.talel.com
 nextcloud_username:
 nextcloud_userpass:
 
@@ -53,7 +53,7 @@ package_name: onlyoffice-documentserver
 
 onlyoffice_username: onlyoffice
 onlyoffice_userpass: onlyoffice
-onlyoffice_domain: onlyoffice.talel.com
+onlyoffice_domain:
 
 # +============================+
 
@@ -73,14 +73,27 @@ collabora_domain:
 
 # +============================+
 
-webserver: n
+webserver:
 
 # +============================+
 
-dbtype: p
+dbtype:
 
 # +============================+
 
 draw_domain:
 
 # +============================+
+
+openldap_server_user: "openldap"
+openldap_server_domain_name: omar.com
+
+#The self signed ssl parameters
+openldap_server_country: US
+openldap_server_state: oregon
+openldap_server_location: portland
+openldap_server_organization: IT
+
+openldap_server_enable_ssl: true
+
+openldap_server_app_path: "/etc/ldap/"
