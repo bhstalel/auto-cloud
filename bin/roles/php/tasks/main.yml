@@ -51,7 +51,7 @@
 
 - name: configure php
   copy:
-    src: "{{autocloud_dir}}/roles/php/files/www.conf"
+    src: "{{autocloud_dir}}/bin/roles/php/files/www.conf"
     dest: "/etc/php/{{php_version}}/fpm/pool.d/www.conf"
     owner: root
     group: root
