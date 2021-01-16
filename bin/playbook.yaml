@@ -1,0 +1,4 @@
+---
+- hosts: Machine1
+  roles:
+    - test-role

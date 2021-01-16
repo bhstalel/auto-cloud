@@ -1,0 +1,9 @@
+
+#-------------------------------------#
+# Guide by Talel (bhstalel@gmail.com) #
+#-------------------------------------#
+# Specify your Ansible variables here
+# Use the SSH public key authentication method instead of providing ansible_ssh_pass here.
+
+ansible_host: 192.168.56.101
+ansible_user: useradm
