@@ -1,19 +1,25 @@
-# +============================+
 
-nextcloud_domain:
-nextcloud_username:
-nextcloud_userpass:
+# nextcloud domain for nginx configuration
+nextcloud_domain: nextcloud.example.org
+
+# Official nextcloud download link
+# version 20.0.5 set in 16/01/2021
+nextcloud_package_link: https://download.nextcloud.com/server/releases/nextcloud-20.0.5.zip
+
+# MySQL nextcloud user credentials
+nextcloud_username: nextcloud
+nextcloud_userpass: nextcloud
 nextcloud_cfile:
 
-# +============================+
+# MySQL nextcloud database credentials (user must be exist)
+nextcloud_db_user: root
+nextcloud_db_password: root
+nextcloud_db_name: nextcloud
+
+# Let it empty, the main script will set it for you :)
+autocloud_dir: /home/talel/Documents/personal_github/auto-cloud
 
 php_version: 7.2
-
-# +============================+
-
-autocloud_dir: /root/auto-cloud
-
-# +============================+
 
 talk_static_auth_secret: 75b56f192cfd8541e084e5957cc8c1478144b38dc25aa34aa91f33c3d8ef4100
 
